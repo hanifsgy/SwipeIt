@@ -19,14 +19,13 @@ ShareableViewController {
   @IBOutlet private weak var upvoteButton: UIButton!
   @IBOutlet private weak var undoButton: UIButton!
   @IBOutlet private weak var shareButton: UIButton!
+  @IBOutlet private weak var listingButton: UIBarButtonItem!
 
   // MARK: - ViewModel
   var viewModel: LinkSwipeViewModel!
 
   // MARK: Properties
   private var cardIndex: Int = 0
-  private lazy var shareHelper: ShareHelper = ShareHelper(viewController: self)
-  private lazy var alertHelper: AlertHelper = AlertHelper(viewController: self)
 }
 
 // MARK: - Lifecycle
@@ -81,14 +80,23 @@ extension LinkSwipeViewController {
     updateUndoButton()
   }
 
+
   private func bindViewModel() {
     viewModel.title
       .bindTo(rx_title)
       .addDisposableTo(rx_disposeBag)
     viewModel.requestLinks()
     viewModel.viewModels
-      .subscribeNext { [weak self] _ in
+      .subscribeNext { [weak self] viewModels in
+        if viewModels.count == 0 {
+          self?.cardIndex = 0
+          self?.swipeView.discardViews()
+        }
         self?.swipeView.loadViews()
+      }.addDisposableTo(rx_disposeBag)
+    viewModel.listingTypeName
+      .subscribeNext { [weak self] listingTypeName in
+        self?.listingButton.title = listingTypeName
       }.addDisposableTo(rx_disposeBag)
   }
 
@@ -99,6 +107,10 @@ extension LinkSwipeViewController {
 
 // MARK: IBActions
 extension LinkSwipeViewController {
+
+  @IBAction private func listingClick() {
+    presentListingTypeActionSheet()
+  }
 
   @IBAction private func upvoteClick() {
     currentCardView?.animateOverlayPercentage(1)
@@ -253,6 +265,15 @@ extension LinkSwipeViewController {
     viewModel.sendReport(reason) { error in
     }
   }
+}
+
+
+// MARK: - Helpers
+extension LinkSwipeViewController {
+
+  private func openInSafari(viewModel: LinkItemViewModel) {
+    UIApplication.sharedApplication().openURL(viewModel.url)
+  }
 
   private func voteCompletion(error: ErrorType?, view: UIView) {
     guard let _ = error where swipeView.history.last == view else {
@@ -268,5 +289,27 @@ extension LinkSwipeViewController {
 
   private var currentCardView: LinkCardView? {
     return swipeView.topView() as? LinkCardView
+  }
+
+  private func presentListingTypeActionSheet() {
+    presentActionSheet(options: ListingType.names) { index in
+      guard let index = index else { return }
+      if let listingType = ListingType.typeAtIndex(index) {
+        self.viewModel.setListingType(listingType)
+      } else {
+        self.presentListingTypeRangeActionSheet(index)
+      }
+    }
+  }
+
+  private func presentListingTypeRangeActionSheet(listingTypeIndex: Int) {
+    presentActionSheet(options: ListingTypeRange.names) { index in
+      guard let index = index,
+        range = ListingTypeRange.rangeAtIndex(index),
+        listingType = ListingType.typeAtIndex(listingTypeIndex, range: range) else {
+          return
+      }
+      self.viewModel.setListingType(listingType)
+    }
   }
 }

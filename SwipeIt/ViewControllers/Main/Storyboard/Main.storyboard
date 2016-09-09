@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S2v-XF-HS7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S2v-XF-HS7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -360,9 +360,16 @@
                             <constraint firstAttribute="trailing" secondItem="h9C-Jg-OEG" secondAttribute="trailing" id="ghd-Bl-N5m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XBQ-Qg-VQH"/>
+                    <navigationItem key="navigationItem" id="XBQ-Qg-VQH">
+                        <barButtonItem key="rightBarButtonItem" title="Hot" id="6u2-oy-s8j">
+                            <connections>
+                                <action selector="listingClick" destination="ycR-x5-4be" id="irT-LL-Nf5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="downvoteButton" destination="fpY-14-3JI" id="oje-NK-buT"/>
+                        <outlet property="listingButton" destination="6u2-oy-s8j" id="mxX-qM-YXd"/>
                         <outlet property="shareButton" destination="m49-Ma-Kga" id="h6E-nh-Wfb"/>
                         <outlet property="swipeView" destination="QWg-Wc-VOe" id="1wK-xM-Kih"/>
                         <outlet property="undoButton" destination="M9Q-oL-QHj" id="s56-rq-h8x"/>
