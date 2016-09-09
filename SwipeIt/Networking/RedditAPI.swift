@@ -149,7 +149,7 @@ extension RedditAPI: TargetType {
     switch self {
     case .AccessToken, .RefreshToken:
       return .URL
-    case .Vote, . Save, .Unsave, .Report:
+    case .Vote, . Save, .Unsave, .Report, .LinkListing:
       return .URLEncodedInURL
     default:
       return method == .GET ? .URL : .JSON
