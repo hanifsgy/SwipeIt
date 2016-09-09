@@ -1,21 +1,20 @@
 //
-//  ShareHelper.swift
-//  Reddit
+//  ShareableViewController.swift
+//  SwipeIt
 //
-//  Created by Ivan Bruel on 09/08/16.
+//  Created by Ivan Bruel on 09/09/16.
 //  Copyright © 2016 Faber Ventures. All rights reserved.
 //
 
 import UIKit
 
-class ShareHelper {
+protocol ShareableViewController {
 
-  private weak var viewController: UIViewController?
+  func share(text: String?, URL: NSURL?, image: UIImage?, fromView: UIView?)
 
-  init(viewController: UIViewController) {
-    self.viewController = viewController
-  }
+}
 
+extension ShareableViewController where Self: UIViewController {
 
   func share(text: String? = nil, URL: NSURL? = nil, image: UIImage? = nil,
              fromView: UIView? = nil) {
@@ -28,6 +27,6 @@ class ShareHelper {
                                                     UIActivityTypeOpenInIBooks]
 
     activityViewController.popoverPresentationController?.sourceView = fromView
-    viewController?.presentViewController(activityViewController, animated: true, completion: nil)
+    self.presentViewController(activityViewController, animated: true, completion: nil)
   }
 }

@@ -7,26 +7,22 @@
 //
 
 import UIKit
-import RxSwift
 
 protocol AlerteableViewController {
 
-  func presentAlert(title: String?,
-                    message: String?,
-                    textField: AlertTextField?,
-                    buttonTitle: String?,
-                    cancelButtonTitle: String?,
+  func presentAlert(title: String?, message: String?, textField: AlertTextField?,
+                    buttonTitle: String?, cancelButtonTitle: String?,
                     alertClicked: ((AlertButtonClicked) -> Void)?)
+
+  func presentActionSheet(title: String?, message: String?, options: [String],
+                          clicked: (Int?) -> Void)
 
 }
 
 extension AlerteableViewController where Self: UIViewController {
 
-  func presentAlert(title: String? = nil,
-                    message: String? = nil,
-                    textField: AlertTextField? = nil,
-                    buttonTitle: String? = nil,
-                    cancelButtonTitle: String? = nil,
+  func presentAlert(title: String? = nil, message: String? = nil, textField: AlertTextField? = nil,
+                    buttonTitle: String? = nil, cancelButtonTitle: String? = nil,
                     alertClicked: ((AlertButtonClicked) -> Void)? = nil) {
 
     let alertController = UIAlertController(title: title, message: message,
@@ -59,6 +55,26 @@ extension AlerteableViewController where Self: UIViewController {
         alertController.addAction(buttonAction)
       }
     }
+    self.presentViewController(alertController, animated: true, completion: nil)
+  }
+
+  func presentActionSheet(title: String? = nil, message: String? = nil, options: [String],
+                          clicked: (Int?) -> Void) {
+    let alertController = UIAlertController(title: title, message: message,
+                                            preferredStyle: .ActionSheet)
+
+    let cancelAction = UIAlertAction(title: tr(.AlertButtonCancel), style: .Cancel) { action in
+      clicked(nil)
+    }
+    alertController.addAction(cancelAction)
+
+    (0..<options.count).forEach { index in
+      let action = UIAlertAction(title: options[index], style: .Default) { action in
+        clicked(index)
+      }
+      alertController.addAction(action)
+    }
+
     self.presentViewController(alertController, animated: true, completion: nil)
   }
 }

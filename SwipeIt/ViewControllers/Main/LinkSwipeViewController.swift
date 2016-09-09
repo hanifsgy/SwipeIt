@@ -10,7 +10,8 @@ import UIKit
 import RxSwift
 import ZLSwipeableViewSwift
 
-class LinkSwipeViewController: UIViewController, CloseableViewController, AlerteableViewController {
+class LinkSwipeViewController: UIViewController, CloseableViewController, AlerteableViewController,
+ShareableViewController {
 
   // MARK: - IBOutlets
   @IBOutlet private weak var swipeView: ZLSwipeableView!
@@ -121,7 +122,7 @@ extension LinkSwipeViewController {
 
   @IBAction private func shareClick() {
     guard let viewModel = currentViewModel else { return }
-    shareHelper.share(viewModel.title, URL: viewModel.url, image: nil, fromView: shareButton)
+    share(viewModel.title, URL: viewModel.url, image: nil, fromView: shareButton)
   }
 }
 
@@ -199,10 +200,11 @@ extension LinkSwipeViewController {
 
   private func swipeViewDidClickMore(view: LinkCardView) {
     guard let viewModel = view.viewModel else { return }
-    viewModel.save.take(1)
+    viewModel.save
+      .take(1)
       .subscribeNext { [weak self] save in
         let options = [save, tr(.LinkReport), tr(.LinkOpenInSafari)]
-        self?.alertHelper.presentActionSheet(options: options) { index in
+        self?.presentActionSheet(options: options) { index in
           guard let index = index else { return }
           switch index {
           case 0:
@@ -219,18 +221,14 @@ extension LinkSwipeViewController {
   }
 }
 
-// MARK: - Helpers
+// MARK: - Report
 extension LinkSwipeViewController {
-
-  private func openInSafari(viewModel: LinkItemViewModel) {
-    UIApplication.sharedApplication().openURL(viewModel.url)
-  }
 
   private func report(viewModel: LinkItemViewModel) {
     let reasons: [String] = [tr(.LinkReportSpam), tr(.LinkReportVoteManipulation),
                              tr(.LinkReportPersonalInfo), tr(.LinkReportSexualizingMinors),
                              tr(.LinkReportBreakingReddit), tr(.LinkReportOther)]
-    alertHelper.presentActionSheet(options: reasons) { [weak self] index in
+    presentActionSheet(options: reasons) { [weak self] index in
       guard let index = index else { return }
       guard index != 5 else {
         self?.reportOtherReason(viewModel)
@@ -245,11 +243,8 @@ extension LinkSwipeViewController {
     presentAlert(tr(.LinkReport), message: tr(.LinkReportOtherReason),
                  textField: textfield, buttonTitle: tr(.LinkReport),
                  cancelButtonTitle: tr(.AlertButtonCancel)) { [weak self] alertClicked in
-                  switch alertClicked {
-                  case let .ButtonWithText(reason):
-                    self?.reportWithReason(reason, viewModel: viewModel)
-                  default: return
-                  }
+                  guard case let .ButtonWithText(reason) = alertClicked else { return }
+                  self?.reportWithReason(reason, viewModel: viewModel)
     }
   }
 
