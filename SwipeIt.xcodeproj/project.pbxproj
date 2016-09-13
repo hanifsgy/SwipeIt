@@ -237,7 +237,7 @@
 		30E1520B1CEC6FC700D4152F /* LinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E1520A1CEC6FC700D4152F /* LinkType.swift */; };
 		30E1520C1CEC6FC900D4152F /* LinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E1520A1CEC6FC700D4152F /* LinkType.swift */; };
 		30E883C11D82CBCD00EE71CA /* ShareableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E883C01D82CBCD00EE71CA /* ShareableViewController.swift */; };
-		30F00CB61D885EA6006F17E1 /* LinkVideoCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F00CB51D885EA6006F17E1 /* LinkVideoCarView.swift */; };
+		30F00CB61D885EA6006F17E1 /* LinkVideoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F00CB51D885EA6006F17E1 /* LinkVideoCardView.swift */; };
 		30F6C9A81C8A081D00616707 /* LinkListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9A71C8A081D00616707 /* LinkListing.swift */; };
 		30F6C9AA1C8A096300616707 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9A91C8A096300616707 /* Link.swift */; };
 		30F6C9AC1C8A0C2200616707 /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AB1C8A0C2200616707 /* Subreddit.swift */; };
@@ -433,7 +433,7 @@
 		30DDB26B1CCF68B0000B72E5 /* QueryReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryReader.swift; sourceTree = "<group>"; };
 		30E1520A1CEC6FC700D4152F /* LinkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkType.swift; sourceTree = "<group>"; };
 		30E883C01D82CBCD00EE71CA /* ShareableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareableViewController.swift; sourceTree = "<group>"; };
-		30F00CB51D885EA6006F17E1 /* LinkVideoCarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkVideoCarView.swift; sourceTree = "<group>"; };
+		30F00CB51D885EA6006F17E1 /* LinkVideoCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkVideoCardView.swift; sourceTree = "<group>"; };
 		30F6C9A71C8A081D00616707 /* LinkListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkListing.swift; sourceTree = "<group>"; };
 		30F6C9A91C8A096300616707 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		30F6C9AB1C8A0C2200616707 /* Subreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subreddit.swift; sourceTree = "<group>"; };
@@ -710,7 +710,7 @@
 				30599BFD1D677CCF00039CCA /* LinkCardView.swift */,
 				30599BFB1D677CC700039CCA /* LinkImageCardView.swift */,
 				30213AEE1D86F74700092F23 /* LinkSelfPostCardView.swift */,
-				30F00CB51D885EA6006F17E1 /* LinkVideoCarView.swift */,
+				30F00CB51D885EA6006F17E1 /* LinkVideoCardView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -1832,7 +1832,7 @@
 				303DAC191CD90C1700712D91 /* SubscriptionsViewModel.swift in Sources */,
 				30DDB2451CCEDBAA000B72E5 /* CloseableViewController.swift in Sources */,
 				305C08121CDCF9D2009D287D /* MultiredditListViewController.swift in Sources */,
-				30F00CB61D885EA6006F17E1 /* LinkVideoCarView.swift in Sources */,
+				30F00CB61D885EA6006F17E1 /* LinkVideoCardView.swift in Sources */,
 				303DAC1B1CD90CDA00712D91 /* Scope.swift in Sources */,
 				30806BFB1C8D9A6C00EB1BD5 /* EditedTransform.swift in Sources */,
 				30A944141D7EC552004B841F /* PostHint.swift in Sources */,
