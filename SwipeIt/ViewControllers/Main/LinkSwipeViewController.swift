@@ -42,6 +42,25 @@ extension LinkSwipeViewController {
       self?.swipeViewNextView()
     }
   }
+
+  override func viewWillTransitionToSize(
+    size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    coordinator.animateAlongsideTransition({ context in
+      (self.swipeView.activeViews() + self.swipeView.history)
+        .flatMap { $0 as? LinkCardView }
+        .forEach { view in
+          let transform = view.transform
+          view.frame = self.swipeView.bounds
+          view.updateFrame(self.swipeView.bounds)
+          view.transform = transform
+      }
+      print("\(self.swipeView.frame) in animation")
+      }, completion: { _ in
+        self.swipeView.discardViews()
+        self.swipeView.loadViews()
+    })
+  }
 }
 
 // MARK: - Setup
@@ -109,7 +128,7 @@ extension LinkSwipeViewController {
 extension LinkSwipeViewController {
 
   @IBAction private func listingClick() {
-    presentListingTypeActionSheet()
+    presentListingTypeActionSheet(listingButton)
   }
 
   @IBAction private func upvoteClick() {
@@ -151,6 +170,10 @@ extension LinkSwipeViewController {
     switch viewModel {
     case is LinkItemImageViewModel:
       view = LinkImageCardView(frame: swipeView.bounds)
+    case is LinkItemSelfPostViewModel:
+      view = LinkSelfPostCardView(frame: swipeView.bounds)
+    case is LinkItemVideoViewModel:
+      view = LinkVideoCardView(frame: swipeView.bounds)
     default:
       return nil
     }
@@ -190,7 +213,7 @@ extension LinkSwipeViewController {
   }
 
   private func swipeViewTapped(view: LinkCardView, location: CGPoint) {
-
+    print("taped")
   }
 
   private func swipeViewDisappeared(view: LinkCardView) {
@@ -210,13 +233,13 @@ extension LinkSwipeViewController {
     view.animateOverlayPercentage(0)
   }
 
-  private func swipeViewDidClickMore(view: LinkCardView) {
+  private func swipeViewDidClickMore(view: LinkCardView, fromView: UIView) {
     guard let viewModel = view.viewModel else { return }
     viewModel.save
       .take(1)
       .subscribeNext { [weak self] save in
         let options = [save, tr(.LinkReport), tr(.LinkOpenInSafari)]
-        self?.presentActionSheet(options: options) { index in
+        self?.presentActionSheet(options: options, fromView: fromView) { index in
           guard let index = index else { return }
           switch index {
           case 0:
@@ -291,8 +314,8 @@ extension LinkSwipeViewController {
     return swipeView.topView() as? LinkCardView
   }
 
-  private func presentListingTypeActionSheet() {
-    presentActionSheet(options: ListingType.names) { index in
+  private func presentListingTypeActionSheet(barButtonItem: UIBarButtonItem) {
+    presentActionSheet(options: ListingType.names, barButtonItem: barButtonItem) { index in
       guard let index = index else { return }
       if let listingType = ListingType.typeAtIndex(index) {
         self.viewModel.setListingType(listingType)
