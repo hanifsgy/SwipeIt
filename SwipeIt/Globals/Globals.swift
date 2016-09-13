@@ -49,6 +49,15 @@ extension Globals {
     }
   }
 
+  static var showNSFW: Bool {
+    get {
+      return userDefaults.boolForKey("showNSFW")
+    }
+    set {
+      userDefaults.setBool(newValue, forKey: "showNSFW")
+    }
+  }
+
   static var selfPostNumberOfLines: Int {
     get {
       return userDefaults.objectForKey("selfPostNumberOfLines") as? Int ?? 5
