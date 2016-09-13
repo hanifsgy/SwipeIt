@@ -14,8 +14,8 @@ protocol AlerteableViewController {
                     buttonTitle: String?, cancelButtonTitle: String?,
                     alertClicked: ((AlertButtonClicked) -> Void)?)
 
-  func presentActionSheet(title: String?, message: String?, options: [String],
-                          clicked: (Int?) -> Void)
+  func presentActionSheet(title: String?, message: String?, options: [String], fromView: UIView?,
+                          barButtonItem: UIBarButtonItem?, clicked: (Int?) -> Void)
 
 }
 
@@ -59,6 +59,7 @@ extension AlerteableViewController where Self: UIViewController {
   }
 
   func presentActionSheet(title: String? = nil, message: String? = nil, options: [String],
+                          fromView: UIView? = nil, barButtonItem: UIBarButtonItem? = nil,
                           clicked: (Int?) -> Void) {
     let alertController = UIAlertController(title: title, message: message,
                                             preferredStyle: .ActionSheet)
@@ -74,7 +75,8 @@ extension AlerteableViewController where Self: UIViewController {
       }
       alertController.addAction(action)
     }
-
+    alertController.popoverPresentationController?.sourceView = fromView
+    alertController.popoverPresentationController?.barButtonItem = barButtonItem
     self.presentViewController(alertController, animated: true, completion: nil)
   }
 }
