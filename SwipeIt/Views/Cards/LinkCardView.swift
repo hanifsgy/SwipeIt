@@ -62,7 +62,7 @@ class LinkCardView: UIView {
   private lazy var scoreLabel: UILabel = self.createScoreLabel()
   private lazy var upvoteOverlayImageView: VoteOverlayView = self.createUpvoteOverlayView()
   private lazy var downvoteOverlayImageView: VoteOverlayView = self.createDownvoteOverlayView()
-  lazy var moreButton: UIButton = self.createMoreButton()
+  private lazy var moreButton: UIButton = self.createMoreButton()
 
   var contentView: UIView? = nil {
     didSet {
@@ -82,7 +82,7 @@ class LinkCardView: UIView {
     }
   }
 
-  var moreOptionsClicked: ((LinkCardView) -> Void)? = nil
+  var moreOptionsClicked: ((LinkCardView, UIView) -> Void)? = nil
 
   // MARK: - Initializers
   init() {
@@ -110,6 +110,13 @@ class LinkCardView: UIView {
 
     addSubview(containerView)
     setupConstraints()
+  }
+
+  func updateFrame(frame: CGRect) {
+    containerView.snp_updateConstraints { make in
+      make.width.equalTo(frame.width)
+      make.height.equalTo(frame.height)
+    }
   }
 
   private func setupConstraints() {
@@ -325,7 +332,7 @@ extension LinkCardView {
       }.addDisposableTo(self.rx_disposeBag)
     button.rx_tap.subscribeNext { [weak self] _ in
       guard let `self` = self else { return }
-      self.moreOptionsClicked?(self)
+      self.moreOptionsClicked?(self, self.moreButton)
     }.addDisposableTo(self.rx_disposeBag)
     return button
   }
@@ -381,4 +388,7 @@ extension LinkCardView {
 
 extension LinkCardView: TTTAttributedLabelDelegate {
 
+  func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+    URLRouter.sharedInstance.openURL(url)
+  }
 }
