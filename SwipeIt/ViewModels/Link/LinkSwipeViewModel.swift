@@ -161,10 +161,15 @@ extension LinkSwipeViewModel {
                                                 accessToken: AccessToken, subredditOnly: Bool)
     -> [LinkItemViewModel] {
       return linkListing.links
-        .filter { !$0.stickied }
-        .filter { !Globals.hideVotedPosts || $0.vote == .None }
-        .filter { $0.type == .Image || $0.type == .GIF }
-        .map { LinkItemViewModel.viewModelFromLink($0, user: user, accessToken: accessToken,
+        .filter { (link: Link) -> Bool in
+          return !link.stickied
+        }.filter { (link: Link) -> Bool in
+          return !Globals.hideVotedPosts || link.vote == .None
+        }.filter { (link: Link) -> Bool in
+          return link.type == .Image || link.type == .GIF || link.type == .SelfPost ||
+            link.type == .Video
+        }.map { (link: Link) -> LinkItemViewModel in
+          return LinkItemViewModel.viewModelFromLink(link, user: user, accessToken: accessToken,
           subredditOnly: subredditOnly)
       }
   }
