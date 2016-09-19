@@ -103,9 +103,10 @@ class LinkCardView: UIView {
   private func commonInit() {
     backgroundColor = .whiteColor()
     borderColor = UIColor(named: .Gray)
-    borderWidth = 1
-    cornerRadius = 4
-    clipsToBounds = true
+    borderWidth = 1.0 / UIScreen.mainScreen().scale
+    cornerRadius = 6
+    containerView.cornerRadius = cornerRadius
+    containerView.clipsToBounds = true
     opaque = true
 
     addSubview(containerView)
