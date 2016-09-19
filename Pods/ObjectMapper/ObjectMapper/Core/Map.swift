@@ -62,19 +62,10 @@ public final class Map {
 	public subscript(key: String) -> Map {
 		// save key and value associated to it
 		let nested = key.containsString(".")
-        return self[key, nested: nested, ignoreNil: false]
+		return self[key, nested: nested]
 	}
 	
 	public subscript(key: String, nested nested: Bool) -> Map {
-	    return self[key, nested: nested, ignoreNil: false]
-	}
-	
-    public subscript(key: String, ignoreNil ignoreNil: Bool) -> Map {
-        let nested = key.containsString(".")
-        return self[key, nested: nested, ignoreNil: ignoreNil]
-    }
-    
-    public subscript(key: String, nested nested: Bool, ignoreNil ignoreNil: Bool) -> Map {
 		// save key and value associated to it
 		currentKey = key
 		keyIsNested = nested
@@ -90,11 +81,6 @@ public final class Map {
 			// break down the components of the key that are separated by .
 			(isKeyPresent, currentValue) = valueFor(ArraySlice(key.componentsSeparatedByString(".")), dictionary: JSONDictionary)
 		}
-		
-		// update isKeyPresent if ignoreNil is true
-        if ignoreNil && currentValue == nil {
-            isKeyPresent = false
-        }
 		
 		return self
 	}

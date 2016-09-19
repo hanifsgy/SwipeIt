@@ -3,9 +3,9 @@ use_frameworks!
 
 abstract_target 'SwipeItCommon' do
 
-  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper'
+  pod 'ObjectMapper', '1.3'
   pod 'RxSwift'
-  pod 'Moya/RxSwift'
+  pod 'Moya/RxSwift', '7.0'
   pod 'Moya-ObjectMapper/RxSwift'
   pod 'NSObject+Rx'
   pod 'RxOptional'
@@ -15,8 +15,8 @@ abstract_target 'SwipeItCommon' do
   target 'SwipeIt' do
 
     pod 'RxCocoa'
-    pod 'Kingfisher'
-    pod 'SnapKit'
+    pod 'Kingfisher', '~> 2.5'
+    pod 'SnapKit', '~> 0.22.0'
     pod 'Device'
     pod 'Fabric'
     pod 'Crashlytics'
@@ -27,7 +27,7 @@ abstract_target 'SwipeItCommon' do
     pod 'Cell+Rx'
     pod 'AsyncSwift'
     pod 'SwiftGen'
-    pod 'MarkdownKit'
+    pod 'MarkdownKit', '~> 1.1.0'
     pod 'TTTAttributedLabel', :git => 'https://github.com/ivanbruel/TTTAttributedLabel'
     pod 'RxTimer'
     pod 'RxResult'

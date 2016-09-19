@@ -1,16 +1,16 @@
 PODS:
-  - Alamofire (3.4.2)
+  - Alamofire (3.5.0)
   - AsyncSwift (1.7.3)
   - Cell+Rx (1.1):
     - RxSwift (~> 2.5)
-  - Crashlytics (3.8.0):
+  - Crashlytics (3.8.1):
     - Fabric (~> 1.6.3)
   - DateTools (1.7.0)
   - Device (1.0.3)
   - Fabric (1.6.8)
   - Kanna (1.1.1)
   - KeychainSwift (3.0.16)
-  - Kingfisher (2.5.1)
+  - Kingfisher (2.6.0)
   - Localizable (0.1.0):
     - Localizable/Core (= 0.1.0)
   - Localizable/Core (0.1.0)
@@ -33,7 +33,7 @@ PODS:
   - Nimble (4.1.0)
   - NSObject+Rx (1.2.1):
     - RxSwift (~> 2.1)
-  - ObjectMapper (1.4.0)
+  - ObjectMapper (1.3.0)
   - Quick (0.9.3)
   - Result (2.1.3)
   - RxAlamofire (2.5):
@@ -77,14 +77,14 @@ DEPENDENCIES:
   - Fabric
   - Kanna
   - KeychainSwift (~> 3.0)
-  - Kingfisher
+  - Kingfisher (~> 2.5)
   - Localizable
-  - MarkdownKit
+  - MarkdownKit (~> 1.1.0)
   - Moya-ObjectMapper/RxSwift
-  - Moya/RxSwift
+  - Moya/RxSwift (= 7.0)
   - Nimble
   - NSObject+Rx
-  - ObjectMapper (from `https://github.com/Hearst-DD/ObjectMapper`)
+  - ObjectMapper (= 1.3)
   - Quick
   - Result
   - RxAlamofire
@@ -95,24 +95,19 @@ DEPENDENCIES:
   - RxResult
   - RxSwift
   - RxTimer
-  - SnapKit
+  - SnapKit (~> 0.22.0)
   - SwiftGen
   - TextStyle/RxSwift
   - TTTAttributedLabel (from `https://github.com/ivanbruel/TTTAttributedLabel`)
   - ZLSwipeableViewSwift (from `https://github.com/zhxnlai/ZLSwipeableViewSwift`)
 
 EXTERNAL SOURCES:
-  ObjectMapper:
-    :git: https://github.com/Hearst-DD/ObjectMapper
   TTTAttributedLabel:
     :git: https://github.com/ivanbruel/TTTAttributedLabel
   ZLSwipeableViewSwift:
     :git: https://github.com/zhxnlai/ZLSwipeableViewSwift
 
 CHECKOUT OPTIONS:
-  ObjectMapper:
-    :commit: e1cd7c2260ae7ebf46dbc7f8effac6dd41913ec1
-    :git: https://github.com/Hearst-DD/ObjectMapper
   TTTAttributedLabel:
     :commit: b960ccde0b9781ee9e406a0757cf127dfd1ee820
     :git: https://github.com/ivanbruel/TTTAttributedLabel
@@ -121,23 +116,23 @@ CHECKOUT OPTIONS:
     :git: https://github.com/zhxnlai/ZLSwipeableViewSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
   AsyncSwift: f3ad5dd077bbd1477e7573e87071a532fedaca1a
   Cell+Rx: c8cdcc85ee5ee947042005d1fdb04e4ede3e45b2
-  Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
+  Crashlytics: 4391d8df0b125345e9f209c5db6e7f40a6a8435d
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Device: bcf333c7c497edabe6df9560fd64f1e255d45b2b
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   Kanna: 9d3118cff609bd21eb374be5be590b544941160f
   KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
-  Kingfisher: 9b82e0e1f1a296f149a50bbc2214532eaa4df4f1
+  Kingfisher: d84c5fd176ea86cc7b8aac65fd55feda6f70f130
   Localizable: 2a52c1711df05635f0b1d34acc81bf1a34fb4b7e
   MarkdownKit: 60d759cd14169144e4b159cb34312f8a5dd77570
   Moya: f004b82418fb8165ee1fc9f86190db4b3611fda9
   Moya-ObjectMapper: 52f15abd982efc8ba2ce3fc49619555c926c14a1
   Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
   NSObject+Rx: 5d032a7f161602dec6b82dcf12731e91ce15b8da
-  ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
   RxAlamofire: b4572a077b6b2410c8732a27266299df4c00736e
@@ -154,6 +149,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: 95ff09f522aa1a13f22431337b3dd02195890855
+PODFILE CHECKSUM: a63a60045740f24114cf23210705815a9eac6bea
 
 COCOAPODS: 1.0.1
