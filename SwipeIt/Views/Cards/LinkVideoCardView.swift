@@ -59,7 +59,8 @@ extension LinkVideoCardView {
   private func createWebView() -> WKWebView {
     let config = WKWebViewConfiguration()
     let bodyStyle = "body { margin:0; }"
-    let source = "var node = document.createElement(\"style\"); node.innerHTML = \"\(bodyStyle)\";document.body.appendChild(node);"
+    let source = "var node = document.createElement(\"style\"); " +
+      "node.innerHTML = \"\(bodyStyle)\";document.body.appendChild(node);"
 
     let script = WKUserScript(
       source: source,
@@ -72,5 +73,5 @@ extension LinkVideoCardView {
     webView.scrollView.scrollEnabled = false
     return webView
   }
-  
+
 }

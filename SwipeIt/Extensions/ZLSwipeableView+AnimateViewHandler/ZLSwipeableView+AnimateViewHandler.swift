@@ -19,9 +19,8 @@ extension ZLSwipeableView {
       let animations = {
         view.center = swipeableView.convertPoint(swipeableView.center,
                                                  fromView: swipeableView.superview)
-        let translate = offset + ((swipeableView.bounds.height * (1 - scale)) / 2)
         var transform = CGAffineTransformMakeScale(scale, scale)
-        transform = CGAffineTransformTranslate(transform, 0, translate)
+        transform = CGAffineTransformTranslate(transform, 0, 0)
         view.transform = transform
       }
       if duration > 0 {

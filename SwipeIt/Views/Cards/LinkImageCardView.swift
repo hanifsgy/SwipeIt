@@ -19,6 +19,7 @@ class LinkImageCardView: LinkCardView {
       guard let imageViewModel = viewModel as? LinkItemImageViewModel else { return }
       let options: [KingfisherOptionsInfoItem] =
         [.Transition(.Fade(LinkImageCardView.fadeAnimationDuration))]
+
       imageView
         .kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: options) {
           [weak self] (image, _, _, imageURL) in

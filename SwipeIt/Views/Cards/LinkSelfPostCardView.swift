@@ -124,7 +124,8 @@ extension LinkSelfPostCardView {
 // MARK: - UIGestureRecognizerDelegate
 extension LinkSelfPostCardView: UIGestureRecognizerDelegate {
 
-  func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+  func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
+                         shouldReceiveTouch touch: UITouch) -> Bool {
     return label.gestureRecognizer(gestureRecognizer, shouldReceiveTouch: touch)
   }
 }
