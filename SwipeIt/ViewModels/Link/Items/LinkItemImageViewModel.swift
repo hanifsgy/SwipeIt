@@ -18,21 +18,18 @@ class LinkItemImageViewModel: LinkItemViewModel {
 
   // MARK: Private Properties
   private var prefetcher: Prefetcher? = nil
-  private let _imageSize: Variable<CGSize>
 
   // MARK: Public Properties
   let imageURL: NSURL?
+  let thumbnailURL: NSURL?
   let indicator: String?
   let overlay: String?
-  var imageSize: Observable<CGSize> {
-    return _imageSize.asObservable()
-  }
 
   override init(user: User, accessToken: AccessToken, link: Link, showSubreddit: Bool) {
     imageURL = link.imageURL
+    thumbnailURL = link.thumbnailURL
     indicator = LinkItemImageViewModel.indicatorFromLink(link)
     overlay = LinkItemImageViewModel.overlayFromLink(link)
-    _imageSize = Variable(link.imageSize ?? LinkItemImageViewModel.defaultImageSize)
 
     super.init(user: user, accessToken: accessToken, link: link, showSubreddit: showSubreddit)
   }
@@ -42,16 +39,9 @@ class LinkItemImageViewModel: LinkItemViewModel {
   }
 
   // MARK: API
-  func setImageSize(imageSize: CGSize) {
-    _imageSize.value = imageSize
-  }
-
   override func preloadData() {
     guard let imageURL = imageURL else { return }
-    prefetcher = Prefetcher(imageURL: imageURL) { [weak self] image in
-      guard let image = image else { return }
-      self?._imageSize.value = image.size
-    }
+    prefetcher = Prefetcher(imageURL: imageURL)
     prefetcher?.start()
   }
 }

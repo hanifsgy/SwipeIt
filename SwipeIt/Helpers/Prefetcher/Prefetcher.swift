@@ -14,7 +14,7 @@ class Prefetcher {
   private var imagePrefetcher: ImagePrefetcher!
   private let completion: ((UIImage?) -> Void)?
 
-  init(imageURL: NSURL, completion: ((UIImage?) -> Void)?) {
+  init(imageURL: NSURL, completion: ((UIImage?) -> Void)? = nil) {
     self.completion = completion
     imagePrefetcher = ImagePrefetcher(urls: [imageURL]) {
       [weak self] (skippedResources, _, completedResources) in
