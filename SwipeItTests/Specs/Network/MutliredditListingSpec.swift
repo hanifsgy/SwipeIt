@@ -10,6 +10,7 @@ import Quick
 import Nimble
 import Moya_ObjectMapper
 import NSObject_Rx
+import RxLegacy
 
 class MultiredditListSpec: QuickSpec {
 
@@ -17,8 +18,8 @@ class MultiredditListSpec: QuickSpec {
     describe("A multireddit listing") {
       var listing: [Multireddit]?
       describe("can be loaded") {
-        NetworkMock.request(.MultiredditListing(token: "token"))
-          .mapArray(Multireddit)
+        NetworkMock.request(.multiredditListing(token: "token"))
+          .mapArray(Multireddit.self)
           .subscribeNext { networkListing in
             listing = networkListing
           }.addDisposableTo(self.rx_disposeBag)

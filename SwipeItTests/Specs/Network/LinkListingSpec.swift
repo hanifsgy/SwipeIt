@@ -17,9 +17,9 @@ class LinkListingSpec: QuickSpec {
     describe("A link listing") {
       var listing: LinkListing?
       describe("can be loaded") {
-        NetworkMock.request(.LinkListing(token: "token", path: "/r/all",
-          listingPath: ListingType.Hot.path, listingTypeRange: "hot", after: nil))
-          .mapObject(LinkListing)
+        NetworkMock.request(.linkListing(token: "token", path: "/r/all",
+          listingPath: ListingType.hot.path, listingTypeRange: "hot", after: nil))
+          .mapObject(LinkListing.self)
           .subscribeNext { networkListing in
             listing = networkListing
           }.addDisposableTo(self.rx_disposeBag)

@@ -31,13 +31,13 @@ class SelfLinkSpec: QuickSpec {
         }
 
         it("is created") {
-          expect(link.created) == NSDate(timeIntervalSince1970: 1460685487.0)
+          expect(link.created) == Date(timeIntervalSince1970: 1460685487.0)
         }
 
         it("is votable") {
           expect(link.downs) == 0
           expect(link.ups) == 1523
-          expect(link.vote) == Vote.Upvote
+          expect(link.vote) == Vote.upvote
           expect(link.score) == 1523
         }
 
@@ -66,8 +66,8 @@ class SelfLinkSpec: QuickSpec {
           expect(link.subredditId) == "t5_2qh1i"
           expect(link.thumbnailURL).to(beNil())
           expect(link.title) == "/r/askreddit's originality contest, round 2"
-          expect(link.edited) == Edited.True(editedAt: NSDate(timeIntervalSince1970: 1460685963.0))
-          expect(link.distinguished) == Distinguished.Moderator
+          expect(link.edited) == Edited.true(editedAt: Date(timeIntervalSince1970: 1460685963.0))
+          expect(link.distinguished) == Distinguished.moderator
           expect(link.stickied) == true
           expect(link.gilded) == 0
           expect(link.visited) == false
@@ -89,7 +89,7 @@ class SelfLinkSpec: QuickSpec {
         }
 
         it("has the self post link type") {
-          expect(link.type) == LinkType.SelfPost
+          expect(link.type) == LinkType.selfPost
         }
       }
     }

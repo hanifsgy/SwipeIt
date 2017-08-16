@@ -17,8 +17,8 @@ class UserDetailsSpec: QuickSpec {
     describe("A user") {
       var user: User?
       describe("can be loaded") {
-        NetworkMock.request(.UserDetails(token: "token", username: "jakewharton"))
-          .mapObject(User)
+        NetworkMock.request(.userDetails(token: "token", username: "jakewharton"))
+          .mapObject(User.self)
           .subscribeNext { networkUser in
             user = networkUser
           }.addDisposableTo(self.rx_disposeBag)
@@ -27,7 +27,7 @@ class UserDetailsSpec: QuickSpec {
           expect(user).toEventuallyNot(beNil())
           expect(user?.name).toEventually(equal("JakeWharton"))
           expect(user?.isFriend).toEventually(beFalse())
-          expect(user?.created).toEventually(equal(NSDate(timeIntervalSince1970: 1280868066)))
+          expect(user?.created).toEventually(equal(Date(timeIntervalSince1970: 1280868066)))
           expect(user?.linkKarma).toEventually(equal(626))
           expect(user?.commentKarma).toEventually(equal(5463))
           expect(user?.isGold).toEventually(beFalse())

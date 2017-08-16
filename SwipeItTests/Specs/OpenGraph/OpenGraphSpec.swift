@@ -29,7 +29,7 @@ class OpenGraphSpec: QuickSpec {
         }
 
         it("has an image") {
-          expect(openGraph.imageURL) == NSURL(string: "http://cdn.arstechnica.net/wp-content/uploads/2012/05/jury_box1-640x427.jpg")
+          expect(openGraph.imageURL) == URL(string: "http://cdn.arstechnica.net/wp-content/uploads/2012/05/jury_box1-640x427.jpg")
         }
       }
     }

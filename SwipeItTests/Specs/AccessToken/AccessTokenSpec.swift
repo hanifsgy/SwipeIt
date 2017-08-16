@@ -34,7 +34,7 @@ class AccessTokenSpec: QuickSpec {
         }
 
         it("has an expiration date") {
-          expect(accessToken.expirationDate).to(beCloseTo(creation.dateByAddingTimeInterval(3600), within: 1))
+          expect(accessToken.expirationDate).to(beCloseTo(creation.addingTimeInterval(3600), within: 1))
         }
 
         it("has a scope") {
@@ -68,7 +68,7 @@ class AccessTokenSpec: QuickSpec {
           }
 
           it("has an expiration date") {
-            expect(newAccessToken.expirationDate).to(beCloseTo(refreshTokenCreation.dateByAddingTimeInterval(3600), within: 1))
+            expect(newAccessToken.expirationDate).to(beCloseTo(refreshTokenCreation.addingTimeInterval(3600), within: 1))
           }
         }
       }

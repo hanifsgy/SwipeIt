@@ -31,13 +31,13 @@ class AlbumLinkSpec: QuickSpec {
         }
 
         it("is created") {
-          expect(link.created) == NSDate(timeIntervalSince1970: 1468258852.0)
+          expect(link.created) == Date(timeIntervalSince1970: 1468258852.0)
         }
 
         it("is votable") {
           expect(link.downs) == 0
           expect(link.ups) == 4834
-          expect(link.vote) == Vote.None
+          expect(link.vote) == Vote.none
           expect(link.score) == 4834
         }
 
@@ -64,9 +64,9 @@ class AlbumLinkSpec: QuickSpec {
           expect(link.selfTextHTML).to(beNil())
           expect(link.subreddit) == "DIY"
           expect(link.subredditId) == "t5_2qh7d"
-          expect(link.thumbnailURL) == NSURL(string: "http://b.thumbs.redditmedia.com/-kkyOZVAFsJOIHvl9tsOL8OfXxmmxa4HhISw6_h0mkc.jpg")
+          expect(link.thumbnailURL) == URL(string: "http://b.thumbs.redditmedia.com/-kkyOZVAFsJOIHvl9tsOL8OfXxmmxa4HhISw6_h0mkc.jpg")
           expect(link.title) == "Epoxy Coated my garage floor"
-          expect(link.edited) == Edited.False
+          expect(link.edited) == Edited.false
           expect(link.distinguished).to(beNil())
           expect(link.stickied) == false
           expect(link.gilded) == 1
@@ -89,7 +89,7 @@ class AlbumLinkSpec: QuickSpec {
         }
 
         it("has the album link type") {
-          expect(link.type) == LinkType.Album
+          expect(link.type) == LinkType.album
           expect(link.imageURL).to(beNil())
           //expect(link.imageSize) == CGSize(width: 460, height: 460)
         }

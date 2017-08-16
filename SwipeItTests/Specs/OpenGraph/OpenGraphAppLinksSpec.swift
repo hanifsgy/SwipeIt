@@ -30,14 +30,14 @@ class OpenGraphAppLinksSpec: QuickSpec {
         }
 
         it("has an image") {
-          expect(openGraph.imageURL) == NSURL(string: "http://o.scdn.co/cover/cc475da5faf02f1a9f0cdc60550bbcb88e91f256")
+          expect(openGraph.imageURL) == URL(string: "http://o.scdn.co/cover/cc475da5faf02f1a9f0cdc60550bbcb88e91f256")
         }
 
         describe("has an appLink") {
           expect(openGraph.appLink).toNot(beNil())
 
           it("has an url") {
-            expect(openGraph.appLink?.url) == NSURL(string: "spotify://album/3bRM4GQgoFjBRRzhp87Ugb")
+            expect(openGraph.appLink?.url) == URL(string: "spotify://album/3bRM4GQgoFjBRRzhp87Ugb")
           }
 
           it("has an appName") {

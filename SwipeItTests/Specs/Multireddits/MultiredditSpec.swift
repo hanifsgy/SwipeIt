@@ -28,7 +28,7 @@ class MultiredditSpec: QuickSpec {
           expect(multireddit.displayName) == "redditpets"
           expect(multireddit.name) == "redditpets"
           expect(multireddit.descriptionHTML) == "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Photos of reddit pets. &amp;lt;3&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;"
-          expect(multireddit.created) == NSDate(timeIntervalSince1970: 1368484554.0)
+          expect(multireddit.created) == Date(timeIntervalSince1970: 1368484554.0)
           expect(multireddit.copiedFrom).to(beNil())
           expect(multireddit.iconURL).to(beNil())
           expect(multireddit.subreddits) == ["mogmonday", "wrigleygonewild", "StellatheStar",
@@ -42,9 +42,9 @@ class MultiredditSpec: QuickSpec {
                                              "yukipics", "pennyandpork", "FantaFriday",
                                              "SporkMinions"]
           expect(multireddit.keyColor) == "#cee3f8"
-          expect(multireddit.visibility) == MultiredditVisibility.Public
+          expect(multireddit.visibility) == MultiredditVisibility.public
           expect(multireddit.iconName).to(beNil())
-          expect(multireddit.url) == NSURL(string: "http://reddit.com/user/reddit/m/redditpets")
+          expect(multireddit.url) == URL(string: "http://reddit.com/user/reddit/m/redditpets")
           expect(multireddit.path) == "/user/reddit/m/redditpets/"
           expect(multireddit.descriptionMarkdown) == "Photos of reddit pets. &lt;3"
         }

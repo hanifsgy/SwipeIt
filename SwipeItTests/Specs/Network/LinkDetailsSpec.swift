@@ -18,7 +18,7 @@ class LinkDetailsSpec: QuickSpec {
       var link: Link?
       var commentsListing: CommentsListing?
       describe("can be loaded") {
-        NetworkMock.request(.LinkDetails(token: "token",
+        NetworkMock.request(.linkDetails(token: "token",
           permalink: "/r/programming/something/"))
           .mapPair(LinkListing.self, CommentsListing.self)
           .subscribeNext { (networkLinkListing, networkCommentsListing) in
@@ -34,7 +34,7 @@ class LinkDetailsSpec: QuickSpec {
           expect(link?.subreddit).toEventually(equal("programming"))
           expect(link?.selfTextHTML).toEventually(beNil())
           expect(link?.selfText).toEventually(beNil())
-          expect(link?.vote).toEventually(equal(Vote.None))
+          expect(link?.vote).toEventually(equal(Vote.none))
           expect(link?.suggestedSort).toEventually(beNil())
           expect(link?.userReports).toEventually(beNil())
           expect(link?.secureMedia).toEventually(beNil())
@@ -54,7 +54,7 @@ class LinkDetailsSpec: QuickSpec {
           expect(link?.hidden).toEventually(beFalse())
           expect(link?.thumbnailURL).toEventually(beNil())
           expect(link?.subredditId).toEventually(equal("t5_2fwo"))
-          expect(link?.edited).toEventually(equal(Edited.False))
+          expect(link?.edited).toEventually(equal(Edited.false))
           expect(link?.linkFlairClass).toEventually(beNil())
           expect(link?.authorFlairClass).toEventually(beNil())
           expect(link?.downs).toEventually(equal(0))
@@ -69,8 +69,8 @@ class LinkDetailsSpec: QuickSpec {
           expect(link?.permalink).toEventually(equal("/r/programming/comments/4gpqkj/f_you_i_quit_hiring_is_broken/"))
           expect(link?.locked).toEventually(beFalse())
           expect(link?.hideScore).toEventually(beFalse())
-          expect(link?.created).toEventually(equal(NSDate(timeIntervalSince1970: 1461780083.0)))
-          expect(link?.url).toEventually(equal(NSURL(string: "https://medium.com/@evnowandforever/f-you-i-quit-hiring-is-broken-bb8f3a48d324#.a9wkit32m")))
+          expect(link?.created).toEventually(equal(Date(timeIntervalSince1970: 1461780083.0)))
+          expect(link?.url).toEventually(equal(URL(string: "https://medium.com/@evnowandforever/f-you-i-quit-hiring-is-broken-bb8f3a48d324#.a9wkit32m")))
           expect(link?.authorFlairText).toEventually(beNil())
           expect(link?.quarantine).toEventually(beFalse())
           expect(link?.title).toEventually(equal("F*** You, I Quit — Hiring Is Broken"))
