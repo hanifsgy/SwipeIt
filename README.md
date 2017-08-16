@@ -146,6 +146,7 @@ To make sure Fabric and iTunes can deploy, make sure you have them set to someth
 
 - `MATCH_PASSWORD`: The Certificate key used in [Match](https://github.com/fastlane/fastlane/tree/master/match)
 - `CERTIFICATE_USER`: The username for the git being where Match is saving the Certificates.
+- `CERTIFICATE_PASSWORD`: The user's password for the git being where Match is saving the Certificates.
 - `CERTIFICATE_GIT`: The address or the git being where Match is saving the Certificates. (e.g. https://gitlab.com/username/Certificates)
 
 #### Fabric deployment
