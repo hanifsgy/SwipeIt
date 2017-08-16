@@ -18,7 +18,7 @@ class AccessTokenSpec: QuickSpec {
     describe("An AccessToken") {
       var accessToken: AccessToken!
       describe("can be deserialized") {
-        let creation = NSDate()
+        let creation = Date()
         accessToken = JSONReader.readFromJSON("AccessToken")
 
         it("exists") {
@@ -50,7 +50,7 @@ class AccessTokenSpec: QuickSpec {
         }
 
         describe("can be refreshed") {
-          let refreshTokenCreation = NSDate()
+          let refreshTokenCreation = Date()
           let refreshAccessToken: AccessToken! = JSONReader.readFromJSON("RefreshToken")
 
           it("exists") {
