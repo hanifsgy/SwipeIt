@@ -42,8 +42,6 @@ This project will follow the [GitHub Swift Styleguide](https://github.com/github
 
 In order to enforce this, the project will also have a [Swiftlint](https://github.com/realm/SwiftLint) build phase to run the linter everytime the app is built.
 
-Variable naming conventions will be ignored whenever a **RxSwift**-based variable is created (as the naming convention of the library is to start it with **rx_** (e.g. `rx_contentOffset`).
-
 ## Project Structure
 
 The project follows this folder structure:
@@ -76,12 +74,14 @@ SwipeIt
 
 In order to enforce it to the filesystem we're using [Synx](https://github.com/venmo/synx) to keep the folder structures clean and mirroring the project structure.
 
+We're also using [xUnique](https://github.com/truebit/xUnique) to generate unique UUIDs for files and avoid unnecessary merge conflicts.
+
 ## Dependencies
 
 ### Model
 
 - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper): Simple JSON Object mapping written in Swift
-- [DateTools](https://github.com/MatthewYork/DateTools): Dates and times made easy in Objective-C
+- [DateToolsSwift](https://github.com/MatthewYork/DateTools): Dates and times made easy in iOS
 
 ### Functional Reactive Programming
 
@@ -93,6 +93,9 @@ In order to enforce it to the filesystem we're using [Synx](https://github.com/v
 - [RxTimer](https://github.com/ivanbruel/RxTimer): RxTimer adds RxSwift Timer bindings.
 - [RxResult](https://github.com/ivanbruel/RxResult): Result bindings for RxSwift.
 - [RxColor](https://github.com/ivanbruel/RxColor): RxSwift bindings for common UIColor setters
+- [RxLegacy](https://github.com/ivanbruel/RxLegacy): A bunch of legacy functions from RxSwift for easier block completion Edit
+Add topics
+
 
 ### Networking
 
@@ -139,32 +142,27 @@ We are using [Travis](https://travis-ci.org/ivanbruel/MVVM-Benchmark) alongside 
 
 To make sure Fabric and iTunes can deploy, make sure you have them set to something similar to the following environment variables. **The values are only examples!**.
 
-**Note:** For ENV variables to work in Xcode you to set `$ defaults write com.apple.dt.Xcode UseSanitizedBuildSystemEnvironment -bool NO` and launch Xcode from the terminal. [Apple Developer Forums](https://forums.developer.apple.com/thread/8451)
-
 #### Signing
 
-- `SWIPEIT_SIGNING_IDENTITY_DIST`: iPhone Distribution: Company Name (ID)
-- `SWIPEIT_CERTIFICATE_KEY`: The Certificate key used in [Match](https://github.com/fastlane/fastlane/tree/master/match)
-- `SWIPEIT_CERTIFICATE_USER`: The username for the git being where Match is saving the Certificates.
-- `SWIPEIT_CERTIFICATE_TOKEN`: The access token for the git being where Match is saving the Certificates.
-- `SWIPEIT_CERTIFICATE_GIT`: The address or the git being where Match is saving the Certificates. (e.g. https://gitlab.com/username/Certificates)
+- `MATCH_PASSWORD`: The Certificate key used in [Match](https://github.com/fastlane/fastlane/tree/master/match)
+- `CERTIFICATE_USER`: The username for the git being where Match is saving the Certificates.
+- `CERTIFICATE_GIT`: The address or the git being where Match is saving the Certificates. (e.g. https://gitlab.com/username/Certificates)
 
 #### Fabric deployment
 
-- `SWIPEIT_FABRIC_CLIENT_ID`: API Key from [Fabric Organization](https://www.fabric.io/settings/organizations)
-- `SWIPEIT_FABRIC_SECRET`: Build Secret from [Fabric Organization](https://www.fabric.io/settings/organizations)
+- `FABRIC_API_TOKEN`: API Key from [Fabric Organization](https://www.fabric.io/settings/organizations)
+- `FABRIC_BUILD_SECRET`: Build Secret from [Fabric Organization](https://www.fabric.io/settings/organizations)
 
 #### iTunes deployment
 
-- `SWIPEIT_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
-- `SWIPEIT_ITUNES_TEAM_ID`: Team ID from [iTunes Connect](https://itunesconnect.apple.com/). (`$ pilot list` to check the number)
-- `SWIPEIT_TEAM_NAME`: Your Company Name
-- `SWIPEIT_APPLE_ID`: Your Apple ID (e.g. john@apple.com)
-- `SWIPEIT_ITUNES_PASSWORD`: The password for your Apple ID
+- `APPLE_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
+- `ITUNES_TEAM_ID`: Team ID from [iTunes Connect](https://itunesconnect.apple.com/). (`$ pilot list` to check the number)
+- `APPLE_EMAIL`: Your Apple ID (e.g. john@apple.com)
+- `FASTLANE_PASSWORD`: The password for your Apple ID
 
 #### Misc
 
-- `SWIPEIT_SLACK_URL`: https://hooks.slack.com/services/...
+- `SLACK_URL`: https://hooks.slack.com/services/...
 
 ### Deployment
 
@@ -179,7 +177,7 @@ bundle exec fastlane fabric
 ### Deployment to iTunes Connect
 
 ```bash
-bundle exec fastlane itc
+bundle exec fastlane itunes
 ```
 
 ## Yet another Reddit app
