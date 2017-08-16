@@ -46,7 +46,7 @@ extension WalkthroughViewController {
 extension WalkthroughViewController: AlerteableViewController {
 
   fileprivate func goToMainStoryboard() {
-    perform(segue: StoryboardSegue.Onboarding.main, sender: nil)
+    //performSegue(StoryboardSegue.Onboarding.Main, sender: <#Any?#>)
   }
 
   fileprivate func showLoginError(_ error: Error) {
