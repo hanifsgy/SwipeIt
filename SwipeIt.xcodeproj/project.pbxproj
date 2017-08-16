@@ -54,6 +54,8 @@
 		2D7723FE6F9D7AF0870379FADECB8935 /* ImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E42A5984B732157D159D689129B721 /* ImageSource.swift */; };
 		2DEC71A93AF23D0A30F215675CB88227 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ED4709FA59F82EB8EFB8ECE358E09 /* Constants.swift */; };
 		305F79BCF8A075BE35D3F0A554506057 /* ImageLink.json in Resources */ = {isa = PBXBuildFile; fileRef = F4004C8A87D6E7107CCF3CA55E92A059 /* ImageLink.json */; };
+		3069AADC1F43CD8D0039DBE0 /* UserMe.json in Resources */ = {isa = PBXBuildFile; fileRef = 3069AADB1F43CD8D0039DBE0 /* UserMe.json */; };
+		3069AADF1F43CDAD0039DBE0 /* UserMeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3069AADE1F43CDAD0039DBE0 /* UserMeSpec.swift */; };
 		31E832151853470C4A91A56D2C9DECBE /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB79BFCBA800C6BF87D7834964BBC49 /* Onboarding.storyboard */; };
 		31FD396A0A02FA122ED954533B2DDB4B /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FBDA4DFC6EE5F69998DA08CF1EEE2 /* AppLink.swift */; };
 		32643504777290FA7ED720F85DCD243F /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31C64F22971E97BBD397E076BA2573D /* Storyboards.swift */; };
@@ -283,6 +285,8 @@
 		2A5DA35A72E94A3D8688754D2510CF47 /* RefreshToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RefreshToken.json; sourceTree = "<group>"; };
 		2B16C125F7190E3E3D05BB6FF2878C54 /* PermalinkTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermalinkTransform.swift; sourceTree = "<group>"; };
 		2D4FBCA2F16CFD4E05CE12B6530172C1 /* Multireddit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Multireddit.json; sourceTree = "<group>"; };
+		3069AADB1F43CD8D0039DBE0 /* UserMe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserMe.json; sourceTree = "<group>"; };
+		3069AADE1F43CDAD0039DBE0 /* UserMeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMeSpec.swift; sourceTree = "<group>"; };
 		3149FF34671F4ED77A309D0AD2D24635 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		315D2C039BB41D50A852BD98B8FFAD72 /* RawRepresentable+OptionalRawValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+OptionalRawValue.swift"; sourceTree = "<group>"; };
 		3174C88CD70B58A2B92F675D837481EC /* SubredditListItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListItemViewModel.swift; sourceTree = "<group>"; };
@@ -449,14 +453,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2CFF13FD732CD0849AB0DB5D0B7E00EB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FC8244188DFA64A49E80B534780EF09 /* Pods_SwipeItCommon_SwipeIt.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0A130FB9CFA33C0FC25C4C85DD996E51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -465,39 +461,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2CFF13FD732CD0849AB0DB5D0B7E00EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC8244188DFA64A49E80B534780EF09 /* Pods_SwipeItCommon_SwipeIt.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4ED10AE3825C054352D530143BD18623 /* Prefetcher */ = {
+		05B9DC1C910BEC2B3AFC29FC8B336132 /* ShareHelper */ = {
 			isa = PBXGroup;
 			children = (
-				EEC6F5DBC334878C488910931A6A575C /* Prefetcher.swift */,
+				AA7AB4FB99FD3DA800A1B3B86672977D /* ShareHelper.swift */,
 			);
-			path = Prefetcher;
-			sourceTree = "<group>";
-		};
-		3D2CBCB9F2F86251AD81B697CC07D70B /* Array+Optional */ = {
-			isa = PBXGroup;
-			children = (
-				50E9447634959DFA1848F0AF9EF867DC /* Array+Optional.swift */,
-			);
-			path = "Array+Optional";
-			sourceTree = "<group>";
-		};
-		1FDC7F10F65403232043FE9710FCABDB /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				BC7AE6A5FBFDC276DD7129C79BC45E69 /* LoadingState.swift */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
-		BB26216505CF2101C7FE45AD99396935 /* String+Regex */ = {
-			isa = PBXGroup;
-			children = (
-				DF8884DFF5D329AABEAB0F171AF2C539 /* String+Regex.swift */,
-			);
-			path = "String+Regex";
+			path = ShareHelper;
 			sourceTree = "<group>";
 		};
 		0A9EBAB897C13D1641BA204D22B1EE56 /* String+HTMLDecode */ = {
@@ -508,55 +488,6 @@
 			path = "String+HTMLDecode";
 			sourceTree = "<group>";
 		};
-		9EE0AED47A058B4C59C570526F9E1073 /* ImageProviders */ = {
-			isa = PBXGroup;
-			children = (
-				9C11FA2DBBEB91BBA83A0CECE24C600E /* ImageProvider.swift */,
-				EA3C97D70E50BC04F03CF4342087A9A8 /* ImgurImageProvider.swift */,
-			);
-			path = ImageProviders;
-			sourceTree = "<group>";
-		};
-		43119F316F067118F14B3ABC17FF0288 /* ImageProviders */ = {
-			isa = PBXGroup;
-			children = (
-				97006A1A94EF7345514D1C1DE85AF93E /* ImgurImageProviderSpec.swift */,
-			);
-			path = ImageProviders;
-			sourceTree = "<group>";
-		};
-		643AAF98348B01DB19557569149CBAEF /* URLRouter */ = {
-			isa = PBXGroup;
-			children = (
-				8E4E4FF35232EF19C7CAEA6E45C38878 /* URLRouter.swift */,
-			);
-			path = URLRouter;
-			sourceTree = "<group>";
-		};
-		FDF65BE295CE320AA30EFC049FD58DA1 /* AlertHelper */ = {
-			isa = PBXGroup;
-			children = (
-				0B11BA4D6F744B63B10F1D2EFA00B938 /* AlertHelper.swift */,
-			);
-			path = AlertHelper;
-			sourceTree = "<group>";
-		};
-		AF0EF6475AA7FC631C03B2B2277F150C /* JSONHelper */ = {
-			isa = PBXGroup;
-			children = (
-				6F61E0238A4630C30FBD49DBCD189002 /* JSONHelper.swift */,
-			);
-			path = JSONHelper;
-			sourceTree = "<group>";
-		};
-		E3AB654475FEF95800FF3286C1EAB033 /* NSAttribrutedString+Join */ = {
-			isa = PBXGroup;
-			children = (
-				0D2D5DB28492AE5D6F204DCB345E8AA4 /* NSAttributedString+Join.swift */,
-			);
-			path = "NSAttribrutedString+Join";
-			sourceTree = "<group>";
-		};
 		0AC20BF556257B33BAFA5259B1F7E370 /* NSMutableAttributedString+Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,211 +496,37 @@
 			path = "NSMutableAttributedString+Attributes";
 			sourceTree = "<group>";
 		};
-		F407C73EC71776B9CD62CD2A1A1B8A2A /* Loaders */ = {
+		14704DFE344AD3FDE2A1A4AD23AEA752 /* CircleButton */ = {
 			isa = PBXGroup;
 			children = (
-				9240ABCB72BE2AF1A34440FCFC8CA11D /* CircularLoaderView.swift */,
+				1458393EDFE0FE612DABC89B71282F63 /* CircleButton.swift */,
 			);
-			path = Loaders;
+			path = CircleButton;
 			sourceTree = "<group>";
 		};
-		9D26841AD6941534D741E62A5EE2D4C4 /* Moya-ObjectMapper+Custom */ = {
+		15CBC69FC783AC4AECF7F2CA536F42F3 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				F9BED20FE171365DF5B257F4686277F0 /* Response+CustomMappers.swift */,
+				62D5AE65057FDF3A97A06434BFB4D52A /* Main.storyboard */,
 			);
-			path = "Moya-ObjectMapper+Custom";
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		9F04E25B6DDAFC3E8F46F3C8FA1B7FD2 /* CGSize+Ratio */ = {
+		16D4B4807362E7814F80EC33E48123FF /* Globals */ = {
 			isa = PBXGroup;
 			children = (
-				40FCF34B9D354A45E2775C462632300D /* CGSize+Ratio.swift */,
+				055ED4709FA59F82EB8EFB8ECE358E09 /* Constants.swift */,
+				BF878C482050068BC9F4990D0BB8C2D9 /* Globals.swift */,
 			);
-			path = "CGSize+Ratio";
+			path = Globals;
 			sourceTree = "<group>";
 		};
-		3829B0902AF9EA95EF68DF5D82254B44 /* Links */ = {
+		1740C06F58F2CAD180A39340D6578953 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				C60B51623BE29A6EEACDD569706F371E /* LinkCell.swift */,
-				A1C627AB326484DE4482BCF59F02FB14 /* LinkImageCell.swift */,
-				DFCBC5C2F8275D41FF5C10042FD93F94 /* LinkSelfPostCell.swift */,
+				6B053A5E6D67AE785A91180B3427C003 /* NetworkMock.swift */,
 			);
-			path = Links;
-			sourceTree = "<group>";
-		};
-		77A8A84FD01F8BB567E1FB8A231FF166 /* Theming */ = {
-			isa = PBXGroup;
-			children = (
-				1DBA95BF4E6196CF04F862FAA122CFFE /* Theme.swift */,
-				1F211618F78B9DA98123129090015855 /* Theming.swift */,
-			);
-			path = Theming;
-			sourceTree = "<group>";
-		};
-		E9969C9760950B8C95A0A79D8688544A /* NSUserDefaults+Group */ = {
-			isa = PBXGroup;
-			children = (
-				5CC7899FCA8E54FF20116E895367701C /* NSUserDefaults+Group.swift */,
-			);
-			path = "NSUserDefaults+Group";
-			sourceTree = "<group>";
-		};
-		5026776D1ECA825B7955F98CE2033FC5 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				885C7497F4C37303BC8ADF60F2811323 /* TitledViewModel.swift */,
-				3149FF34671F4ED77A309D0AD2D24635 /* ViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		98C9C7572F56D746D5EE3CB1D2FE77F3 /* Subscriptions */ = {
-			isa = PBXGroup;
-			children = (
-				B44217B1FEB94D436F1F173E7046CC87 /* SubscriptionsViewModel.swift */,
-			);
-			path = Subscriptions;
-			sourceTree = "<group>";
-		};
-		804D75820E9AAD08356F1B4E6B8B2B07 /* Multireddits */ = {
-			isa = PBXGroup;
-			children = (
-				E265EFDE8BAF01740245626BC44FBA79 /* MultiredditSpec.swift */,
-			);
-			path = Multireddits;
-			sourceTree = "<group>";
-		};
-		2DAAB7FB8283E931210B651A120E1C72 /* AccessToken */ = {
-			isa = PBXGroup;
-			children = (
-				B782CF489D545F8E8E541B2D9541B720 /* AccessTokenSpec.swift */,
-			);
-			path = AccessToken;
-			sourceTree = "<group>";
-		};
-		609C128693405CAC42D5D5421221A1DE /* Link */ = {
-			isa = PBXGroup;
-			children = (
-				4B7D62F457EDE8FFAAD9076AEF0350B4 /* Items */,
-				8AAB257DA747B60327AAE34F7FC84880 /* LinkSwipeViewModel.swift */,
-			);
-			path = Link;
-			sourceTree = "<group>";
-		};
-		4B7D62F457EDE8FFAAD9076AEF0350B4 /* Items */ = {
-			isa = PBXGroup;
-			children = (
-				069CEABB2849F6719C6868210BDD5FD8 /* LinkItemImageViewModel.swift */,
-				FBE069179E2548F657D629D96C9877A9 /* LinkItemLinkViewModel.swift */,
-				BD8106F7F19E90E85034B6657C5CE5CC /* LinkItemSelfPostViewModel.swift */,
-				4B3D2123EC2E93DAC8F162BF95E07C0E /* LinkItemVideoViewModel.swift */,
-				6634381ABA7751100305E6B6675EB652 /* LinkItemViewModel.swift */,
-			);
-			path = Items;
-			sourceTree = "<group>";
-		};
-		BF2A136C2E9CB3C90EC8996DBE6BA663 /* OpenGraph */ = {
-			isa = PBXGroup;
-			children = (
-				E9715A83733ECC7DB03BC1AC4139DC96 /* OpenGraphViewModel.swift */,
-			);
-			path = OpenGraph;
-			sourceTree = "<group>";
-		};
-		553EBB2D22E17DCE80B6A3AB6DE73AF1 /* ClosedInterval+Clamp */ = {
-			isa = PBXGroup;
-			children = (
-				BE87EA2513553AF301647DA0602C7427 /* ClosedInterval+Clamp.swift */,
-			);
-			path = "ClosedInterval+Clamp";
-			sourceTree = "<group>";
-		};
-		2B4189BDAAD7E87E3530C7A0C34203CA /* UIView+IBInspectable */ = {
-			isa = PBXGroup;
-			children = (
-				F20D8AE281CADE757345A92FA7051A69 /* UIView+IBInspectable.swift */,
-			);
-			path = "UIView+IBInspectable";
-			sourceTree = "<group>";
-		};
-		4F070F08E6EA5C0418354CCEF10105DE /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E50444A72B1159BD9FCF4B8BADA37A2B /* CircleView.swift */,
-				91C110BA5EC1F2DB2935F39C510FD8C0 /* UIImageViewTopAligned.swift */,
-				F68BC08FC63F076728329022086F602E /* VoteOverlayView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BAEB5D89025DBC28CF4C5E2CCCFBB963 /* UIImage+Colorize */ = {
-			isa = PBXGroup;
-			children = (
-				BE4C4A80733FE408CEF39369FB3BA174 /* UIImage+Colorize.swift */,
-			);
-			path = "UIImage+Colorize";
-			sourceTree = "<group>";
-		};
-		504B61091D9C84FFA4278DDE40FA9DC6 /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				BA152874B891FD53D8DD5FDB1A7C774F /* LinkCardView.swift */,
-				A480B26D313093C7345EC0ACCBE71E90 /* LinkImageCardView.swift */,
-			);
-			path = Cards;
-			sourceTree = "<group>";
-		};
-		8219DEF06F9C58A106E8C8A56C22B935 /* SubredditList */ = {
-			isa = PBXGroup;
-			children = (
-				A785B47435790A05F29FDC0841A9BA93 /* SubredditListItemTableViewCell.swift */,
-			);
-			path = SubredditList;
-			sourceTree = "<group>";
-		};
-		63C659F9E5A4CEEB20603992DD001B36 /* MultiredditList */ = {
-			isa = PBXGroup;
-			children = (
-				040E10F154CD366693C7F50FB97FAA35 /* MultiredditListItemTableViewCell.swift */,
-			);
-			path = MultiredditList;
-			sourceTree = "<group>";
-		};
-		892A9C1D17D9B5EE7C0F8BE799DEC4CC /* MultiredditList */ = {
-			isa = PBXGroup;
-			children = (
-				D1435EA26FC5C915E18F2ED7A1386179 /* MultiredditListItemViewModel.swift */,
-				45371DBED6A26AFD44AA7EAE51BF4A0E /* MultiredditListViewModel.swift */,
-			);
-			path = MultiredditList;
-			sourceTree = "<group>";
-		};
-		8137716875E4914408B62F4BBFC3CA9C /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				5161B00666E581533AF169AE3EC12120 /* SectionViewModel.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		8A48A176FBDBB93A1AC58ACCEF16FB0D /* Items */ = {
-			isa = PBXGroup;
-			children = (
-				3174C88CD70B58A2B92F675D837481EC /* SubredditListItemViewModel.swift */,
-				D21B5710823CFAD3323E6CA429D67530 /* SubredditListNameViewModel.swift */,
-				645F4D677DA70FF3B660078302D070D5 /* SubredditListSubredditViewModel.swift */,
-			);
-			path = Items;
-			sourceTree = "<group>";
-		};
-		2CBD12266249D7E41EC30F3DA15E4C2C /* Sorter */ = {
-			isa = PBXGroup;
-			children = (
-				70DC6ED9170FFEEFD79EB8A38283ED01 /* Sorter.swift */,
-			);
-			path = Sorter;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		1799E0B68E8D8F0BDF00BE337EDE1B27 /* OpenGraph */ = {
@@ -781,14 +538,6 @@
 			path = OpenGraph;
 			sourceTree = "<group>";
 		};
-		67C78B8A7789EF5A5B7A48FF4308E6AF /* FileReader */ = {
-			isa = PBXGroup;
-			children = (
-				AF6AFE274E334D0A0CF65C81DB34DD82 /* FileReader.swift */,
-			);
-			path = FileReader;
-			sourceTree = "<group>";
-		};
 		1976198F0518086E1E11CF0628B13F36 /* HTMLParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,99 +546,25 @@
 			path = HTMLParser;
 			sourceTree = "<group>";
 		};
-		E2C498DD7F891633A50E96A861C64B67 /* ZLSwipeableView+AnimateViewHandler */ = {
+		1FDC7F10F65403232043FE9710FCABDB /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				725F63FF9A914492E76F4E29278C5424 /* ZLSwipeableView+AnimateViewHandler.swift */,
+				BC7AE6A5FBFDC276DD7129C79BC45E69 /* LoadingState.swift */,
 			);
-			path = "ZLSwipeableView+AnimateViewHandler";
+			path = Loading;
 			sourceTree = "<group>";
 		};
-		F1FF59703C379B2ECB4A78540AC7522B /* SubredditList */ = {
+		216EB08302831910F0011BD67DFA3E83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8A48A176FBDBB93A1AC58ACCEF16FB0D /* Items */,
-				D7DDCF41C6D65F4C088C6172BC977DE2 /* SubredditListViewModel.swift */,
+				7B0BD83E38B413D050CC62074F3B1BC3 /* Pods-SwipeItCommon-SwipeIt.adhoc.xcconfig */,
+				1D24FF92A3B1B1838B07B6EF756FF1A0 /* Pods-SwipeItCommon-SwipeIt.debug.xcconfig */,
+				683EF7A2A524671CA325021502B4CD7F /* Pods-SwipeItCommon-SwipeIt.release.xcconfig */,
+				B1E02D5BFF9FE64A2B494464D8DC65E6 /* Pods-SwipeItCommon-SwipeItTests.adhoc.xcconfig */,
+				06661CC7C3688CA847E6C72CD9B86EE3 /* Pods-SwipeItCommon-SwipeItTests.debug.xcconfig */,
+				092EA0D7E465719C137E720794D16A05 /* Pods-SwipeItCommon-SwipeItTests.release.xcconfig */,
 			);
-			path = SubredditList;
-			sourceTree = "<group>";
-		};
-		FFC4207A0D29B5C8EDD07C4C2F332540 /* UIImage+Scale */ = {
-			isa = PBXGroup;
-			children = (
-				90DE0C3EAEF99C4B460D5D7FE5427CAA /* UIImage+Scale.swift */,
-			);
-			path = "UIImage+Scale";
-			sourceTree = "<group>";
-		};
-		DB5EC4B3CA01C080DB4065DC0BB55F4A /* Specs */ = {
-			isa = PBXGroup;
-			children = (
-				2DAAB7FB8283E931210B651A120E1C72 /* AccessToken */,
-				4DBEC2EB55E5AB5AF57014FA484F8D56 /* Comments */,
-				43119F316F067118F14B3ABC17FF0288 /* ImageProviders */,
-				AC0DCA1C0156D29EE57C88E2F77A78A5 /* Links */,
-				804D75820E9AAD08356F1B4E6B8B2B07 /* Multireddits */,
-				616C14184B678E9846655EF46EADF289 /* Network */,
-				1799E0B68E8D8F0BDF00BE337EDE1B27 /* OpenGraph */,
-				93687FD37545A7166F971919F34F55D4 /* Subreddits */,
-			);
-			path = Specs;
-			sourceTree = "<group>";
-		};
-		1740C06F58F2CAD180A39340D6578953 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				6B053A5E6D67AE785A91180B3427C003 /* NetworkMock.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
-		506108BE1878B7F8186D380B73A93F32 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D89A1522E6957C4A6CF88F8F0FB04DCC /* JSON */,
-				7595F93E2038071CD53E82B1CF1679E7 /* Info.plist */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		14704DFE344AD3FDE2A1A4AD23AEA752 /* CircleButton */ = {
-			isa = PBXGroup;
-			children = (
-				1458393EDFE0FE612DABC89B71282F63 /* CircleButton.swift */,
-			);
-			path = CircleButton;
-			sourceTree = "<group>";
-		};
-		BF6D46525AE8B87DE608068A501F8A0D /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				33EAACBF5A78276FEACB1BBF27E6C69F /* Distinguished.swift */,
-				00289F59EBE9CB8F000451F201338E45 /* Duration.swift */,
-				9B709B82CA9E4A2FFAF74FF94135BF33 /* Edited.swift */,
-				94FF43C8BB11311F4922D91854AF31C8 /* LinkType.swift */,
-				6E3B1AB4430B61BFDC851556E3A72602 /* ListingType+Name.swift */,
-				D5469639DBC8BCD82BF16C79F7A7F4DB /* ListingType.swift */,
-				E0CC3FC2E78579E5CAC19E07347A8FE3 /* MultiredditVisibility.swift */,
-				D2CF65E4E19D5B0D36566F222078804E /* PostHint.swift */,
-				DDA92706211075D08B5BD75140D552F2 /* Scope.swift */,
-				D44493D6E5095825A1037B18FD6AAEE1 /* SubmissionType.swift */,
-				4E922960FF7B84BA12D652E834F3A30F /* SubredditType.swift */,
-				6F3934A953F136296235389B02338419 /* Voted.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		713DF5A88B653D098F4BD1E09F79B5B0 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				0CC1677C1D253DFAC2A126DCBF2933B9 /* Created.swift */,
-				B99468CF808E3661F1E8EA3BD96D8E7C /* Listing.swift */,
-				FFAFFF012A1842701E88CF6DD52F1277 /* Thing.swift */,
-				F65D45ADAF123E0C799DEB5503C59B23 /* Votable.swift */,
-			);
-			path = Protocols;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		259CCCDBDEE110D2F6F963C7C2BA5CE4 /* Transforms */ = {
@@ -913,15 +588,260 @@
 			path = Transforms;
 			sourceTree = "<group>";
 		};
-		AC0DCA1C0156D29EE57C88E2F77A78A5 /* Links */ = {
+		28912AA9C030E3A3F0BEF5514CEAEDBD /* Array+Unique */ = {
 			isa = PBXGroup;
 			children = (
-				09180CD281DADCCE2B5CC91E5819DD5B /* AlbumLinkSpec.swift */,
-				66ACDF06CB6E80C414E7776E9ECB7C13 /* ImageLinkSpec.swift */,
-				EA328A7E35180D8A259FEDCDE98511F6 /* SelfLinkSpec.swift */,
-				DFDE234CC6B5E01BF9CE475C06736253 /* VideoLinkSpec.swift */,
+				9023B48F4409A44FA2DB5817C484238A /* Array+Unique.swift */,
+			);
+			path = "Array+Unique";
+			sourceTree = "<group>";
+		};
+		2B4189BDAAD7E87E3530C7A0C34203CA /* UIView+IBInspectable */ = {
+			isa = PBXGroup;
+			children = (
+				F20D8AE281CADE757345A92FA7051A69 /* UIView+IBInspectable.swift */,
+			);
+			path = "UIView+IBInspectable";
+			sourceTree = "<group>";
+		};
+		2CBD12266249D7E41EC30F3DA15E4C2C /* Sorter */ = {
+			isa = PBXGroup;
+			children = (
+				70DC6ED9170FFEEFD79EB8A38283ED01 /* Sorter.swift */,
+			);
+			path = Sorter;
+			sourceTree = "<group>";
+		};
+		2DAAB7FB8283E931210B651A120E1C72 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+				B782CF489D545F8E8E541B2D9541B720 /* AccessTokenSpec.swift */,
+			);
+			path = AccessToken;
+			sourceTree = "<group>";
+		};
+		2DB36D44ABEA1A44D85788FCAD1BC5BE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BF9B80146D6D3061131A7B9F99FC54EC /* ViewControllers */,
+				5026776D1ECA825B7955F98CE2033FC5 /* ViewModels */,
+				6CA4A870180416A3CA776C93ADC8BA99 /* Views */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3069AADD1F43CD9F0039DBE0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3069AADE1F43CDAD0039DBE0 /* UserMeSpec.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		3354474BEF757FD00D64430655373449 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4FE2B6E0C53584A9B4D3EC484D22FA3A /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3399EE54A48D700271DB53205206E654 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0BDEE4B9E9ACAA5B7F968BEED625EE4C /* PageViewController.swift */,
+				AF7F72E5E2AD4377BDEE4986008AC3E1 /* WebViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		33D98EE8CB9A76D06A13465056767D3F /* String+Range */ = {
+			isa = PBXGroup;
+			children = (
+				A6E1DDB2FE86FF542ABCB78A5FFBB5B3 /* String+Range.swift */,
+			);
+			path = "String+Range";
+			sourceTree = "<group>";
+		};
+		36F7427E5931EB6BD5187BD2EFC7BAF3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6DB79BFCBA800C6BF87D7834964BBC49 /* Onboarding.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3829B0902AF9EA95EF68DF5D82254B44 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				C60B51623BE29A6EEACDD569706F371E /* LinkCell.swift */,
+				A1C627AB326484DE4482BCF59F02FB14 /* LinkImageCell.swift */,
+				DFCBC5C2F8275D41FF5C10042FD93F94 /* LinkSelfPostCell.swift */,
 			);
 			path = Links;
+			sourceTree = "<group>";
+		};
+		3D2CBCB9F2F86251AD81B697CC07D70B /* Array+Optional */ = {
+			isa = PBXGroup;
+			children = (
+				50E9447634959DFA1848F0AF9EF867DC /* Array+Optional.swift */,
+			);
+			path = "Array+Optional";
+			sourceTree = "<group>";
+		};
+		40BEE899D8C3B8663EFE228C0F85466E /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				863C81990E86854BBE2CB5B35BA2DB11 /* WalkthroughViewModel.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		43119F316F067118F14B3ABC17FF0288 /* ImageProviders */ = {
+			isa = PBXGroup;
+			children = (
+				97006A1A94EF7345514D1C1DE85AF93E /* ImgurImageProviderSpec.swift */,
+			);
+			path = ImageProviders;
+			sourceTree = "<group>";
+		};
+		4543B580BAEED355CE1DB4A0019F1AE5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8580221C2B59CB09546DCD5C5376AAF2 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4B7D62F457EDE8FFAAD9076AEF0350B4 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				069CEABB2849F6719C6868210BDD5FD8 /* LinkItemImageViewModel.swift */,
+				FBE069179E2548F657D629D96C9877A9 /* LinkItemLinkViewModel.swift */,
+				BD8106F7F19E90E85034B6657C5CE5CC /* LinkItemSelfPostViewModel.swift */,
+				4B3D2123EC2E93DAC8F162BF95E07C0E /* LinkItemVideoViewModel.swift */,
+				6634381ABA7751100305E6B6675EB652 /* LinkItemViewModel.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		4DBEC2EB55E5AB5AF57014FA484F8D56 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				9C6365480385CD42F20B01D0AEA78070 /* CommentSpec.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		4ED10AE3825C054352D530143BD18623 /* Prefetcher */ = {
+			isa = PBXGroup;
+			children = (
+				EEC6F5DBC334878C488910931A6A575C /* Prefetcher.swift */,
+			);
+			path = Prefetcher;
+			sourceTree = "<group>";
+		};
+		4F070F08E6EA5C0418354CCEF10105DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E50444A72B1159BD9FCF4B8BADA37A2B /* CircleView.swift */,
+				91C110BA5EC1F2DB2935F39C510FD8C0 /* UIImageViewTopAligned.swift */,
+				F68BC08FC63F076728329022086F602E /* VoteOverlayView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5026776D1ECA825B7955F98CE2033FC5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				885C7497F4C37303BC8ADF60F2811323 /* TitledViewModel.swift */,
+				3149FF34671F4ED77A309D0AD2D24635 /* ViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		504B61091D9C84FFA4278DDE40FA9DC6 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				BA152874B891FD53D8DD5FDB1A7C774F /* LinkCardView.swift */,
+				A480B26D313093C7345EC0ACCBE71E90 /* LinkImageCardView.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		506108BE1878B7F8186D380B73A93F32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D89A1522E6957C4A6CF88F8F0FB04DCC /* JSON */,
+				7595F93E2038071CD53E82B1CF1679E7 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		51EB0E0880B007F5626F95081B577A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AC68A9A5FCA6B12C95DF94052D821D27 /* SwiftGen */,
+				1E8DDD72D962F0FDCFF8EF46930A8237 /* Assets.xcassets */,
+				491841883DAA1B641225AE6EC3F88F21 /* Colors.txt */,
+				B5DC6C75EE9BE83ADEE376538C4DFC4F /* Info.plist */,
+				F71AAFE5CC7BB305487C3D6680A3D67C /* LaunchScreen.storyboard */,
+				9BF3B2DD96A2F4FE0D67D11C81335331 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		553EBB2D22E17DCE80B6A3AB6DE73AF1 /* ClosedInterval+Clamp */ = {
+			isa = PBXGroup;
+			children = (
+				BE87EA2513553AF301647DA0602C7427 /* ClosedInterval+Clamp.swift */,
+			);
+			path = "ClosedInterval+Clamp";
+			sourceTree = "<group>";
+		};
+		5D307D373E2158AB5FC7CBA77831D1AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B9B751DC7D1C3443A25DBFD66FCAE66 /* SwipeIt.app */,
+				6C73C9F80F09DD07604237D23FA720DB /* SwipeItTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		609C128693405CAC42D5D5421221A1DE /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				4B7D62F457EDE8FFAAD9076AEF0350B4 /* Items */,
+				8AAB257DA747B60327AAE34F7FC84880 /* LinkSwipeViewModel.swift */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
+		60D9268581B6FEDC07F0F8D0AE120F92 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF6D46525AE8B87DE608068A501F8A0D /* Enums */,
+				9EE0AED47A058B4C59C570526F9E1073 /* ImageProviders */,
+				713DF5A88B653D098F4BD1E09F79B5B0 /* Protocols */,
+				259CCCDBDEE110D2F6F963C7C2BA5CE4 /* Transforms */,
+				D8FDD61D952770D18D234594FFAED784 /* AccessToken.swift */,
+				595FBDA4DFC6EE5F69998DA08CF1EEE2 /* AppLink.swift */,
+				0330DE33B058A41D8C9506E17E917FA8 /* Comment.swift */,
+				26C5F7407920059CABA0756DFB28481F /* CommentsListing.swift */,
+				6C9EA0B17EA9F8C6F1185AFBDDE581C9 /* EmbeddedMedia.swift */,
+				12E42A5984B732157D159D689129B721 /* ImageSource.swift */,
+				E33328102CF5B11F065B0DBE40BA830D /* Link.swift */,
+				F452EB8919CF545E226D160E8DD222FE /* LinkListing.swift */,
+				BAE46033C4925C66835E1BB8CF1D77A4 /* Media.swift */,
+				A94FB78A152AFFDBB23DCDFA86C6D23E /* MoreComments.swift */,
+				28C19A28EE9BB8CA401594B70465627F /* Multireddit.swift */,
+				882CC53C7E43F03FA0446BEED4526A4E /* OpenGraph.swift */,
+				444D317FA519F036F828994B05CCEC79 /* PreviewImage.swift */,
+				017E96986E471BCFE8C30880E5C551D9 /* Subreddit.swift */,
+				0C689599E992823AC2F4904D1957CB4C /* SubredditListing.swift */,
+				D2B2BA51849510428C4F12ECA8F52968 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		616C14184B678E9846655EF46EADF289 /* Network */ = {
@@ -936,6 +856,217 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		63C659F9E5A4CEEB20603992DD001B36 /* MultiredditList */ = {
+			isa = PBXGroup;
+			children = (
+				040E10F154CD366693C7F50FB97FAA35 /* MultiredditListItemTableViewCell.swift */,
+			);
+			path = MultiredditList;
+			sourceTree = "<group>";
+		};
+		643AAF98348B01DB19557569149CBAEF /* URLRouter */ = {
+			isa = PBXGroup;
+			children = (
+				8E4E4FF35232EF19C7CAEA6E45C38878 /* URLRouter.swift */,
+			);
+			path = URLRouter;
+			sourceTree = "<group>";
+		};
+		65E36C2245141D67E0CE6923C3F00B18 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		6708296CD2ADE8F7B412550D9B483024 /* UITableView+Deselect */ = {
+			isa = PBXGroup;
+			children = (
+				71A5DA1875D8337C3EFC028B845034F3 /* UITableView+Deselect.swift */,
+			);
+			path = "UITableView+Deselect";
+			sourceTree = "<group>";
+		};
+		67C78B8A7789EF5A5B7A48FF4308E6AF /* FileReader */ = {
+			isa = PBXGroup;
+			children = (
+				AF6AFE274E334D0A0CF65C81DB34DD82 /* FileReader.swift */,
+			);
+			path = FileReader;
+			sourceTree = "<group>";
+		};
+		6C41C23235A1F0D4AA4F380D10A5E2C7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				36F7427E5931EB6BD5187BD2EFC7BAF3 /* Storyboard */,
+				BEC0D6C44495D4891F18EB84A439AC24 /* LoginViewController.swift */,
+				DBAED27073F6390EE2B651516718B72D /* WalkthroughViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		6CA4A870180416A3CA776C93ADC8BA99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1A4EB4469F1B38E82004F3346D9CA57 /* ReusableCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6FA08BA9E86EBFBF1E02E6F6631B7994 /* SwipeItTests */ = {
+			isa = PBXGroup;
+			children = (
+				1740C06F58F2CAD180A39340D6578953 /* Mocks */,
+				506108BE1878B7F8186D380B73A93F32 /* Resources */,
+				DB5EC4B3CA01C080DB4065DC0BB55F4A /* Specs */,
+			);
+			path = SwipeItTests;
+			sourceTree = "<group>";
+		};
+		710E5D593A10B3E5B58B3F6BE329FFD7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FDF65BE295CE320AA30EFC049FD58DA1 /* AlertHelper */,
+				67C78B8A7789EF5A5B7A48FF4308E6AF /* FileReader */,
+				1976198F0518086E1E11CF0628B13F36 /* HTMLParser */,
+				992D8C85A615CB22B76E6E18C5B0AB8D /* ImageAttachment */,
+				AF0EF6475AA7FC631C03B2B2277F150C /* JSONHelper */,
+				79F8F3D0B84B1F23B9579221F7431905 /* JSONReader */,
+				897B3D3E3263B17F24C012E64E1E5BBD /* MarkdownReader */,
+				4ED10AE3825C054352D530143BD18623 /* Prefetcher */,
+				B35094CD3522548E82576E3B4D7EB950 /* QueryReader */,
+				05B9DC1C910BEC2B3AFC29FC8B336132 /* ShareHelper */,
+				2CBD12266249D7E41EC30F3DA15E4C2C /* Sorter */,
+				77A8A84FD01F8BB567E1FB8A231FF166 /* Theming */,
+				643AAF98348B01DB19557569149CBAEF /* URLRouter */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		713DF5A88B653D098F4BD1E09F79B5B0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1677C1D253DFAC2A126DCBF2933B9 /* Created.swift */,
+				B99468CF808E3661F1E8EA3BD96D8E7C /* Listing.swift */,
+				FFAFFF012A1842701E88CF6DD52F1277 /* Thing.swift */,
+				F65D45ADAF123E0C799DEB5503C59B23 /* Votable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		726F71F7355681229384351B6CDE6291 /* UIImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				958F0F6BC62B2B3C4C0CF5119E0CA560 /* UIImageEffects.swift */,
+			);
+			path = UIImageEffects;
+			sourceTree = "<group>";
+		};
+		77A8A84FD01F8BB567E1FB8A231FF166 /* Theming */ = {
+			isa = PBXGroup;
+			children = (
+				1DBA95BF4E6196CF04F862FAA122CFFE /* Theme.swift */,
+				1F211618F78B9DA98123129090015855 /* Theming.swift */,
+			);
+			path = Theming;
+			sourceTree = "<group>";
+		};
+		79F8F3D0B84B1F23B9579221F7431905 /* JSONReader */ = {
+			isa = PBXGroup;
+			children = (
+				86C73E5CD8E828933F71A1D81B89B925 /* JSONReader.swift */,
+			);
+			path = JSONReader;
+			sourceTree = "<group>";
+		};
+		804D75820E9AAD08356F1B4E6B8B2B07 /* Multireddits */ = {
+			isa = PBXGroup;
+			children = (
+				E265EFDE8BAF01740245626BC44FBA79 /* MultiredditSpec.swift */,
+			);
+			path = Multireddits;
+			sourceTree = "<group>";
+		};
+		8137716875E4914408B62F4BBFC3CA9C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5161B00666E581533AF169AE3EC12120 /* SectionViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8219DEF06F9C58A106E8C8A56C22B935 /* SubredditList */ = {
+			isa = PBXGroup;
+			children = (
+				A785B47435790A05F29FDC0841A9BA93 /* SubredditListItemTableViewCell.swift */,
+			);
+			path = SubredditList;
+			sourceTree = "<group>";
+		};
+		821D7000EFB77FE8D02396C74FC7B333 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D2B6F3B487AA01E0E45E1D4CB45DDF9E /* LoginError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		892A9C1D17D9B5EE7C0F8BE799DEC4CC /* MultiredditList */ = {
+			isa = PBXGroup;
+			children = (
+				D1435EA26FC5C915E18F2ED7A1386179 /* MultiredditListItemViewModel.swift */,
+				45371DBED6A26AFD44AA7EAE51BF4A0E /* MultiredditListViewModel.swift */,
+			);
+			path = MultiredditList;
+			sourceTree = "<group>";
+		};
+		897B3D3E3263B17F24C012E64E1E5BBD /* MarkdownReader */ = {
+			isa = PBXGroup;
+			children = (
+				67ABC1242DB52F93C51909C283A9C7E4 /* MarkdownSubreddit.swift */,
+				1D67CC78A385B7D3DB61129050AA5C4D /* MarkdownUser.swift */,
+			);
+			path = MarkdownReader;
+			sourceTree = "<group>";
+		};
+		8A48A176FBDBB93A1AC58ACCEF16FB0D /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				3174C88CD70B58A2B92F675D837481EC /* SubredditListItemViewModel.swift */,
+				D21B5710823CFAD3323E6CA429D67530 /* SubredditListNameViewModel.swift */,
+				645F4D677DA70FF3B660078302D070D5 /* SubredditListSubredditViewModel.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		8BA683A9199C2E2841D8E81A18761A7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28A0D2E34B7C8467977B23AED2F3C10A /* Pods_SwipeItCommon_SwipeIt.framework */,
+				02FE1F99D6A3A9845B2120D33266EA26 /* Pods_SwipeItCommon_SwipeItTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C00523BC57CDB96A3A2A101BD988FD3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3399EE54A48D700271DB53205206E654 /* Base */,
+				A1CCC71DDF4AE059B37399BBFC4FF3C7 /* Main */,
+				6C41C23235A1F0D4AA4F380D10A5E2C7 /* Onboarding */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9284BCBBB6D839BD1294CBE8B0AB1093 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				821D7000EFB77FE8D02396C74FC7B333 /* Errors */,
+				1FDC7F10F65403232043FE9710FCABDB /* Loading */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		93687FD37545A7166F971919F34F55D4 /* Subreddits */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,26 +1075,208 @@
 			path = Subreddits;
 			sourceTree = "<group>";
 		};
-		DED8E5E648F8870C2F3BE2F071C4994A = {
+		95B0A7608C9664BA0FC4E40142948229 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				8BA683A9199C2E2841D8E81A18761A7F /* Frameworks */,
-				216EB08302831910F0011BD67DFA3E83 /* Pods */,
-				5D307D373E2158AB5FC7CBA77831D1AD /* Products */,
-				C29C55BDD5B183FE12FA08CBF75BE16B /* SwipeIt */,
-				6FA08BA9E86EBFBF1E02E6F6631B7994 /* SwipeItTests */,
+				0A9EBAB897C13D1641BA204D22B1EE56 /* String+HTMLDecode */,
+				726F71F7355681229384351B6CDE6291 /* UIImageEffects */,
 			);
-			indentWidth = 2;
+			path = Externals;
 			sourceTree = "<group>";
-			tabWidth = 2;
 		};
-		5D307D373E2158AB5FC7CBA77831D1AD /* Products */ = {
+		95FC1F3C5D74FE72E54FF22981882A87 /* NSObject+ClassName */ = {
 			isa = PBXGroup;
 			children = (
-				8B9B751DC7D1C3443A25DBFD66FCAE66 /* SwipeIt.app */,
-				6C73C9F80F09DD07604237D23FA720DB /* SwipeItTests.xctest */,
+				45B3E6C6DB485B2EF7FA0AF5AE03526C /* NSObject+ClassName.swift */,
 			);
-			name = Products;
+			path = "NSObject+ClassName";
+			sourceTree = "<group>";
+		};
+		98C9C7572F56D746D5EE3CB1D2FE77F3 /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				B44217B1FEB94D436F1F173E7046CC87 /* SubscriptionsViewModel.swift */,
+			);
+			path = Subscriptions;
+			sourceTree = "<group>";
+		};
+		992D8C85A615CB22B76E6E18C5B0AB8D /* ImageAttachment */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E888F3911276363FF4E6CF96CB222 /* ImageAttachment.swift */,
+			);
+			path = ImageAttachment;
+			sourceTree = "<group>";
+		};
+		9D26841AD6941534D741E62A5EE2D4C4 /* Moya-ObjectMapper+Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F9BED20FE171365DF5B257F4686277F0 /* Response+CustomMappers.swift */,
+			);
+			path = "Moya-ObjectMapper+Custom";
+			sourceTree = "<group>";
+		};
+		9EE0AED47A058B4C59C570526F9E1073 /* ImageProviders */ = {
+			isa = PBXGroup;
+			children = (
+				9C11FA2DBBEB91BBA83A0CECE24C600E /* ImageProvider.swift */,
+				EA3C97D70E50BC04F03CF4342087A9A8 /* ImgurImageProvider.swift */,
+			);
+			path = ImageProviders;
+			sourceTree = "<group>";
+		};
+		9F04E25B6DDAFC3E8F46F3C8FA1B7FD2 /* CGSize+Ratio */ = {
+			isa = PBXGroup;
+			children = (
+				40FCF34B9D354A45E2775C462632300D /* CGSize+Ratio.swift */,
+			);
+			path = "CGSize+Ratio";
+			sourceTree = "<group>";
+		};
+		A1CCC71DDF4AE059B37399BBFC4FF3C7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				15CBC69FC783AC4AECF7F2CA536F42F3 /* Storyboard */,
+				59FFF5C670F1A3F25D1DEBE523C6BA71 /* LinkSwipeViewController.swift */,
+				51D10C07AF8ABCD5D002F6F89DBDF2DD /* MultiredditListViewController.swift */,
+				340368587E517A6822E4DB9BDDDD43D7 /* SubredditListViewController.swift */,
+				1F7C06B3A006C1781A0DAFF97E5FE40A /* SubscriptionsViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A377827B72216AEDB4995C595E8F934B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				14704DFE344AD3FDE2A1A4AD23AEA752 /* CircleButton */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A459272D9EC19A05AF3CBA291156229C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8137716875E4914408B62F4BBFC3CA9C /* Base */,
+				609C128693405CAC42D5D5421221A1DE /* Link */,
+				3354474BEF757FD00D64430655373449 /* Login */,
+				892A9C1D17D9B5EE7C0F8BE799DEC4CC /* MultiredditList */,
+				BF2A136C2E9CB3C90EC8996DBE6BA663 /* OpenGraph */,
+				F1FF59703C379B2ECB4A78540AC7522B /* SubredditList */,
+				98C9C7572F56D746D5EE3CB1D2FE77F3 /* Subscriptions */,
+				40BEE899D8C3B8663EFE228C0F85466E /* Walkthrough */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A6CA1D5E5ED67987CD3D7E38AE0CF35C /* RawRepresentable+OptionalRawValue */ = {
+			isa = PBXGroup;
+			children = (
+				315D2C039BB41D50A852BD98B8FFAD72 /* RawRepresentable+OptionalRawValue.swift */,
+			);
+			path = "RawRepresentable+OptionalRawValue";
+			sourceTree = "<group>";
+		};
+		AC0DCA1C0156D29EE57C88E2F77A78A5 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				09180CD281DADCCE2B5CC91E5819DD5B /* AlbumLinkSpec.swift */,
+				66ACDF06CB6E80C414E7776E9ECB7C13 /* ImageLinkSpec.swift */,
+				EA328A7E35180D8A259FEDCDE98511F6 /* SelfLinkSpec.swift */,
+				DFDE234CC6B5E01BF9CE475C06736253 /* VideoLinkSpec.swift */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
+		AC68A9A5FCA6B12C95DF94052D821D27 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				A1AD93FF157D088548B60DB74FA3524E /* Colors.swift */,
+				F11A8E307B5B06E412E5C20F51D13861 /* Images.swift */,
+				E31C64F22971E97BBD397E076BA2573D /* Storyboards.swift */,
+				B56CB85D9BB0B00C1557A896EC2932D0 /* Strings.swift */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
+		AF0EF6475AA7FC631C03B2B2277F150C /* JSONHelper */ = {
+			isa = PBXGroup;
+			children = (
+				6F61E0238A4630C30FBD49DBCD189002 /* JSONHelper.swift */,
+			);
+			path = JSONHelper;
+			sourceTree = "<group>";
+		};
+		B35094CD3522548E82576E3B4D7EB950 /* QueryReader */ = {
+			isa = PBXGroup;
+			children = (
+				040E46924249A0EC4ACD259FD2EF921B /* QueryReader.swift */,
+			);
+			path = QueryReader;
+			sourceTree = "<group>";
+		};
+		BAEB5D89025DBC28CF4C5E2CCCFBB963 /* UIImage+Colorize */ = {
+			isa = PBXGroup;
+			children = (
+				BE4C4A80733FE408CEF39369FB3BA174 /* UIImage+Colorize.swift */,
+			);
+			path = "UIImage+Colorize";
+			sourceTree = "<group>";
+		};
+		BB26216505CF2101C7FE45AD99396935 /* String+Regex */ = {
+			isa = PBXGroup;
+			children = (
+				DF8884DFF5D329AABEAB0F171AF2C539 /* String+Regex.swift */,
+			);
+			path = "String+Regex";
+			sourceTree = "<group>";
+		};
+		BCC93103FAD6ED24EA9C804BA9F30505 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3829B0902AF9EA95EF68DF5D82254B44 /* Links */,
+				63C659F9E5A4CEEB20603992DD001B36 /* MultiredditList */,
+				8219DEF06F9C58A106E8C8A56C22B935 /* SubredditList */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BF2A136C2E9CB3C90EC8996DBE6BA663 /* OpenGraph */ = {
+			isa = PBXGroup;
+			children = (
+				E9715A83733ECC7DB03BC1AC4139DC96 /* OpenGraphViewModel.swift */,
+			);
+			path = OpenGraph;
+			sourceTree = "<group>";
+		};
+		BF6D46525AE8B87DE608068A501F8A0D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				33EAACBF5A78276FEACB1BBF27E6C69F /* Distinguished.swift */,
+				00289F59EBE9CB8F000451F201338E45 /* Duration.swift */,
+				9B709B82CA9E4A2FFAF74FF94135BF33 /* Edited.swift */,
+				94FF43C8BB11311F4922D91854AF31C8 /* LinkType.swift */,
+				6E3B1AB4430B61BFDC851556E3A72602 /* ListingType+Name.swift */,
+				D5469639DBC8BCD82BF16C79F7A7F4DB /* ListingType.swift */,
+				E0CC3FC2E78579E5CAC19E07347A8FE3 /* MultiredditVisibility.swift */,
+				D2CF65E4E19D5B0D36566F222078804E /* PostHint.swift */,
+				DDA92706211075D08B5BD75140D552F2 /* Scope.swift */,
+				D44493D6E5095825A1037B18FD6AAEE1 /* SubmissionType.swift */,
+				4E922960FF7B84BA12D652E834F3A30F /* SubredditType.swift */,
+				6F3934A953F136296235389B02338419 /* Voted.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		BF9B80146D6D3061131A7B9F99FC54EC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0ABE7859284F67DE1EF352C8E9ABC26B /* AlerteableViewController.swift */,
+				EF86E2F3D954CC2C7ABC9293E8E1EA2D /* CloseableViewController.swift */,
+				D7DB0D681A9716C48D46B653B84640BD /* HideableHairlineViewController.swift */,
+				BA09A53D15CE6A1C2700C9BF2269F852 /* InsettableScrollViewViewController.swift */,
+				B98C2F0AB25A33216E796D411261B24E /* TitledViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		C29C55BDD5B183FE12FA08CBF75BE16B /* SwipeIt */ = {
@@ -987,31 +1300,130 @@
 			path = SwipeIt;
 			sourceTree = "<group>";
 		};
-		6FA08BA9E86EBFBF1E02E6F6631B7994 /* SwipeItTests */ = {
+		CC32120A4E54984662BEDA677D63B76C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1740C06F58F2CAD180A39340D6578953 /* Mocks */,
-				506108BE1878B7F8186D380B73A93F32 /* Resources */,
-				DB5EC4B3CA01C080DB4065DC0BB55F4A /* Specs */,
+				A377827B72216AEDB4995C595E8F934B /* Buttons */,
+				504B61091D9C84FFA4278DDE40FA9DC6 /* Cards */,
+				BCC93103FAD6ED24EA9C804BA9F30505 /* Cells */,
+				D2250313257DB8E81F4D6EC985B987C7 /* Labels */,
+				F407C73EC71776B9CD62CD2A1A1B8A2A /* Loaders */,
+				4F070F08E6EA5C0418354CCEF10105DE /* Views */,
 			);
-			path = SwipeItTests;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		4543B580BAEED355CE1DB4A0019F1AE5 /* App */ = {
+		CE0869227D77507E10A26D18B79C86A3 /* RxSwift+Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8580221C2B59CB09546DCD5C5376AAF2 /* AppDelegate.swift */,
+				375F1DBEC7F69AAC810E753D3DDAA561 /* Observable+MapVoid.swift */,
 			);
-			path = App;
+			path = "RxSwift+Helpers";
 			sourceTree = "<group>";
 		};
-		9284BCBBB6D839BD1294CBE8B0AB1093 /* Enums */ = {
+		D12318990A7EDF5D21D25B152C43C694 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				821D7000EFB77FE8D02396C74FC7B333 /* Errors */,
-				1FDC7F10F65403232043FE9710FCABDB /* Loading */,
+				621372D503487A32E3E10E4F35505538 /* Network.swift */,
+				CEBA21B72FC40D938E4D25C4533B84D8 /* RedditAPI.swift */,
 			);
-			path = Enums;
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D2250313257DB8E81F4D6EC985B987C7 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		D3635ADE7B363E15BCB91C8D08EBF1DC /* String+FirstLetter */ = {
+			isa = PBXGroup;
+			children = (
+				717ACF0519400F0EF86732731C9A0138 /* String+FirstLetter.swift */,
+			);
+			path = "String+FirstLetter";
+			sourceTree = "<group>";
+		};
+		D89A1522E6957C4A6CF88F8F0FB04DCC /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				E392ED583CD993D735EB0EDBF3DDA4B3 /* AccessToken.json */,
+				420D3DA404439ACE5018FE4E708165C5 /* AlbumLink.json */,
+				3F8853EF61A1ECAD2BEA396248F9519C /* Comment.json */,
+				707AB13BF1C1BE81B23EC3EBD9BB027A /* CommentsListing.json */,
+				757CF794FEC891C5375E60C1EEAC11F2 /* Gifs.json */,
+				F4004C8A87D6E7107CCF3CA55E92A059 /* ImageLink.json */,
+				EF761FD0D56374B3283A3A23ABF63805 /* LinkDetails.json */,
+				4CDA156C06EC0684DCD703CEBDD1B2B2 /* LinkListing.json */,
+				2D4FBCA2F16CFD4E05CE12B6530172C1 /* Multireddit.json */,
+				A97B42D5D1A2436F47A242B59FE73D58 /* MultiredditListing.json */,
+				B8570C06F71C67A616F51BB4908E2F7E /* OpenGraph.html */,
+				9F49ECCF054D177601A703602F92915A /* OpenGraphAppLinks.html */,
+				367C2F2E161FFBE180C16F477663C4CB /* Pics.json */,
+				2A5DA35A72E94A3D8688754D2510CF47 /* RefreshToken.json */,
+				DCECE26D12DBD78B812B818332D522EC /* SelfLink.json */,
+				A885E543E71D1C280F9C1060272AA1B0 /* Subreddit.json */,
+				F93A56D1CC952B980F7C5518F47E217B /* SubredditListing.json */,
+				FF65C2A3D3B03179F5C4A06C5C9619F8 /* Upvoted.json */,
+				E887C4949BE36AB188107633E854A40E /* UserDetails.json */,
+				3069AADB1F43CD8D0039DBE0 /* UserMe.json */,
+				74F9BC4CBC7F3200D5B09C30893BCD47 /* VideoLink.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		DB5EC4B3CA01C080DB4065DC0BB55F4A /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				3069AADD1F43CD9F0039DBE0 /* User */,
+				2DAAB7FB8283E931210B651A120E1C72 /* AccessToken */,
+				4DBEC2EB55E5AB5AF57014FA484F8D56 /* Comments */,
+				43119F316F067118F14B3ABC17FF0288 /* ImageProviders */,
+				AC0DCA1C0156D29EE57C88E2F77A78A5 /* Links */,
+				804D75820E9AAD08356F1B4E6B8B2B07 /* Multireddits */,
+				616C14184B678E9846655EF46EADF289 /* Network */,
+				1799E0B68E8D8F0BDF00BE337EDE1B27 /* OpenGraph */,
+				93687FD37545A7166F971919F34F55D4 /* Subreddits */,
+			);
+			path = Specs;
+			sourceTree = "<group>";
+		};
+		DED8E5E648F8870C2F3BE2F071C4994A = {
+			isa = PBXGroup;
+			children = (
+				8BA683A9199C2E2841D8E81A18761A7F /* Frameworks */,
+				216EB08302831910F0011BD67DFA3E83 /* Pods */,
+				5D307D373E2158AB5FC7CBA77831D1AD /* Products */,
+				C29C55BDD5B183FE12FA08CBF75BE16B /* SwipeIt */,
+				6FA08BA9E86EBFBF1E02E6F6631B7994 /* SwipeItTests */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		E2C498DD7F891633A50E96A861C64B67 /* ZLSwipeableView+AnimateViewHandler */ = {
+			isa = PBXGroup;
+			children = (
+				725F63FF9A914492E76F4E29278C5424 /* ZLSwipeableView+AnimateViewHandler.swift */,
+			);
+			path = "ZLSwipeableView+AnimateViewHandler";
+			sourceTree = "<group>";
+		};
+		E3AB654475FEF95800FF3286C1EAB033 /* NSAttribrutedString+Join */ = {
+			isa = PBXGroup;
+			children = (
+				0D2D5DB28492AE5D6F204DCB345E8AA4 /* NSAttributedString+Join.swift */,
+			);
+			path = "NSAttribrutedString+Join";
+			sourceTree = "<group>";
+		};
+		E48546A17B375FE37A0F65CD880BE316 /* UIStoryboardSegue+Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E95A4ED7F7D8F64FD4EC91E6D8CF7778 /* UIStoryboardSegue+Naxigation.swift */,
+			);
+			path = "UIStoryboardSegue+Navigation";
 			sourceTree = "<group>";
 		};
 		E905B9CCA24C954728DF600A46EEA681 /* Extensions */ = {
@@ -1042,325 +1454,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		95B0A7608C9664BA0FC4E40142948229 /* Externals */ = {
+		E9969C9760950B8C95A0A79D8688544A /* NSUserDefaults+Group */ = {
 			isa = PBXGroup;
 			children = (
-				0A9EBAB897C13D1641BA204D22B1EE56 /* String+HTMLDecode */,
-				726F71F7355681229384351B6CDE6291 /* UIImageEffects */,
+				5CC7899FCA8E54FF20116E895367701C /* NSUserDefaults+Group.swift */,
 			);
-			path = Externals;
-			sourceTree = "<group>";
-		};
-		16D4B4807362E7814F80EC33E48123FF /* Globals */ = {
-			isa = PBXGroup;
-			children = (
-				055ED4709FA59F82EB8EFB8ECE358E09 /* Constants.swift */,
-				BF878C482050068BC9F4990D0BB8C2D9 /* Globals.swift */,
-			);
-			path = Globals;
-			sourceTree = "<group>";
-		};
-		710E5D593A10B3E5B58B3F6BE329FFD7 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				FDF65BE295CE320AA30EFC049FD58DA1 /* AlertHelper */,
-				67C78B8A7789EF5A5B7A48FF4308E6AF /* FileReader */,
-				1976198F0518086E1E11CF0628B13F36 /* HTMLParser */,
-				992D8C85A615CB22B76E6E18C5B0AB8D /* ImageAttachment */,
-				AF0EF6475AA7FC631C03B2B2277F150C /* JSONHelper */,
-				79F8F3D0B84B1F23B9579221F7431905 /* JSONReader */,
-				897B3D3E3263B17F24C012E64E1E5BBD /* MarkdownReader */,
-				4ED10AE3825C054352D530143BD18623 /* Prefetcher */,
-				B35094CD3522548E82576E3B4D7EB950 /* QueryReader */,
-				05B9DC1C910BEC2B3AFC29FC8B336132 /* ShareHelper */,
-				2CBD12266249D7E41EC30F3DA15E4C2C /* Sorter */,
-				77A8A84FD01F8BB567E1FB8A231FF166 /* Theming */,
-				643AAF98348B01DB19557569149CBAEF /* URLRouter */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		60D9268581B6FEDC07F0F8D0AE120F92 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BF6D46525AE8B87DE608068A501F8A0D /* Enums */,
-				9EE0AED47A058B4C59C570526F9E1073 /* ImageProviders */,
-				713DF5A88B653D098F4BD1E09F79B5B0 /* Protocols */,
-				259CCCDBDEE110D2F6F963C7C2BA5CE4 /* Transforms */,
-				D8FDD61D952770D18D234594FFAED784 /* AccessToken.swift */,
-				595FBDA4DFC6EE5F69998DA08CF1EEE2 /* AppLink.swift */,
-				0330DE33B058A41D8C9506E17E917FA8 /* Comment.swift */,
-				26C5F7407920059CABA0756DFB28481F /* CommentsListing.swift */,
-				6C9EA0B17EA9F8C6F1185AFBDDE581C9 /* EmbeddedMedia.swift */,
-				12E42A5984B732157D159D689129B721 /* ImageSource.swift */,
-				E33328102CF5B11F065B0DBE40BA830D /* Link.swift */,
-				F452EB8919CF545E226D160E8DD222FE /* LinkListing.swift */,
-				BAE46033C4925C66835E1BB8CF1D77A4 /* Media.swift */,
-				A94FB78A152AFFDBB23DCDFA86C6D23E /* MoreComments.swift */,
-				28C19A28EE9BB8CA401594B70465627F /* Multireddit.swift */,
-				882CC53C7E43F03FA0446BEED4526A4E /* OpenGraph.swift */,
-				444D317FA519F036F828994B05CCEC79 /* PreviewImage.swift */,
-				017E96986E471BCFE8C30880E5C551D9 /* Subreddit.swift */,
-				0C689599E992823AC2F4904D1957CB4C /* SubredditListing.swift */,
-				D2B2BA51849510428C4F12ECA8F52968 /* User.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		D12318990A7EDF5D21D25B152C43C694 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				621372D503487A32E3E10E4F35505538 /* Network.swift */,
-				CEBA21B72FC40D938E4D25C4533B84D8 /* RedditAPI.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		2DB36D44ABEA1A44D85788FCAD1BC5BE /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				BF9B80146D6D3061131A7B9F99FC54EC /* ViewControllers */,
-				5026776D1ECA825B7955F98CE2033FC5 /* ViewModels */,
-				6CA4A870180416A3CA776C93ADC8BA99 /* Views */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		51EB0E0880B007F5626F95081B577A89 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AC68A9A5FCA6B12C95DF94052D821D27 /* SwiftGen */,
-				1E8DDD72D962F0FDCFF8EF46930A8237 /* Assets.xcassets */,
-				491841883DAA1B641225AE6EC3F88F21 /* Colors.txt */,
-				B5DC6C75EE9BE83ADEE376538C4DFC4F /* Info.plist */,
-				F71AAFE5CC7BB305487C3D6680A3D67C /* LaunchScreen.storyboard */,
-				9BF3B2DD96A2F4FE0D67D11C81335331 /* Localizable.strings */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		65E36C2245141D67E0CE6923C3F00B18 /* Structs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Structs;
-			sourceTree = "<group>";
-		};
-		8C00523BC57CDB96A3A2A101BD988FD3 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				3399EE54A48D700271DB53205206E654 /* Base */,
-				A1CCC71DDF4AE059B37399BBFC4FF3C7 /* Main */,
-				6C41C23235A1F0D4AA4F380D10A5E2C7 /* Onboarding */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		A459272D9EC19A05AF3CBA291156229C /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				8137716875E4914408B62F4BBFC3CA9C /* Base */,
-				609C128693405CAC42D5D5421221A1DE /* Link */,
-				3354474BEF757FD00D64430655373449 /* Login */,
-				892A9C1D17D9B5EE7C0F8BE799DEC4CC /* MultiredditList */,
-				BF2A136C2E9CB3C90EC8996DBE6BA663 /* OpenGraph */,
-				F1FF59703C379B2ECB4A78540AC7522B /* SubredditList */,
-				98C9C7572F56D746D5EE3CB1D2FE77F3 /* Subscriptions */,
-				40BEE899D8C3B8663EFE228C0F85466E /* Walkthrough */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		CC32120A4E54984662BEDA677D63B76C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A377827B72216AEDB4995C595E8F934B /* Buttons */,
-				504B61091D9C84FFA4278DDE40FA9DC6 /* Cards */,
-				BCC93103FAD6ED24EA9C804BA9F30505 /* Cells */,
-				D2250313257DB8E81F4D6EC985B987C7 /* Labels */,
-				F407C73EC71776B9CD62CD2A1A1B8A2A /* Loaders */,
-				4F070F08E6EA5C0418354CCEF10105DE /* Views */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		6C41C23235A1F0D4AA4F380D10A5E2C7 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				36F7427E5931EB6BD5187BD2EFC7BAF3 /* Storyboard */,
-				BEC0D6C44495D4891F18EB84A439AC24 /* LoginViewController.swift */,
-				DBAED27073F6390EE2B651516718B72D /* WalkthroughViewController.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		A1CCC71DDF4AE059B37399BBFC4FF3C7 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				15CBC69FC783AC4AECF7F2CA536F42F3 /* Storyboard */,
-				59FFF5C670F1A3F25D1DEBE523C6BA71 /* LinkSwipeViewController.swift */,
-				51D10C07AF8ABCD5D002F6F89DBDF2DD /* MultiredditListViewController.swift */,
-				340368587E517A6822E4DB9BDDDD43D7 /* SubredditListViewController.swift */,
-				1F7C06B3A006C1781A0DAFF97E5FE40A /* SubscriptionsViewController.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		D89A1522E6957C4A6CF88F8F0FB04DCC /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E392ED583CD993D735EB0EDBF3DDA4B3 /* AccessToken.json */,
-				420D3DA404439ACE5018FE4E708165C5 /* AlbumLink.json */,
-				3F8853EF61A1ECAD2BEA396248F9519C /* Comment.json */,
-				707AB13BF1C1BE81B23EC3EBD9BB027A /* CommentsListing.json */,
-				757CF794FEC891C5375E60C1EEAC11F2 /* Gifs.json */,
-				F4004C8A87D6E7107CCF3CA55E92A059 /* ImageLink.json */,
-				EF761FD0D56374B3283A3A23ABF63805 /* LinkDetails.json */,
-				4CDA156C06EC0684DCD703CEBDD1B2B2 /* LinkListing.json */,
-				2D4FBCA2F16CFD4E05CE12B6530172C1 /* Multireddit.json */,
-				A97B42D5D1A2436F47A242B59FE73D58 /* MultiredditListing.json */,
-				B8570C06F71C67A616F51BB4908E2F7E /* OpenGraph.html */,
-				9F49ECCF054D177601A703602F92915A /* OpenGraphAppLinks.html */,
-				367C2F2E161FFBE180C16F477663C4CB /* Pics.json */,
-				2A5DA35A72E94A3D8688754D2510CF47 /* RefreshToken.json */,
-				DCECE26D12DBD78B812B818332D522EC /* SelfLink.json */,
-				A885E543E71D1C280F9C1060272AA1B0 /* Subreddit.json */,
-				F93A56D1CC952B980F7C5518F47E217B /* SubredditListing.json */,
-				FF65C2A3D3B03179F5C4A06C5C9619F8 /* Upvoted.json */,
-				E887C4949BE36AB188107633E854A40E /* UserDetails.json */,
-				74F9BC4CBC7F3200D5B09C30893BCD47 /* VideoLink.json */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		79F8F3D0B84B1F23B9579221F7431905 /* JSONReader */ = {
-			isa = PBXGroup;
-			children = (
-				86C73E5CD8E828933F71A1D81B89B925 /* JSONReader.swift */,
-			);
-			path = JSONReader;
-			sourceTree = "<group>";
-		};
-		33D98EE8CB9A76D06A13465056767D3F /* String+Range */ = {
-			isa = PBXGroup;
-			children = (
-				A6E1DDB2FE86FF542ABCB78A5FFBB5B3 /* String+Range.swift */,
-			);
-			path = "String+Range";
-			sourceTree = "<group>";
-		};
-		821D7000EFB77FE8D02396C74FC7B333 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				D2B6F3B487AA01E0E45E1D4CB45DDF9E /* LoginError.swift */,
-			);
-			path = Errors;
-			sourceTree = "<group>";
-		};
-		D2250313257DB8E81F4D6EC985B987C7 /* Labels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Labels;
-			sourceTree = "<group>";
-		};
-		D3635ADE7B363E15BCB91C8D08EBF1DC /* String+FirstLetter */ = {
-			isa = PBXGroup;
-			children = (
-				717ACF0519400F0EF86732731C9A0138 /* String+FirstLetter.swift */,
-			);
-			path = "String+FirstLetter";
-			sourceTree = "<group>";
-		};
-		28912AA9C030E3A3F0BEF5514CEAEDBD /* Array+Unique */ = {
-			isa = PBXGroup;
-			children = (
-				9023B48F4409A44FA2DB5817C484238A /* Array+Unique.swift */,
-			);
-			path = "Array+Unique";
-			sourceTree = "<group>";
-		};
-		BCC93103FAD6ED24EA9C804BA9F30505 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3829B0902AF9EA95EF68DF5D82254B44 /* Links */,
-				63C659F9E5A4CEEB20603992DD001B36 /* MultiredditList */,
-				8219DEF06F9C58A106E8C8A56C22B935 /* SubredditList */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		6CA4A870180416A3CA776C93ADC8BA99 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E1A4EB4469F1B38E82004F3346D9CA57 /* ReusableCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		95FC1F3C5D74FE72E54FF22981882A87 /* NSObject+ClassName */ = {
-			isa = PBXGroup;
-			children = (
-				45B3E6C6DB485B2EF7FA0AF5AE03526C /* NSObject+ClassName.swift */,
-			);
-			path = "NSObject+ClassName";
-			sourceTree = "<group>";
-		};
-		726F71F7355681229384351B6CDE6291 /* UIImageEffects */ = {
-			isa = PBXGroup;
-			children = (
-				958F0F6BC62B2B3C4C0CF5119E0CA560 /* UIImageEffects.swift */,
-			);
-			path = UIImageEffects;
-			sourceTree = "<group>";
-		};
-		992D8C85A615CB22B76E6E18C5B0AB8D /* ImageAttachment */ = {
-			isa = PBXGroup;
-			children = (
-				1F8E888F3911276363FF4E6CF96CB222 /* ImageAttachment.swift */,
-			);
-			path = ImageAttachment;
-			sourceTree = "<group>";
-		};
-		A6CA1D5E5ED67987CD3D7E38AE0CF35C /* RawRepresentable+OptionalRawValue */ = {
-			isa = PBXGroup;
-			children = (
-				315D2C039BB41D50A852BD98B8FFAD72 /* RawRepresentable+OptionalRawValue.swift */,
-			);
-			path = "RawRepresentable+OptionalRawValue";
-			sourceTree = "<group>";
-		};
-		4DBEC2EB55E5AB5AF57014FA484F8D56 /* Comments */ = {
-			isa = PBXGroup;
-			children = (
-				9C6365480385CD42F20B01D0AEA78070 /* CommentSpec.swift */,
-			);
-			path = Comments;
-			sourceTree = "<group>";
-		};
-		A377827B72216AEDB4995C595E8F934B /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				14704DFE344AD3FDE2A1A4AD23AEA752 /* CircleButton */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
-		6708296CD2ADE8F7B412550D9B483024 /* UITableView+Deselect */ = {
-			isa = PBXGroup;
-			children = (
-				71A5DA1875D8337C3EFC028B845034F3 /* UITableView+Deselect.swift */,
-			);
-			path = "UITableView+Deselect";
-			sourceTree = "<group>";
-		};
-		897B3D3E3263B17F24C012E64E1E5BBD /* MarkdownReader */ = {
-			isa = PBXGroup;
-			children = (
-				67ABC1242DB52F93C51909C283A9C7E4 /* MarkdownSubreddit.swift */,
-				1D67CC78A385B7D3DB61129050AA5C4D /* MarkdownUser.swift */,
-			);
-			path = MarkdownReader;
+			path = "NSUserDefaults+Group";
 			sourceTree = "<group>";
 		};
 		EFE37D95BC569D40D685C482A18D9F09 /* UIFont+Traits */ = {
@@ -1371,127 +1470,62 @@
 			path = "UIFont+Traits";
 			sourceTree = "<group>";
 		};
-		3354474BEF757FD00D64430655373449 /* Login */ = {
+		F1FF59703C379B2ECB4A78540AC7522B /* SubredditList */ = {
 			isa = PBXGroup;
 			children = (
-				4FE2B6E0C53584A9B4D3EC484D22FA3A /* LoginViewModel.swift */,
+				8A48A176FBDBB93A1AC58ACCEF16FB0D /* Items */,
+				D7DDCF41C6D65F4C088C6172BC977DE2 /* SubredditListViewModel.swift */,
 			);
-			path = Login;
+			path = SubredditList;
 			sourceTree = "<group>";
 		};
-		36F7427E5931EB6BD5187BD2EFC7BAF3 /* Storyboard */ = {
+		F407C73EC71776B9CD62CD2A1A1B8A2A /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
-				6DB79BFCBA800C6BF87D7834964BBC49 /* Onboarding.storyboard */,
+				9240ABCB72BE2AF1A34440FCFC8CA11D /* CircularLoaderView.swift */,
 			);
-			path = Storyboard;
+			path = Loaders;
 			sourceTree = "<group>";
 		};
-		15CBC69FC783AC4AECF7F2CA536F42F3 /* Storyboard */ = {
+		FDF65BE295CE320AA30EFC049FD58DA1 /* AlertHelper */ = {
 			isa = PBXGroup;
 			children = (
-				62D5AE65057FDF3A97A06434BFB4D52A /* Main.storyboard */,
+				0B11BA4D6F744B63B10F1D2EFA00B938 /* AlertHelper.swift */,
 			);
-			path = Storyboard;
+			path = AlertHelper;
 			sourceTree = "<group>";
 		};
-		BF9B80146D6D3061131A7B9F99FC54EC /* ViewControllers */ = {
+		FFC4207A0D29B5C8EDD07C4C2F332540 /* UIImage+Scale */ = {
 			isa = PBXGroup;
 			children = (
-				0ABE7859284F67DE1EF352C8E9ABC26B /* AlerteableViewController.swift */,
-				EF86E2F3D954CC2C7ABC9293E8E1EA2D /* CloseableViewController.swift */,
-				D7DB0D681A9716C48D46B653B84640BD /* HideableHairlineViewController.swift */,
-				BA09A53D15CE6A1C2700C9BF2269F852 /* InsettableScrollViewViewController.swift */,
-				B98C2F0AB25A33216E796D411261B24E /* TitledViewController.swift */,
+				90DE0C3EAEF99C4B460D5D7FE5427CAA /* UIImage+Scale.swift */,
 			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		AC68A9A5FCA6B12C95DF94052D821D27 /* SwiftGen */ = {
-			isa = PBXGroup;
-			children = (
-				A1AD93FF157D088548B60DB74FA3524E /* Colors.swift */,
-				F11A8E307B5B06E412E5C20F51D13861 /* Images.swift */,
-				E31C64F22971E97BBD397E076BA2573D /* Storyboards.swift */,
-				B56CB85D9BB0B00C1557A896EC2932D0 /* Strings.swift */,
-			);
-			path = SwiftGen;
-			sourceTree = "<group>";
-		};
-		3399EE54A48D700271DB53205206E654 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				0BDEE4B9E9ACAA5B7F968BEED625EE4C /* PageViewController.swift */,
-				AF7F72E5E2AD4377BDEE4986008AC3E1 /* WebViewController.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		40BEE899D8C3B8663EFE228C0F85466E /* Walkthrough */ = {
-			isa = PBXGroup;
-			children = (
-				863C81990E86854BBE2CB5B35BA2DB11 /* WalkthroughViewModel.swift */,
-			);
-			path = Walkthrough;
-			sourceTree = "<group>";
-		};
-		E48546A17B375FE37A0F65CD880BE316 /* UIStoryboardSegue+Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				E95A4ED7F7D8F64FD4EC91E6D8CF7778 /* UIStoryboardSegue+Naxigation.swift */,
-			);
-			path = "UIStoryboardSegue+Navigation";
-			sourceTree = "<group>";
-		};
-		CE0869227D77507E10A26D18B79C86A3 /* RxSwift+Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				375F1DBEC7F69AAC810E753D3DDAA561 /* Observable+MapVoid.swift */,
-			);
-			path = "RxSwift+Helpers";
-			sourceTree = "<group>";
-		};
-		B35094CD3522548E82576E3B4D7EB950 /* QueryReader */ = {
-			isa = PBXGroup;
-			children = (
-				040E46924249A0EC4ACD259FD2EF921B /* QueryReader.swift */,
-			);
-			path = QueryReader;
-			sourceTree = "<group>";
-		};
-		05B9DC1C910BEC2B3AFC29FC8B336132 /* ShareHelper */ = {
-			isa = PBXGroup;
-			children = (
-				AA7AB4FB99FD3DA800A1B3B86672977D /* ShareHelper.swift */,
-			);
-			path = ShareHelper;
-			sourceTree = "<group>";
-		};
-		216EB08302831910F0011BD67DFA3E83 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7B0BD83E38B413D050CC62074F3B1BC3 /* Pods-SwipeItCommon-SwipeIt.adhoc.xcconfig */,
-				1D24FF92A3B1B1838B07B6EF756FF1A0 /* Pods-SwipeItCommon-SwipeIt.debug.xcconfig */,
-				683EF7A2A524671CA325021502B4CD7F /* Pods-SwipeItCommon-SwipeIt.release.xcconfig */,
-				B1E02D5BFF9FE64A2B494464D8DC65E6 /* Pods-SwipeItCommon-SwipeItTests.adhoc.xcconfig */,
-				06661CC7C3688CA847E6C72CD9B86EE3 /* Pods-SwipeItCommon-SwipeItTests.debug.xcconfig */,
-				092EA0D7E465719C137E720794D16A05 /* Pods-SwipeItCommon-SwipeItTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		8BA683A9199C2E2841D8E81A18761A7F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				28A0D2E34B7C8467977B23AED2F3C10A /* Pods_SwipeItCommon_SwipeIt.framework */,
-				02FE1F99D6A3A9845B2120D33266EA26 /* Pods_SwipeItCommon_SwipeItTests.framework */,
-			);
-			name = Frameworks;
+			path = "UIImage+Scale";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0DEE9653586F6CCFD19F26EBF0F77749 /* SwipeItTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26A42F13247F20275F6A86927D0C1323 /* Build configuration list for PBXNativeTarget "SwipeItTests" */;
+			buildPhases = (
+				8F0724305CA9A27366AFC68DDD58F60D /* [CP] Check Pods Manifest.lock */,
+				36771C1AC38AFD817797B2FFB8B18DF3 /* Sources */,
+				0A130FB9CFA33C0FC25C4C85DD996E51 /* Frameworks */,
+				C8C297A676A6AC3D5B2D991B0BC3FE03 /* Resources */,
+				05ED043E5478F26425E721E831ADCECC /* [CP] Embed Pods Frameworks */,
+				47BABD343D4C6B445B82D489D6B837CE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeItTests;
+			productName = RedditTests;
+			productReference = 6C73C9F80F09DD07604237D23FA720DB /* SwipeItTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7CC5967B77277B14CF9A294A470E88E4 /* SwipeIt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E43C832C0B1A6E3942999C2403BAD183 /* Build configuration list for PBXNativeTarget "SwipeIt" */;
@@ -1515,26 +1549,6 @@
 			productReference = 8B9B751DC7D1C3443A25DBFD66FCAE66 /* SwipeIt.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0DEE9653586F6CCFD19F26EBF0F77749 /* SwipeItTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 26A42F13247F20275F6A86927D0C1323 /* Build configuration list for PBXNativeTarget "SwipeItTests" */;
-			buildPhases = (
-				8F0724305CA9A27366AFC68DDD58F60D /* [CP] Check Pods Manifest.lock */,
-				36771C1AC38AFD817797B2FFB8B18DF3 /* Sources */,
-				0A130FB9CFA33C0FC25C4C85DD996E51 /* Frameworks */,
-				C8C297A676A6AC3D5B2D991B0BC3FE03 /* Resources */,
-				05ED043E5478F26425E721E831ADCECC /* [CP] Embed Pods Frameworks */,
-				47BABD343D4C6B445B82D489D6B837CE /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwipeItTests;
-			productName = RedditTests;
-			productReference = 6C73C9F80F09DD07604237D23FA720DB /* SwipeItTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1545,15 +1559,15 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Faber Ventures";
 				TargetAttributes = {
+					0DEE9653586F6CCFD19F26EBF0F77749 = {
+						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0830;
+					};
 					7CC5967B77277B14CF9A294A470E88E4 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 995D5UJTTW;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
-					};
-					0DEE9653586F6CCFD19F26EBF0F77749 = {
-						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -1607,6 +1621,7 @@
 				D91F42EE49143857E9B3283E7ECD8CDF /* OpenGraphAppLinks.html in Resources */,
 				C0ECD7CCE281CF00915BADFFEDFE04E4 /* Pics.json in Resources */,
 				BC2F89E5E1C46342F766C3F10035EFE1 /* RefreshToken.json in Resources */,
+				3069AADC1F43CD8D0039DBE0 /* UserMe.json in Resources */,
 				136AF3F11B84B25E1772FB8E96BFDA08 /* SelfLink.json in Resources */,
 				E98450C205D30E66D8DEA54B21A2072C /* Subreddit.json in Resources */,
 				41487B3A9D6331BCD545EB5015F22FC0 /* SubredditListing.json in Resources */,
@@ -1619,6 +1634,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05ED043E5478F26425E721E831ADCECC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeItTests/Pods-SwipeItCommon-SwipeItTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxLegacy/RxLegacy.framework",
+				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
+				"${BUILT_PRODUCTS_DIR}/RxResult/RxResult.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLegacy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxResult.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeItTests/Pods-SwipeItCommon-SwipeItTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		47BABD343D4C6B445B82D489D6B837CE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1662,6 +1721,42 @@
 			shellPath = /bin/sh;
 			shellScript = "# swiftgen bin from pods\nSWIFTGEN=\"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\n\n# Make sure it is there\nif which \"$SWIFTGEN\" >/dev/null; then\n\n    # Folder for output\n    SWIFTGEN_FOLDER=\"${PROJECT}/Resources/SwiftGen\"\n\n    # Project folder\n    PROJECT_FOLDER=\"${PROJECT}\"\n\n    # Make sure output folder exists\n    mkdir -p \"$SWIFTGEN_FOLDER\"\n\n    # Get all storyboards into Storyboards.swift\n    \"$SWIFTGEN\" storyboards \"$PROJECT_FOLDER\" --output \"$SWIFTGEN_FOLDER/Storyboards.swift\" -t swift3\n\n    # Get all images into Images.swift\n    \"$SWIFTGEN\" images \"$PROJECT_FOLDER\" --output \"$SWIFTGEN_FOLDER/Images.swift\" -t swift3\n\n    # Get colors from Colors.txt into Colors.swift\n    \"$SWIFTGEN\" colors \"$PROJECT_FOLDER/Resources/Colors.txt\" --output \"$SWIFTGEN_FOLDER/Colors.swift\" -t swift3\n\n    # Get all english strings (as a base for all others) into Strings.swift\n    \"$SWIFTGEN\" strings \"$PROJECT_FOLDER/Resources/en.lproj/Localizable.strings\" --output \"$SWIFTGEN_FOLDER/Strings.swift\" -t structured-swift3\nelse\n    echo \"SwiftGen does not exist, download from https://github.com/AliSoftware/SwiftGen\"\nfi\n\n";
 		};
+		8F0724305CA9A27366AFC68DDD58F60D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwipeItCommon-SwipeItTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		933ECB5D88F8A3E53CA38D37822EF39C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwipeItCommon-SwipeIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		957A4D805D8C90742AACCF0AB175194A /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1674,7 +1769,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "[ -z \"$SWIPEIT_FABRIC_CLIENT_ID\" ] && echo \"$SWIPEIT_FABRIC_CLIENT_ID is not defined on your ENV\" && exit 0;\n[ -z \"$SWIPEIT_FABRIC_SECRET\" ] && echo \"$SWIPEIT_FABRIC_SECRET is not defined on your ENV\" && exit 0;\n\"${PODS_ROOT}/Fabric/run\" ${SWIPEIT_FABRIC_CLIENT_ID} ${SWIPEIT_FABRIC_SECRET}";
+			shellScript = "source \"$PROJECT_DIR/fastlane/.env\"\n[ -z \"$FABRIC_API_TOKEN\" ] && echo \"FABRIC_API_TOKEN is not defined on your ENV\" && exit 0;\n[ -z \"$FABRIC_BUILD_SECRET\" ] && echo \"FABRIC_BUILD_SECRET is not defined on your ENV\" && exit 0;\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_TOKEN} ${FABRIC_BUILD_SECRET}";
+		};
+		95E80F72764A17295737E38E37906719 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeIt/Pods-SwipeItCommon-SwipeIt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		BDCB42B010A7F536DBA1E5556A0F48AA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1748,104 +1858,89 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeIt/Pods-SwipeItCommon-SwipeIt-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		933ECB5D88F8A3E53CA38D37822EF39C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwipeItCommon-SwipeIt-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		05ED043E5478F26425E721E831ADCECC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeItTests/Pods-SwipeItCommon-SwipeItTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxLegacy/RxLegacy.framework",
-				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
-				"${BUILT_PRODUCTS_DIR}/RxResult/RxResult.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLegacy.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxResult.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeItTests/Pods-SwipeItCommon-SwipeItTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8F0724305CA9A27366AFC68DDD58F60D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwipeItCommon-SwipeItTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		95E80F72764A17295737E38E37906719 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeIt/Pods-SwipeItCommon-SwipeIt-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		36771C1AC38AFD817797B2FFB8B18DF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01835338BE912CBF4CE50D4EC8A8AAB4 /* AccessToken.swift in Sources */,
+				5A993ECA24B789D5DA159F392C2F8324 /* AccessTokenSpec.swift in Sources */,
+				64EF97E59E981304C760AC6AD2C238F6 /* AlbumLinkSpec.swift in Sources */,
+				31FD396A0A02FA122ED954533B2DDB4B /* AppLink.swift in Sources */,
+				A1A3B5975FA994A6427243685B233216 /* Array+Optional.swift in Sources */,
+				88A3CB0DAD2268881483E452847FFB0A /* Comment.swift in Sources */,
+				7FBB7ABDE17144A02B383480C61534F6 /* CommentSpec.swift in Sources */,
+				C9347703F9A7DAAC8A06CF773796153F /* CommentsListing.swift in Sources */,
+				2DEC71A93AF23D0A30F215675CB88227 /* Constants.swift in Sources */,
+				3FB42928754F41593C04F7F027DA20E6 /* Created.swift in Sources */,
+				16C63E5AA16B3CCD318E4651295412E6 /* Distinguished.swift in Sources */,
+				AE6EF4962E0954FDAD94DB90642D9FA3 /* Edited.swift in Sources */,
+				B287F965C8BE641A86228A4E6FB2FB85 /* EditedTransform.swift in Sources */,
+				99B75EACCB8B369656F20C32157CD843 /* EmbeddedMedia.swift in Sources */,
+				F7A62D36781C2678EA11B359356AC696 /* EmptyArrayTransform.swift in Sources */,
+				1CE2C6F8C8A8F6500FCF4EF6BA2C85D8 /* EmptyStringTransform.swift in Sources */,
+				9A153518FB6E7A87F1DA40473C2A1F14 /* EmptyURLTransform.swift in Sources */,
+				64E5B68B09DCF80394D9CC38CDCCF953 /* EpochDateTransform.swift in Sources */,
+				D2750C44677407D8274819956064B203 /* FileReader.swift in Sources */,
+				8D9094A222C8DD2449AE1344D0F0DCC5 /* HTMLEncodingTransform.swift in Sources */,
+				180882792239FAD53C89BA346D0D642C /* HTMLParser.swift in Sources */,
+				FB5C7C430BB9D21C98A1DAD3654CBDCB /* ImageLinkSpec.swift in Sources */,
+				1B46E8FFAFFF820893BE7841FFD9BEC1 /* ImageProvider.swift in Sources */,
+				2D7723FE6F9D7AF0870379FADECB8935 /* ImageSource.swift in Sources */,
+				4DC509E3C5CF3FB3C246F3D249DB6D38 /* ImgurImageProvider.swift in Sources */,
+				CACAA5187648FD9D055AC558DAA3BE7A /* ImgurImageProviderSpec.swift in Sources */,
+				12A71A7C1AF898DD9455797805282E18 /* JSONHelper.swift in Sources */,
+				29FDFE4C281DAEC40A66913EBD7C563A /* JSONKeyTransform.swift in Sources */,
+				FC609311B25B578A7ACF9C33DF211AC5 /* JSONReader.swift in Sources */,
+				FEEA66325B07C22CF10BBC41085C21CD /* LastElementTransform.swift in Sources */,
+				5063AB73F6640610FC7581BABACECDDF /* Link.swift in Sources */,
+				3069AADF1F43CDAD0039DBE0 /* UserMeSpec.swift in Sources */,
+				D410081EBB79F995471DE92DA9C74E94 /* LinkDetailsSpec.swift in Sources */,
+				2B41A294315165815B4BB3100BAF777C /* LinkListing.swift in Sources */,
+				FDEF1DE47B288E87302E23C3C7B57828 /* LinkListingSpec.swift in Sources */,
+				04C1A3AE1051B1915C9ACB44623E03CF /* LinkType.swift in Sources */,
+				0736A66A6749C347C1FA7F9014B9A79C /* Listing.swift in Sources */,
+				40EB2E385FE7FCE10BC5116C45BE506D /* ListingType.swift in Sources */,
+				8E33A00FC9DB65068E0E078507C2CAC1 /* Media.swift in Sources */,
+				66285880F8248BD67F696E6304264294 /* MoreComments.swift in Sources */,
+				80EE31AC8498B213E790AA8961177AE3 /* Multireddit.swift in Sources */,
+				A2F81E1CC5FCB676DED61F96E974A3BC /* MultiredditSpec.swift in Sources */,
+				FE620AF2B29F746315A05CFD0B4BCF19 /* MultiredditVisibility.swift in Sources */,
+				79611D30941F2A0A7078D0F3EEC39E21 /* MutliredditListingSpec.swift in Sources */,
+				9A70AE2A985D3E7F743DF29CF479FF7B /* NetworkMock.swift in Sources */,
+				E441FCBF34BE3BE6A4A6305B94A60F04 /* NilBoolTransform.swift in Sources */,
+				E4E6DC87FA6BF9FBED23A742504DB73B /* NowDateTransform.swift in Sources */,
+				F5979FA0A6BDA51BAF265EF18123208F /* OpenGraph.swift in Sources */,
+				8634C85316104DFB66CC289D6B4DF187 /* OpenGraphAppLinksSpec.swift in Sources */,
+				EE03E589B7762952E9E96812ACC01B63 /* OpenGraphSpec.swift in Sources */,
+				9F1E5CFB4C0DF71092829C47A7CE8F34 /* PathTransform.swift in Sources */,
+				14CF140CCFA65E250A46D6C2F145C236 /* PermalinkTransform.swift in Sources */,
+				BC829450ADB8C3A2758D02DEB8B2F2D3 /* PostHint.swift in Sources */,
+				41A7180882DF7B59F511FB091F7A1A94 /* PreviewImage.swift in Sources */,
+				3BF491D3E6744277EB14324191E67E5F /* RedditAPI.swift in Sources */,
+				C63F82FEB5BEF850406A6E548F1EC4DE /* Response+CustomMappers.swift in Sources */,
+				9ECF9D33A33C7533F85D460E0675E60A /* SelfLinkSpec.swift in Sources */,
+				C325F9D60C36BBE47410AD85D0E978E5 /* String+HTMLDecode.swift in Sources */,
+				90BB9D53161F00AD48CF4440FDBAE8CA /* String+Regex.swift in Sources */,
+				714044B2DDF4D4BCF3049511E84024E6 /* SubmissionType.swift in Sources */,
+				FA1A27C1EC0F6A71E6085052C72C909D /* Subreddit.swift in Sources */,
+				1B285497D4A3CBA5088B2121A346635F /* SubredditListing.swift in Sources */,
+				D1C53FF073CB1C50A12C1329006173CF /* SubredditListingSpec.swift in Sources */,
+				905AE2A50DA083D39EAC6045A6D84AC7 /* SubredditSpec.swift in Sources */,
+				ACCD36F6829CCD2778F14D271DC34E51 /* SubredditType.swift in Sources */,
+				FCBBDAA608867FAEC438A8B78E08F30C /* Thing.swift in Sources */,
+				2655C3BDED623190AB89ECD7B81D2693 /* User.swift in Sources */,
+				9AA4736E54AEC5DB03A2F626B019402C /* UserDetailsSpec.swift in Sources */,
+				3631EBFEFA6765DEC54C859D024E5AC2 /* VideoLinkSpec.swift in Sources */,
+				8F641EEFC0566823E87A287D6E9CF2E5 /* Votable.swift in Sources */,
+				0F9E112792AE4DFBBB4C1EF757414D21 /* Voted.swift in Sources */,
+				91B15D3EAD8BC3B26E581499233BA112 /* VotedTransform.swift in Sources */,
+				10DE16545358B1602566CA86419ADBB3 /* ZeroDefaultTransform.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4A344CAFC32F19380DAFC81801A12286 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1992,85 +2087,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		36771C1AC38AFD817797B2FFB8B18DF3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				01835338BE912CBF4CE50D4EC8A8AAB4 /* AccessToken.swift in Sources */,
-				5A993ECA24B789D5DA159F392C2F8324 /* AccessTokenSpec.swift in Sources */,
-				64EF97E59E981304C760AC6AD2C238F6 /* AlbumLinkSpec.swift in Sources */,
-				31FD396A0A02FA122ED954533B2DDB4B /* AppLink.swift in Sources */,
-				A1A3B5975FA994A6427243685B233216 /* Array+Optional.swift in Sources */,
-				88A3CB0DAD2268881483E452847FFB0A /* Comment.swift in Sources */,
-				7FBB7ABDE17144A02B383480C61534F6 /* CommentSpec.swift in Sources */,
-				C9347703F9A7DAAC8A06CF773796153F /* CommentsListing.swift in Sources */,
-				2DEC71A93AF23D0A30F215675CB88227 /* Constants.swift in Sources */,
-				3FB42928754F41593C04F7F027DA20E6 /* Created.swift in Sources */,
-				16C63E5AA16B3CCD318E4651295412E6 /* Distinguished.swift in Sources */,
-				AE6EF4962E0954FDAD94DB90642D9FA3 /* Edited.swift in Sources */,
-				B287F965C8BE641A86228A4E6FB2FB85 /* EditedTransform.swift in Sources */,
-				99B75EACCB8B369656F20C32157CD843 /* EmbeddedMedia.swift in Sources */,
-				F7A62D36781C2678EA11B359356AC696 /* EmptyArrayTransform.swift in Sources */,
-				1CE2C6F8C8A8F6500FCF4EF6BA2C85D8 /* EmptyStringTransform.swift in Sources */,
-				9A153518FB6E7A87F1DA40473C2A1F14 /* EmptyURLTransform.swift in Sources */,
-				64E5B68B09DCF80394D9CC38CDCCF953 /* EpochDateTransform.swift in Sources */,
-				D2750C44677407D8274819956064B203 /* FileReader.swift in Sources */,
-				8D9094A222C8DD2449AE1344D0F0DCC5 /* HTMLEncodingTransform.swift in Sources */,
-				180882792239FAD53C89BA346D0D642C /* HTMLParser.swift in Sources */,
-				FB5C7C430BB9D21C98A1DAD3654CBDCB /* ImageLinkSpec.swift in Sources */,
-				1B46E8FFAFFF820893BE7841FFD9BEC1 /* ImageProvider.swift in Sources */,
-				2D7723FE6F9D7AF0870379FADECB8935 /* ImageSource.swift in Sources */,
-				4DC509E3C5CF3FB3C246F3D249DB6D38 /* ImgurImageProvider.swift in Sources */,
-				CACAA5187648FD9D055AC558DAA3BE7A /* ImgurImageProviderSpec.swift in Sources */,
-				12A71A7C1AF898DD9455797805282E18 /* JSONHelper.swift in Sources */,
-				29FDFE4C281DAEC40A66913EBD7C563A /* JSONKeyTransform.swift in Sources */,
-				FC609311B25B578A7ACF9C33DF211AC5 /* JSONReader.swift in Sources */,
-				FEEA66325B07C22CF10BBC41085C21CD /* LastElementTransform.swift in Sources */,
-				5063AB73F6640610FC7581BABACECDDF /* Link.swift in Sources */,
-				D410081EBB79F995471DE92DA9C74E94 /* LinkDetailsSpec.swift in Sources */,
-				2B41A294315165815B4BB3100BAF777C /* LinkListing.swift in Sources */,
-				FDEF1DE47B288E87302E23C3C7B57828 /* LinkListingSpec.swift in Sources */,
-				04C1A3AE1051B1915C9ACB44623E03CF /* LinkType.swift in Sources */,
-				0736A66A6749C347C1FA7F9014B9A79C /* Listing.swift in Sources */,
-				40EB2E385FE7FCE10BC5116C45BE506D /* ListingType.swift in Sources */,
-				8E33A00FC9DB65068E0E078507C2CAC1 /* Media.swift in Sources */,
-				66285880F8248BD67F696E6304264294 /* MoreComments.swift in Sources */,
-				80EE31AC8498B213E790AA8961177AE3 /* Multireddit.swift in Sources */,
-				A2F81E1CC5FCB676DED61F96E974A3BC /* MultiredditSpec.swift in Sources */,
-				FE620AF2B29F746315A05CFD0B4BCF19 /* MultiredditVisibility.swift in Sources */,
-				79611D30941F2A0A7078D0F3EEC39E21 /* MutliredditListingSpec.swift in Sources */,
-				9A70AE2A985D3E7F743DF29CF479FF7B /* NetworkMock.swift in Sources */,
-				E441FCBF34BE3BE6A4A6305B94A60F04 /* NilBoolTransform.swift in Sources */,
-				E4E6DC87FA6BF9FBED23A742504DB73B /* NowDateTransform.swift in Sources */,
-				F5979FA0A6BDA51BAF265EF18123208F /* OpenGraph.swift in Sources */,
-				8634C85316104DFB66CC289D6B4DF187 /* OpenGraphAppLinksSpec.swift in Sources */,
-				EE03E589B7762952E9E96812ACC01B63 /* OpenGraphSpec.swift in Sources */,
-				9F1E5CFB4C0DF71092829C47A7CE8F34 /* PathTransform.swift in Sources */,
-				14CF140CCFA65E250A46D6C2F145C236 /* PermalinkTransform.swift in Sources */,
-				BC829450ADB8C3A2758D02DEB8B2F2D3 /* PostHint.swift in Sources */,
-				41A7180882DF7B59F511FB091F7A1A94 /* PreviewImage.swift in Sources */,
-				3BF491D3E6744277EB14324191E67E5F /* RedditAPI.swift in Sources */,
-				C63F82FEB5BEF850406A6E548F1EC4DE /* Response+CustomMappers.swift in Sources */,
-				9ECF9D33A33C7533F85D460E0675E60A /* SelfLinkSpec.swift in Sources */,
-				C325F9D60C36BBE47410AD85D0E978E5 /* String+HTMLDecode.swift in Sources */,
-				90BB9D53161F00AD48CF4440FDBAE8CA /* String+Regex.swift in Sources */,
-				714044B2DDF4D4BCF3049511E84024E6 /* SubmissionType.swift in Sources */,
-				FA1A27C1EC0F6A71E6085052C72C909D /* Subreddit.swift in Sources */,
-				1B285497D4A3CBA5088B2121A346635F /* SubredditListing.swift in Sources */,
-				D1C53FF073CB1C50A12C1329006173CF /* SubredditListingSpec.swift in Sources */,
-				905AE2A50DA083D39EAC6045A6D84AC7 /* SubredditSpec.swift in Sources */,
-				ACCD36F6829CCD2778F14D271DC34E51 /* SubredditType.swift in Sources */,
-				FCBBDAA608867FAEC438A8B78E08F30C /* Thing.swift in Sources */,
-				2655C3BDED623190AB89ECD7B81D2693 /* User.swift in Sources */,
-				9AA4736E54AEC5DB03A2F626B019402C /* UserDetailsSpec.swift in Sources */,
-				3631EBFEFA6765DEC54C859D024E5AC2 /* VideoLinkSpec.swift in Sources */,
-				8F641EEFC0566823E87A287D6E9CF2E5 /* Votable.swift in Sources */,
-				0F9E112792AE4DFBBB4C1EF757414D21 /* Voted.swift in Sources */,
-				91B15D3EAD8BC3B26E581499233BA112 /* VotedTransform.swift in Sources */,
-				10DE16545358B1602566CA86419ADBB3 /* ZeroDefaultTransform.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -2086,84 +2102,18 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D3596BCC97EA74126FB16953A405903B /* Debug */ = {
+		02975DD913F070F706DA03EE9435698B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 092EA0D7E465719C137E720794D16A05 /* Pods-SwipeItCommon-SwipeItTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				INFOPLIST_FILE = SwipeItTests/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		F9063DD1D7B2756E12C215028C3B8F0E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -2221,9 +2171,9 @@
 			};
 			name = Debug;
 		};
-		02975DD913F070F706DA03EE9435698B /* Release */ = {
+		C4FC1B0FF5074E73FE48842B1FBBD528 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 092EA0D7E465719C137E720794D16A05 /* Pods-SwipeItCommon-SwipeItTests.release.xcconfig */;
+			baseConfigurationReference = B1E02D5BFF9FE64A2B494464D8DC65E6 /* Pods-SwipeItCommon-SwipeItTests.adhoc.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2234,7 +2184,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
-			name = Release;
+			name = Adhoc;
 		};
 		CDA9620C033AB8563516F2EE49E57EBF /* Adhoc */ = {
 			isa = XCBuildConfiguration;
@@ -2273,6 +2223,50 @@
 			};
 			name = Adhoc;
 		};
+		D3596BCC97EA74126FB16953A405903B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
 		E491F710F8D970FBBC579807187ACFDB /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B0BD83E38B413D050CC62074F3B1BC3 /* Pods-SwipeItCommon-SwipeIt.adhoc.xcconfig */;
@@ -2292,24 +2286,56 @@
 			};
 			name = Adhoc;
 		};
-		C4FC1B0FF5074E73FE48842B1FBBD528 /* Adhoc */ = {
+		F9063DD1D7B2756E12C215028C3B8F0E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1E02D5BFF9FE64A2B494464D8DC65E6 /* Pods-SwipeItCommon-SwipeItTests.adhoc.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				INFOPLIST_FILE = SwipeItTests/Resources/Info.plist;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Adhoc;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		26A42F13247F20275F6A86927D0C1323 /* Build configuration list for PBXNativeTarget "SwipeItTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3ED3AEEE106313706AC05398A979041 /* Debug */,
+				02975DD913F070F706DA03EE9435698B /* Release */,
+				C4FC1B0FF5074E73FE48842B1FBBD528 /* Adhoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C217CFDD6A0F9AC1D978C941E7F78DA1 /* Build configuration list for PBXProject "SwipeIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2326,16 +2352,6 @@
 				0588C0370170E5D91523C68B429D3717 /* Debug */,
 				C1E9064385D2A70F7E5FEA033EB4D5EC /* Release */,
 				E491F710F8D970FBBC579807187ACFDB /* Adhoc */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		26A42F13247F20275F6A86927D0C1323 /* Build configuration list for PBXNativeTarget "SwipeItTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C3ED3AEEE106313706AC05398A979041 /* Debug */,
-				02975DD913F070F706DA03EE9435698B /* Release */,
-				C4FC1B0FF5074E73FE48842B1FBBD528 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
