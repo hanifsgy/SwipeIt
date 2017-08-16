@@ -8,21 +8,22 @@
 
 import Foundation
 import RxSwift
+import RxLegacy
 
 // MARK: Properties and initializer
 class LinkSwipeViewModel {
 
   // MARK: Private Properties
-  private let _title: String
-  private let path: String
-  private let subredditOnly: Bool
-  private let user: User
-  private let accessToken: AccessToken
-  private let linkListings: Variable<[LinkListing]> = Variable([])
-  private let _viewModels: Variable<[LinkItemViewModel]> = Variable([])
-  private let _listingType: Variable<ListingType> = Variable(.Hot)
-  private var disposeBag = DisposeBag()
-  private let _loadingState = Variable<LoadingState>(.Normal)
+  fileprivate let _title: String
+  fileprivate let path: String
+  fileprivate let subredditOnly: Bool
+  fileprivate let user: User
+  fileprivate let accessToken: AccessToken
+  fileprivate let linkListings: Variable<[LinkListing]> = Variable([])
+  fileprivate let _viewModels: Variable<[LinkItemViewModel]> = Variable([])
+  fileprivate let _listingType: Variable<ListingType> = Variable(.hot)
+  fileprivate var disposeBag = DisposeBag()
+  fileprivate let _loadingState = Variable<LoadingState>(.normal)
 
   // MARK: Initializer
   init(user: User, accessToken: AccessToken, title: String, path: String, subredditOnly: Bool) {
@@ -47,45 +48,45 @@ class LinkSwipeViewModel {
 // MARK: Private Observables
 extension LinkSwipeViewModel {
 
-  private var userObservable: Observable<User> {
+  fileprivate var userObservable: Observable<User> {
     return .just(user)
   }
 
-  private var accessTokenObservable: Observable<AccessToken> {
+  fileprivate var accessTokenObservable: Observable<AccessToken> {
     return .just(accessToken)
   }
 
-  private var afterObservable: Observable<String?> {
+  fileprivate var afterObservable: Observable<String?> {
     return linkListings.asObservable()
       .map { $0.last?.after }
   }
 
-  private var listingTypeObservable: Observable<ListingType> {
+  fileprivate var listingTypeObservable: Observable<ListingType> {
     return _listingType.asObservable()
   }
 
-  private var pathObservable: Observable<String> {
+  fileprivate var pathObservable: Observable<String> {
     return .just(path)
   }
 
-  private var subredditOnlyObservable: Observable<Bool> {
+  fileprivate var subredditOnlyObservable: Observable<Bool> {
     return .just(subredditOnly)
   }
 
-  private var request: Observable<LinkListing> {
+  fileprivate var request: Observable<LinkListing> {
     return Observable
       .combineLatest(listingTypeObservable, afterObservable, accessTokenObservable,
         pathObservable) { ($0, $1, $2, $3) }
       .take(1)
       .doOnNext { [weak self] _ in
-        self?._loadingState.value = .Loading
+        self?._loadingState.value = .loading
       }.flatMap {
         (listingType: ListingType, after: String?, accessToken: AccessToken, path: String) in
-        Network.request(RedditAPI.LinkListing(token: accessToken.token,
+        Network.request(RedditAPI.linkListing(token: accessToken.token,
           path: path, listingPath: listingType.path, listingTypeRange: listingType.range?.rawValue,
           after: after))
-      }.observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
-      .mapObject(LinkListing)
+      }.observeOn(SerialDispatchQueueScheduler(qos: .background))
+      .mapObject(LinkListing.self)
       .observeOn(MainScheduler.instance)
   }
 }
@@ -106,12 +107,12 @@ extension LinkSwipeViewModel {
       .map { $0.name }
   }
 
-  func viewModelForIndex(index: Int) -> LinkItemViewModel? {
+  func viewModelForIndex(_ index: Int) -> LinkItemViewModel? {
     return _viewModels.value.get(index)
   }
 
   func requestLinks() {
-    guard _loadingState.value != .Loading else { return }
+    guard _loadingState.value != .loading else { return }
 
     Observable
       .combineLatest(request, userObservable, accessTokenObservable, subredditOnlyObservable) {
@@ -121,25 +122,25 @@ extension LinkSwipeViewModel {
         guard let `self` = self else { return }
 
         switch event {
-        case let .Next(linkListing, user, accessToken, subredditOnly):
+        case let .next(linkListing, user, accessToken, subredditOnly):
           self.linkListings.value.append(linkListing)
           let viewModels = LinkSwipeViewModel.viewModelsFromLinkListing(linkListing,
             user: user, accessToken: accessToken, subredditOnly: subredditOnly)
           viewModels.forEach { $0.preloadData() }
-          self._loadingState.value = self._viewModels.value.count > 0 ? .Normal : .Empty
+          self._loadingState.value = self._viewModels.value.count > 0 ? .normal : .empty
           self._viewModels.value += viewModels
           if viewModels.count <= 4 {
             self.requestLinks()
           }
-        case .Error:
-          self._loadingState.value = .Error
+        case .error:
+          self._loadingState.value = .error
         default: break
         }
 
       }.addDisposableTo(disposeBag)
   }
 
-  func setListingType(listingType: ListingType) {
+  func setListingType(_ listingType: ListingType) {
     guard listingType != _listingType.value else { return }
     _listingType.value = listingType
     refresh()
@@ -149,7 +150,7 @@ extension LinkSwipeViewModel {
     linkListings.value = []
     _viewModels.value = []
     disposeBag = DisposeBag()
-    _loadingState.value = .Normal
+    _loadingState.value = .normal
     requestLinks()
   }
 }
@@ -157,13 +158,13 @@ extension LinkSwipeViewModel {
 // MARK: Helpers
 extension LinkSwipeViewModel {
 
-  private static func viewModelsFromLinkListing(linkListing: LinkListing, user: User,
+  fileprivate static func viewModelsFromLinkListing(_ linkListing: LinkListing, user: User,
                                                 accessToken: AccessToken, subredditOnly: Bool)
     -> [LinkItemViewModel] {
       return linkListing.links
         .filter { !$0.stickied }
-        .filter { !Globals.hideVotedPosts || $0.vote == .None }
-        .filter { $0.type == .Image || $0.type == .GIF }
+        .filter { !Globals.hideVotedPosts || $0.vote == .none }
+        .filter { $0.type == .image || $0.type == .gif }
         .map { LinkItemViewModel.viewModelFromLink($0, user: user, accessToken: accessToken,
           subredditOnly: subredditOnly)
       }

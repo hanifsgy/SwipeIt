@@ -1,79 +1,82 @@
-// Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
+// swiftlint:disable sorted_imports
 import Foundation
 import UIKit
 
-protocol StoryboardSceneType {
+// swiftlint:disable file_length
+
+protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardSceneType {
-  static func storyboard() -> UIStoryboard {
-    return UIStoryboard(name: self.storyboardName, bundle: nil)
+extension StoryboardType {
+  static var storyboard: UIStoryboard {
+    return UIStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
   }
+}
 
-  static func initialViewController() -> UIViewController {
-    guard let vc = storyboard().instantiateInitialViewController() else {
-      fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+struct SceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+  let identifier: String
+
+  func instantiate() -> T {
+    guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
+      fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
     }
-    return vc
+    return controller
   }
 }
 
-extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
-  func viewController() -> UIViewController {
-    return Self.storyboard().instantiateViewControllerWithIdentifier(self.rawValue)
-  }
-  static func viewController(identifier: Self) -> UIViewController {
-    return identifier.viewController()
+struct InitialSceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+
+  func instantiate() -> T {
+    guard let controller = storyboard.storyboard.instantiateInitialViewController() as? T else {
+      fatalError("ViewController is not of the expected class \(T.self).")
+    }
+    return controller
   }
 }
 
-protocol StoryboardSegueType: RawRepresentable { }
+protocol SegueType: RawRepresentable { }
 
 extension UIViewController {
-  func performSegue<S: StoryboardSegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
-    performSegueWithIdentifier(segue.rawValue, sender: sender)
+  func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
+    performSegue(withIdentifier: segue.rawValue, sender: sender)
   }
 }
 
-// swiftlint:disable file_length
-// swiftlint:disable type_body_length
-
-struct StoryboardScene {
-  enum LaunchScreen: StoryboardSceneType {
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
+enum StoryboardScene {
+  enum LaunchScreen: StoryboardType {
     static let storyboardName = "LaunchScreen"
+
+    static let initialScene = InitialSceneType<UIViewController>(storyboard: LaunchScreen.self)
   }
-  enum Main: StoryboardSceneType {
+  enum Main: StoryboardType {
     static let storyboardName = "Main"
 
-    static func initialViewController() -> UINavigationController {
-      guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return vc
-    }
+    static let initialScene = InitialSceneType<UINavigationController>(storyboard: Main.self)
   }
-  enum Onboarding: StoryboardSceneType {
+  enum Onboarding: StoryboardType {
     static let storyboardName = "Onboarding"
 
-    static func initialViewController() -> UINavigationController {
-      guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return vc
-    }
+    static let initialScene = InitialSceneType<UINavigationController>(storyboard: Onboarding.self)
   }
 }
 
-struct StoryboardSegue {
-  enum Main: String, StoryboardSegueType {
-    case LinkList = "linkList"
-    case Page = "page"
-    case PageMultiredditList = "pageMultiredditList"
-    case PageSubredditList = "pageSubredditList"
+enum StoryboardSegue {
+  enum Main: String, SegueType {
+    case linkList
+    case page
+    case pageMultiredditList
+    case pageSubredditList
   }
-  enum Onboarding: String, StoryboardSegueType {
-    case Main = "main"
+  enum Onboarding: String, SegueType {
+    case main
   }
 }
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
+
+private final class BundleToken {}

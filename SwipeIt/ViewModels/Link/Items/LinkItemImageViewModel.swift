@@ -14,14 +14,14 @@ import Kingfisher
 class LinkItemImageViewModel: LinkItemViewModel {
 
   // MARK: Constants
-  private static let defaultImageSize = CGSize(width: 4, height: 3)
+  fileprivate static let defaultImageSize = CGSize(width: 4, height: 3)
 
   // MARK: Private Properties
-  private var prefetcher: Prefetcher? = nil
-  private let _imageSize: Variable<CGSize>
+  fileprivate var prefetcher: Prefetcher? = nil
+  fileprivate let _imageSize: Variable<CGSize>
 
   // MARK: Public Properties
-  let imageURL: NSURL?
+  let imageURL: URL?
   let indicator: String?
   let overlay: String?
   var imageSize: Observable<CGSize> {
@@ -29,7 +29,7 @@ class LinkItemImageViewModel: LinkItemViewModel {
   }
 
   override init(user: User, accessToken: AccessToken, link: Link, showSubreddit: Bool) {
-    imageURL = link.imageURL
+    imageURL = link.imageURL as? URL
     indicator = LinkItemImageViewModel.indicatorFromLink(link)
     overlay = LinkItemImageViewModel.overlayFromLink(link)
     _imageSize = Variable(link.imageSize ?? LinkItemImageViewModel.defaultImageSize)
@@ -42,7 +42,7 @@ class LinkItemImageViewModel: LinkItemViewModel {
   }
 
   // MARK: API
-  func setImageSize(imageSize: CGSize) {
+  func setImageSize(_ imageSize: CGSize) {
     _imageSize.value = imageSize
   }
 
@@ -59,24 +59,24 @@ class LinkItemImageViewModel: LinkItemViewModel {
 // MARK: Helpers
 extension LinkItemImageViewModel {
 
-  private class func indicatorFromLink(link: Link) -> String? {
-    if link.type == .GIF {
-      return tr(.LinkIndicatorGIF)
-    } else if link.type == .Album {
-      return tr(.LinkIndicatorAlbum)
+  fileprivate class func indicatorFromLink(_ link: Link) -> String? {
+    if link.type == .gif {
+      return L10n.Link.Indicator.gif
+    } else if link.type == .album {
+      return L10n.Link.Indicator.album
     } else if link.isSpoiler {
-      return tr(.LinkIndicatorSpoiler)
+      return L10n.Link.Indicator.spoiler
     } else if link.nsfw == true {
-      return tr(.LinkIndicatorNSFW)
+      return L10n.Link.Indicator.nsfw
     }
     return nil
   }
 
-  private class func overlayFromLink(link: Link) -> String? {
+  fileprivate class func overlayFromLink(_ link: Link) -> String? {
     if link.nsfw == true {
-      return tr(.LinkIndicatorNSFW)
+      return L10n.Link.Indicator.nsfw
     } else if link.isSpoiler {
-      return tr(.LinkIndicatorSpoiler)
+      return L10n.Link.Indicator.spoiler
     }
     return nil
   }

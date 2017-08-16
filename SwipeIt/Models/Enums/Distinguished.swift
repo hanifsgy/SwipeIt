@@ -8,13 +8,12 @@
 
 import Foundation
 
-// swiftlint:disable type_name
 enum Distinguished: String {
 
-  case Yes = "yes"
-  case No = "no"
-  case Admin = "admin"
-  case Special = "special"
-  case Moderator = "moderator"
+  case yes = "yes"
+  case no = "no"
+  case admin = "admin"
+  case special = "special"
+  case moderator = "moderator"
 
 }

@@ -1,144 +1,289 @@
-# Customise this file, documentation can be found here:
-# https://github.com/KrauseFx/fastlane/tree/master/docs
-# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
-# can also be listed using the `fastlane actions` command
-
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# By default, fastlane will send which actions are used
-# No personal data is shared, more information on https://github.com/fastlane/enhancer
-# Uncomment the following line to opt out
-# opt_out_usage
-
-# If you want to automatically update fastlane if a new version is available:
-#update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version "1.5.0"
+fastlane_version "2.26.0"
 
 default_platform :ios
 
 platform :ios do
 
   commit = last_git_commit
-  run_location = is_ci? ? 'Travis' : 'Local'
+  is_ci = is_ci?
+  run_location = is_ci ? 'CI' : ENV['USER']
 
-  before_all do
-    # ensure_git_status_clean
-    setup
-    slack_msg(msg: "#{run_location} running Fastlane #{lane_context[SharedValues::LANE_NAME]}", success: true)
+  before_all do |lane, options|
+    xcode_select("/Applications/Xcode.app")
+    if !options[:force] && lane_context[SharedValues::LANE_NAME].start_with?("itunes")
+      ensure_git_status_clean
+    end
+    slack_msg(msg: "#{run_location} running fastlane #{lane_context[SharedValues::LANE_NAME]}", success: true)
   end
 
-  desc "Runs all the unit tests"
-  desc "Submits a new Beta Build to Fabric"
-  desc "Submits a new Beta Build to Apple TestFlight"
+  # CI
+  desc "CI run lane"
   lane :ci do
-    test
-    if is_ci && ENV['TRAVIS_PULL_REQUEST'] == "false"
-      if git_branch == "master"
-        itc
-      elsif git_branch == "development"
+    case branch
+      when "master"
+        itunes
+      when "development"
         fabric
-      end
+      else
+        test
     end
   end
 
-  lane :release do
-    update_build_number
-    fabric_beta
-    itunes
+  # Testing
+  desc "Runs all the unit and UI tests"
+  lane :test do |options|
+    scan(skip_slack: !is_ci)
   end
 
-  desc "Runs all the unit tests"
-  lane :test do
-    scan
+  desc "Print the code coverage"
+  lane :codecov do
+    begin
+      slather(build_directory: '.build/DerivedData')
+    rescue
+      test(single: true)
+      slather(build_directory: '.build/DerivedData')
+    end
   end
 
+  desc "Show the code coverage in HTML"
+  lane :codecov_html do
+    begin
+      slather(html: true, show: true, build_directory: '.build/DerivedData')
+    rescue
+      test(single: true)
+      slather(html: true, show: true, build_directory: '.build/DerivedData')
+    end
+  end
+
+  desc "Upload metadata"
+  lane :upload_metadata do
+    deliver(force: is_ci, skip_binary_upload: true)
+  end
+
+  # Deployment
   desc "Submit a new Beta Build to Fabric"
-  desc "This will also make sure the profile is up to date"
-  lane :fabric do
-    update_build_number
-    fabric_beta
+  lane :fabric do |options|
+    build_number = increment_build_number
+    build_fabric
+    commit_push_tag(build_number: build_number, build_type: "beta")
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
-  desc "This will also make sure the profile is up to date"
-  lane :itc do
-    update_build_number
-    itunes
+  lane :itunes do |options|
+    build_number = increment_build_number
+    build_itunes
+    commit_push_tag(build_number: build_number, build_type: "release")
+    snapshot(skip_open_summary: is_ci)
+    frameit(silver: true)
+    deliver
   end
 
-  private_lane :fabric_beta do |options|
+  # Setup
+  desc "Run Synx"
+  lane :synx do
+    root_sh(command: "synx SwipeIt.xcodeproj")
+  end
+
+  desc "Setups a new environment"
+  lane :setup do
+    git_precommit_hook
+    install_certs
+  end
+
+  desc "Adds git pre-commit hook for xUnique"
+  lane :git_precommit_hook do
+    sh("curl https://bootstrap.pypa.io/get-pip.py | python")
+    sh("pip install xUnique")
+    sh('echo "#!/bin/sh\nxunique SwipeIt.xcodeproj\nxunique Pods/Pods.xcodeproj\ngit add SwipeIt.xcodeproj\ngit add Pods/Pods.xcodeproj" > ../.git/hooks/pre-commit')
+    sh('chmod +x ../.git/hooks/pre-commit')
+  end
+
+  # Certificates
+  desc "Installs all certificates"
+  lane :install_certs do
+    match(type: "development", force_for_new_devices: true)
     match(type: "adhoc", force_for_new_devices: true)
-    gym
-    upload_crashlytics
-  end
-
-  private_lane :itunes do |options|
     match(type: "appstore")
-    gym(include_bitcode: true)
-    upload_itunes
   end
 
-  private_lane :upload_crashlytics do
+  desc "Add certificates for a specified environment through :env"
+  lane :create_certs do |options|
+    if options[:env] == "development" or !options[:env]
+      match(type: "development", force_for_new_devices: true)
+    end
+    if options[:env] == "adhoc" or !options[:env]
+      match(type: "adhoc", force_for_new_devices: true)
+    end
+    if options[:env] == "appstore" or !options[:env]
+      match(type: "appstore")
+    end
+  end
+
+  lane :refresh_dsyms do |options|
+    clean_build_artifacts
+    download_dsyms(version: options[:version])
+    upload_symbols_to_crashlytics
+    clean_build_artifacts
+  end
+
+  desc "Add device to Apple dev portal"
+  lane :add_device do |options|
+    register_device(name: options[:name], udid: options[:udid])
+  end
+  # Private Lanes
+  desc "Commit and push tag"
+  private_lane :commit_push_tag do |options|
+    build_number_bump(build_number: options[:build_number])
+    tag(build_type: options[:build_type])
+  end
+
+  private_lane :build_fabric do |options|
+    match(type: "adhoc", force_for_new_devices: true)
+    gym(configuration: "Adhoc")
+    upload_fabric
+  end
+
+  private_lane :upload_fabric do |options|
     crashlytics(
-      api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
-      build_secret: ENV['SWIPEIT_FABRIC_SECRET'],
-      notes: commit[:message],
+      api_token: fabric_api_token,
+      build_secret: fabric_build_secret,
+      notes: truncate(text: change_log_since_last_tag, length: 16384, omission: ''),
       groups: ["SwipeIt"]
     )
   end
 
+  private_lane :build_itunes do |options|
+    match(type: "appstore", readonly: true)
+    gym(scheme: options[:scheme], include_bitcode: true)
+  end
+
+  desc "Uploads the build to iTunes Connect"
   private_lane :upload_itunes do
     pilot(
       skip_submission: true,
-      team_id: ENV['SWIPEIT_ITUNES_TEAM_ID'],
+      team_id: itunes_team_id,
       skip_waiting_for_build_processing: true
     )
   end
 
-  # Private Lanes
-  private_lane :setup do
-    ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
-    ENV["MATCH_PASSWORD"] = ENV["SWIPEIT_CERTIFICATE_KEY"]
-    ENV["FASTLANE_PASSWORD"] = ENV["SWIPEIT_ITUNES_PASSWORD"]
-
-    #cocoapods(repo_update: true)
+  desc "Commits a build version bump to Github"
+  private_lane :build_number_bump do |options|
+    commit_version_bump(message: "[skip ci] Build number bump to #{options[:build_number]}")
   end
 
-  private_lane :update_build_number do
-    build_number = Time.now.utc.strftime("%y%m%d.%H%M")
-    increment_build_number build_number: build_number
+  desc "Create a git tag"
+  private_lane :tag do |options|
+    begin
+      push_to_git_remote(remote_branch: branch)
+
+      version_number = get_version_number
+      build_number = get_build_number
+
+      set_github_release(
+        name: "#{options[:build_type]} Version: #{tag_name(version_number, build_number)}",
+        tag_name: "#{options[:build_type]}/#{tag_name(version_number, build_number)}",
+        description: change_log_since_last_tag
+      )
+
+      push_git_tags
+    rescue => ex
+      slack_msg(msg: ex.message, success: false)
+    end
   end
 
-  private_lane :slack_msg do |params|
-    slack(
-      channel: "swipeit",
-      payload: {
-        'Message' => commit[:message],
-        'Author' => commit[:author],
-        'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
-      },
-      default_payloads: [],
-      message: params[:msg],
-      success: params[:success])
+  desc "Executes sh in project root"
+  private_lane :root_sh do |options|
+    sh("cd .. && #{options[:command]}")
   end
+
+  desc "Will send a slack message to #mobile"
+  private_lane :slack_msg do |options|
+    if is_ci
+      slack(
+        channel: "SwipeIt",
+        payload: {
+          'Message' => commit[:message],
+          'Author' => commit[:author],
+          'Commit' => commit_url(commit),
+          'Build' => build_url
+        },
+        default_payloads: [],
+        message: options[:msg],
+        success: options[:success])
+    end
+  end
+
+  # Accessors
+  def build_url
+    if ENV['TRAVIS_JOB_ID']
+      return "https://travis-ci.org/ivanbruel/SwipeIt/jobs/#{ENV['TRAVIS_JOB_ID']}"
+    end
+    return "N/A"
+  end
+
+  def commit_url(commit)
+    return "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
+  end
+
+  def fabric_build_secret
+    return ENV["FABRIC_BUILD_SECRET"]
+  end
+
+  def fabric_api_token
+    return ENV["FABRIC_API_TOKEN"]
+  end
+
+  def branch
+    return ENV["TRAVIS_BRANCH"] if ENV["TRAVIS_BRANCH"]
+    git_branch
+  end
+
+  def change_log_since_last_tag
+    # http://git-scm.com/docs/pretty-formats
+    # <short hash> <commit title>
+    changelog_from_git_commits(pretty: '%h %s') || "No Changelog"
+  end
+
+  def version_string(version_number, build_number)
+     "#{version_number} (#{build_number})"
+  end
+
+  def tag_name(version_name, version_code)
+     "#{version_name}/#{version_code}"
+  end
+
+  def itunes_team_id
+    ENV["ITUNES_TEAM_ID"]
+  end
+
+  def app_id
+    ENV["APP_ID"]
+  end
+
+  def truncate(options)
+    raise 'Pleasant: Length should be greater than omission length' unless options[:length] > options[:omission].length
+
+    truncated_string = options[:text].to_s
+    if truncated_string.length > options[:length]
+      truncated_string = truncated_string[0...(options[:length] - options[:omission].length)]
+      truncated_string += options[:omission]
+    end
+    truncated_string
+  end
+
 
   # This lane is called, only if the executed lane was successful
   after_all do |lane|
-    notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
-    slack_msg(msg: "#{run_location} successfully distributed SwipeIt into #{lane} :rocket:", success: true)
+    if !is_ci
+      notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
+    end
+      slack_msg(msg: "#{run_location} successfully distributed Unbabel into #{lane} :rocket:", success: true)
   end
 
   error do |lane, exception|
-    notification(message: "Fastlane '#{lane}' errored") # Mac OS X Notification
-    slack_msg(msg: exception.to_s, success: false)
+    if !is_ci
+      notification(message: "Fastlane '#{lane}' errored") # Mac OS X Notification
+    end
+    slack_msg(msg: "#{run_location} failed #{exception.to_s}", success: false)
   end
 end
-
-
-
-# More information about multiple platforms in fastlane: https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
-# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md

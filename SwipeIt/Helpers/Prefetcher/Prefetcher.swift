@@ -11,16 +11,14 @@ import Kingfisher
 
 class Prefetcher {
 
-  private var imagePrefetcher: ImagePrefetcher!
-  private let completion: ((UIImage?) -> Void)?
+  fileprivate var imagePrefetcher: ImagePrefetcher!
+  fileprivate let completion: ((UIImage?) -> Void)?
 
-  init(imageURL: NSURL, completion: ((UIImage?) -> Void)?) {
+  init(imageURL: URL, completion: ((UIImage?) -> Void)?) {
     self.completion = completion
-    imagePrefetcher = ImagePrefetcher(urls: [imageURL]) {
-      [weak self] (skippedResources, _, completedResources) in
+    imagePrefetcher = ImagePrefetcher(urls: [imageURL]) { [weak self] skippedResources, _, completedResources in
       if let resource = completedResources.first ?? skippedResources.first {
-        KingfisherManager().cache.retrieveImageForKey(resource.cacheKey, options: nil) {
-          (image, _) in
+        KingfisherManager.shared.cache.retrieveImage(forKey: resource.cacheKey, options: nil) { image, _ in
           self?.completion?(image)
         }
       }

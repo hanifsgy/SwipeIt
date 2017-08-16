@@ -1,5 +1,5 @@
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md
 
-app_identifier "ios.ivanbruel.SwipeIt"
-apple_id ENV["SWIPEIT_APPLE_ID"]
-team_id ENV["SWIPEIT_TEAM_ID"]
+app_identifier ENV["APP_ID"]
+apple_id ENV["APPLE_EMAIL"]
+team_id ENV["APPLE_TEAM_ID"]

@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import Localizable
 
 // MARK: Properties and Lifecycle
 class WalkthroughViewController: UIViewController {
 
   var viewModel: WalkthroughViewModel! = WalkthroughViewModel()
 
-  @IBOutlet private weak var loginButton: UIButton! {
+  @IBOutlet fileprivate weak var loginButton: UIButton! {
     didSet {
-      loginButton.setTitle(tr(.WalkthroughButtonLogin), forState: .Normal)
+      loginButton.setTitle(L10n.Walkthrough.Button.login, for: .normal)
     }
   }
 
@@ -30,7 +29,7 @@ class WalkthroughViewController: UIViewController {
 // MARK: Setup
 extension WalkthroughViewController {
 
-  private func setup() {
+  fileprivate func setup() {
     viewModel.loginResult
       .bindNext { [weak self] error in
         guard let error = error else {
@@ -46,14 +45,14 @@ extension WalkthroughViewController {
 // MARK: UI
 extension WalkthroughViewController: AlerteableViewController {
 
-  private func goToMainStoryboard() {
-    performSegue(StoryboardSegue.Onboarding.Main)
+  fileprivate func goToMainStoryboard() {
+    //performSegue(StoryboardSegue.Onboarding.Main, sender: <#Any?#>)
   }
 
-  private func showLoginError(error: ErrorType) {
-    let loginError = error as? LoginError ?? .Unknown
-    presentAlert(tr(.LoginErrorTitle), message: loginError.description,
-                 buttonTitle: tr(.AlertButtonOK))
+  fileprivate func showLoginError(_ error: Error) {
+    let loginError = error as? LoginError ?? .unknown
+    presentAlert(L10n.Login.Error.title, message: loginError.description,
+                 buttonTitle: L10n.Alert.Button.ok)
   }
 
 }
@@ -61,7 +60,7 @@ extension WalkthroughViewController: AlerteableViewController {
 // MARK: Segue
 extension WalkthroughViewController {
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let rootViewController = segue.navigationRootViewController else {
       return
     }

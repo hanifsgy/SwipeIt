@@ -9,17 +9,13 @@ public extension UICollectionReusableView {
         rx_reusableDisposeBag = DisposeBag()
     }
     
-    public override class func initialize() {
-        struct Static {
-            static var token: dispatch_once_t = 0
-        }
+    open override class func initialize() {
         // make sure this isn't a subclass
         if self !== UICollectionReusableView.self {
             return
         }
-        dispatch_once(&Static.token) {
-            self.swizzleMethodForSelector(#selector(self.prepareForReuse),
-                                          withMethodForSelector: #selector(self.rx_prepareForReuse))
-        }
+      
+        self.swizzleMethodForSelector(#selector(self.prepareForReuse),
+            withMethodForSelector: #selector(self.rx_prepareForReuse))
     }
 }

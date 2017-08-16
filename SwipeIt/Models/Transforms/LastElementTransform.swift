@@ -9,20 +9,21 @@
 import Foundation
 import ObjectMapper
 
-public class LastElementTransform<T: Mappable>: TransformType {
+open class LastElementTransform<T: Mappable>: TransformType {
   public typealias Object = T
-  public typealias JSON = [[String: AnyObject]]
+  public typealias JSON = [[String: Any]]
 
   public init() { }
 
-  public func transformFromJSON(value: AnyObject?) -> Object? {
-    guard let value = value as? JSON else {
+  open func transformFromJSON(_ value: Any?) -> Object? {
+    guard let value = value as? JSON,
+      let json = value.last else {
       return nil
     }
-    return Mapper<Object>().map(value.last)
+    return Mapper<Object>().map(JSON: json)
   }
 
-  public func transformToJSON(value: Object?) -> JSON? {
+  open func transformToJSON(_ value: Object?) -> JSON? {
     guard let value = value else {
       return nil
     }

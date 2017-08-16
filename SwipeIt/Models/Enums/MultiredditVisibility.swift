@@ -10,7 +10,7 @@ import Foundation
 
 enum MultiredditVisibility: String {
 
-  case Public = "public"
-  case Private = "private"
+  case `public` = "public"
+  case `private` = "private"
 
 }

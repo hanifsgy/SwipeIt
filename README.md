@@ -1,7 +1,7 @@
 SwipeIt
 =================
 
-[![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platform iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![Build Status](https://travis-ci.org/ivanbruel/SwipeIt.svg?branch=master)](https://travis-ci.org/ivanbruel/SwipeIt)
 [![codecov](https://codecov.io/gh/ivanbruel/SwipeIt/branch/master/graph/badge.svg)](https://codecov.io/gh/ivanbruel/SwipeIt)

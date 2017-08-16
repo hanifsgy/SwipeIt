@@ -23,7 +23,7 @@ struct PreviewImage: Mappable {
   var nsfwResolutions: [ImageSource]?
 
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(map: Map) { }
 
   mutating func mapping(map: Map) {
     identifier <- map["id"]

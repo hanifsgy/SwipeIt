@@ -21,10 +21,10 @@ class WalkthroughViewModel: ViewModel {
         self?.accessToken = accessToken
       }.flatMap { result -> Observable<Result<User, LoginError>> in
         switch result {
-        case .Success(let accessToken):
+        case .success(let accessToken):
           return WalkthroughViewModel.getUserDetails(accessToken)
             .map { Result(value: $0) }
-        case .Failure(let error):
+        case .failure(let error):
           return .just(Result(error: error))
         }
 
@@ -36,13 +36,13 @@ class WalkthroughViewModel: ViewModel {
   var loginViewModel = LoginViewModel()
 
   var subscriptionsViewModel: SubscriptionsViewModel? {
-    guard let user = user, accessToken = accessToken else { return nil }
+    guard let user = user, let accessToken = accessToken else { return nil }
     return SubscriptionsViewModel(user: user, accessToken: accessToken)
   }
 
   // MARK: Private Properties
-  private var accessToken: AccessToken?
-  private var user: User?
+  fileprivate var accessToken: AccessToken?
+  fileprivate var user: User?
 
 }
 
@@ -50,9 +50,9 @@ class WalkthroughViewModel: ViewModel {
 extension WalkthroughViewModel {
 
   // Object isn't wrapped in a data object as opposed to all other endpoints
-  private static func getUserDetails(accessToken: AccessToken) -> Observable<User> {
-    return Network.request(.UserMeDetails(token: accessToken.token))
-      .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
+  fileprivate static func getUserDetails(_ accessToken: AccessToken) -> Observable<User> {
+    return Network.request(.userMeDetails(token: accessToken.token))
+      .observeOn(SerialDispatchQueueScheduler(qos: .background))
       .mapObject(User.self) { json in
         guard let jsonObject = json else {
           return json

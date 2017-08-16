@@ -1,6 +1,6 @@
 {
   "name": "ZLSwipeableViewSwift",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "summary": "A simple view for building card like interface like Tinder and Potluck.",
   "description": "ZLSwipeableViewSwift is a simple view for building card like interface like Tinder and Potluck.",
   "homepage": "https://github.com/zhxnlai/ZLSwipeableViewSwift",
@@ -23,7 +23,7 @@
   },
   "source": {
     "git": "https://github.com/zhxnlai/ZLSwipeableViewSwift.git",
-    "tag": "0.0.7"
+    "tag": "0.0.8"
   },
   "source_files": "ZLSwipeableViewSwift/*.swift",
   "frameworks": "UIKit",

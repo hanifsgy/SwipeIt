@@ -16,10 +16,10 @@ class SubredditListViewModel: ViewModel {
   typealias SubredditListSectionViewModel = SectionViewModel<SubredditListItemViewModel>
 
   // MARK: Private Properties
-  private let user: User
-  private let accessToken: AccessToken
-  private let subredditListings: Variable<[SubredditListing]>
-  private let disposeBag = DisposeBag()
+  fileprivate let user: User
+  fileprivate let accessToken: AccessToken
+  fileprivate let subredditListings: Variable<[SubredditListing]>
+  fileprivate let disposeBag = DisposeBag()
 
   // 1. Only send the signal when we have all listings
   // 2. Extract all subreddits into an array of subreddits
@@ -46,26 +46,26 @@ class SubredditListViewModel: ViewModel {
 // MARK: Private Observables
 extension SubredditListViewModel {
 
-  private var subredditsObservable: Observable<[Subreddit]> {
+  fileprivate var subredditsObservable: Observable<[Subreddit]> {
     return subredditListings.asObservable()
       .filter { (subredditListing: [SubredditListing]) -> Bool in
         return subredditListing.last?.after == nil && subredditListing.count > 0
       }.map { (subredditListings: [SubredditListing]) -> [Subreddit] in
         Array(subredditListings.flatMap { (subredditListing: SubredditListing) -> [Subreddit]? in
           subredditListing.subreddits
-          }.flatten())
+          }.joined())
     }
   }
 
-  private var userObservable: Observable<User> {
+  fileprivate var userObservable: Observable<User> {
     return .just(user)
   }
 
-  private var accessTokenObservable: Observable<AccessToken> {
+  fileprivate var accessTokenObservable: Observable<AccessToken> {
     return .just(accessToken)
   }
 
-  private var subredditViewModels: Observable<[SubredditListItemViewModel]> {
+  fileprivate var subredditViewModels: Observable<[SubredditListItemViewModel]> {
     return Observable.combineLatest(subredditsObservable, userObservable, accessTokenObservable) {
       ($0, $1, $2)
       }.map { (subreddits: [Subreddit], user: User, accessToken: AccessToken)
@@ -85,12 +85,12 @@ extension SubredditListViewModel {
   // when the last subreddit listing has 'after'
   func requestAllSubreddits() {
     subredditListings
-      .asDriver()
+      .asObservable()
       .filter { (subredditListings: [SubredditListing]) -> Bool in
         subredditListings.count == 0 || subredditListings.last?.after != nil
       }.map { (subredditListings: [SubredditListing]) -> String? in
         subredditListings.last?.after
-      }.driveNext { [weak self] after in
+      }.subscribeNext { [weak self] after in
         self?.requestSubreddits(after)
       }.addDisposableTo(disposeBag)
   }
@@ -99,10 +99,10 @@ extension SubredditListViewModel {
 // MARK: Networking
 extension SubredditListViewModel {
 
-  private func requestSubreddits(after: String?) {
-    Network.request(.SubredditListing(token: accessToken.token, after: after))
-      .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
-      .mapObject(SubredditListing)
+  fileprivate func requestSubreddits(_ after: String?) {
+    Network.request(.subredditListing(token: accessToken.token, after: after))
+      .observeOn(SerialDispatchQueueScheduler(qos: .background))
+      .mapObject(SubredditListing.self)
       .observeOn(MainScheduler.instance)
       .bindNext { [weak self] subredditListing in
         self?.subredditListings.value.append(subredditListing)
@@ -114,7 +114,7 @@ extension SubredditListViewModel {
 extension SubredditListViewModel {
 
   // Create the Frontpage and /r/all view models
-  private class func specialSubredditViewModels(user: User, accessToken: AccessToken)
+  fileprivate class func specialSubredditViewModels(_ user: User, accessToken: AccessToken)
     -> [SubredditListItemViewModel] {
       let frontpage = SubredditListNameViewModel(user: user, accessToken: accessToken,
                                                  name: "Frontpage", path: "/")
@@ -125,13 +125,13 @@ extension SubredditListViewModel {
 
   // Extract first letters to create the alphabet, and create the sections afterwards
   // Add a ★ section for the Frontpage and /r/all
-  private class func sectionsFromSubredditViewModels(viewModels: [SubredditListItemViewModel],
+  fileprivate class func sectionsFromSubredditViewModels(_ viewModels: [SubredditListItemViewModel],
                                                      user: User, accessToken: AccessToken)
     -> [SubredditListSectionViewModel] {
 
       let alphabet = viewModels.map { $0.name.firstLetter }
         .unique()
-        .sort(Sorter.alphabetSort)
+        .sorted(by: Sorter.alphabetSort)
 
       var sectionViewModels = [SectionViewModel(title: "★",
         viewModels: specialSubredditViewModels(user, accessToken: accessToken))]
@@ -139,7 +139,7 @@ extension SubredditListViewModel {
       sectionViewModels += alphabet.map { letter in
         let viewModels = viewModels
           .filter { $0.name.firstLetter == letter }
-          .sort { $0.0.name < $0.1.name }
+          .sorted { $0.0.name < $0.1.name }
         return SectionViewModel(title: letter, viewModels: viewModels)
       }
 

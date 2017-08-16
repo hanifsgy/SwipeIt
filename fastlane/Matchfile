@@ -1,5 +1,4 @@
-git_url ENV["SWIPEIT_CERTIFICATE_GIT"]
-type "development"
-app_identifier "ios.ivanbruel.SwipeIt"
-username ENV["SWIPEIT_APPLE_ID"]
-team_id ENV["SWIPEIT_TEAM_ID"]
+git_url ENV["CERTIFICATE_GIT"]
+app_identifier ENV["APP_ID"]
+username ENV["APPLE_EMAIL"]
+team_id ENV["APPLE_TEAM_ID"]

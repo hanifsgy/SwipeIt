@@ -18,16 +18,15 @@ protocol CloseableViewController {
 extension CloseableViewController where Self: UIViewController {
 
   func setupCloseButton() {
-    guard let firstViewController = navigationController?.viewControllers.first
-      where firstViewController == self else {
+    guard let firstViewController = navigationController?.viewControllers.first, firstViewController == self else {
         return
     }
 
-    let closeButton = UIBarButtonItem(title: tr(.CloseableButtonClose), style: .Plain, target: nil,
+    let closeButton = UIBarButtonItem(title: L10n.Closeable.Button.close, style: .plain, target: nil,
                                       action: nil)
-    closeButton.rx_tap
+    closeButton.rx.tap
       .bindNext { [weak self] _ in
-        self?.dismissViewControllerAnimated(true, completion: nil)
+        self?.dismiss(animated: true, completion: nil)
       }.addDisposableTo(rx_disposeBag)
     navigationItem.leftBarButtonItem = closeButton
   }

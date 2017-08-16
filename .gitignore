@@ -5,6 +5,7 @@
 ## Build generated
 build/
 DerivedData
+Gemfile.lock
 
 ## Various settings
 *.pbxuser
@@ -45,6 +46,13 @@ playground.xcworkspace
 #
 # Pods/
 
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
+
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
@@ -52,9 +60,8 @@ playground.xcworkspace
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
 
-fastlane/README.md
 fastlane/report.xml
 fastlane/test_output
-fastlane/screenshots
-*.mobileprovision
-*.p12
+fastlane/.env
+.DS_Store
+.html

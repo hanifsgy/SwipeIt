@@ -9,20 +9,20 @@
 import Foundation
 import ObjectMapper
 
-public class EmptyURLTransform: TransformType {
-  public typealias Object = NSURL
+open class EmptyURLTransform: TransformType {
+  public typealias Object = URL
   public typealias JSON = String
 
   public init() {}
 
-  public func transformFromJSON(value: AnyObject?) -> NSURL? {
-    if let URLString = value as? String where URLString.characters.count > 0 {
-      return NSURL(string: URLString)
+  open func transformFromJSON(_ value: Any?) -> URL? {
+    if let URLString = value as? String, URLString.characters.count > 0 {
+      return URL(string: URLString)
     }
     return nil
   }
 
-  public func transformToJSON(value: NSURL?) -> String? {
+  open func transformToJSON(_ value: URL?) -> String? {
     if let URL = value {
       return URL.absoluteString
     }

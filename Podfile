@@ -1,9 +1,10 @@
 platform :ios, '9.0'
 use_frameworks!
+inhibit_all_warnings!
 
 abstract_target 'SwipeItCommon' do
 
-  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper'
+  pod 'ObjectMapper'
   pod 'RxSwift'
   pod 'Moya/RxSwift'
   pod 'Moya-ObjectMapper/RxSwift'
@@ -11,6 +12,8 @@ abstract_target 'SwipeItCommon' do
   pod 'RxOptional'
   pod 'Result'
   pod 'Kanna'
+  pod 'RxLegacy'
+  pod 'RxLegacy/RxResult'
 
   target 'SwipeIt' do
 
@@ -20,9 +23,9 @@ abstract_target 'SwipeItCommon' do
     pod 'Device'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'KeychainSwift', '~> 3.0'
+    pod 'KeychainSwift'
     pod 'RxDataSources'
-    pod 'DateTools'
+    pod 'DateToolsSwift'
     pod 'RxAlamofire'
     pod 'Cell+Rx'
     pod 'AsyncSwift'
@@ -33,7 +36,6 @@ abstract_target 'SwipeItCommon' do
     pod 'RxResult'
     pod 'RxColor'
     pod 'ZLSwipeableViewSwift', :git => 'https://github.com/zhxnlai/ZLSwipeableViewSwift'
-    pod 'Localizable'
     pod 'TextStyle/RxSwift'
 
   end

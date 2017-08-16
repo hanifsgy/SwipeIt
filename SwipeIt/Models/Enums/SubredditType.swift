@@ -10,12 +10,12 @@ import Foundation
 
 enum SubredditType: String {
 
-  case Public = "public"
-  case Private = "private"
-  case Restricted = "restricted"
-  case GoldRestricted = "gold_restricted"
-  case GoldOnly = "gold_only"
-  case Archived = "archived"
-  case EmployeesOnly = "employees_only"
+  case `public` = "public"
+  case `private` = "private"
+  case restricted = "restricted"
+  case goldRestricted = "gold_restricted"
+  case goldOnly = "gold_only"
+  case archived = "archived"
+  case employeesOnly = "employees_only"
 
 }

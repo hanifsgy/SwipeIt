@@ -10,8 +10,8 @@ import Foundation
 
 enum SubmissionType: String {
 
-  case Any = "any"
-  case Link = "link"
-  case SelfPost = "self"
+  case any = "any"
+  case link = "link"
+  case selfPost = "self"
 
 }

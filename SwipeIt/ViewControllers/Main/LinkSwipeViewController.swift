@@ -13,19 +13,19 @@ import ZLSwipeableViewSwift
 class LinkSwipeViewController: UIViewController, CloseableViewController, AlerteableViewController {
 
   // MARK: - IBOutlets
-  @IBOutlet private weak var swipeView: ZLSwipeableView!
-  @IBOutlet private weak var downvoteButton: UIButton!
-  @IBOutlet private weak var upvoteButton: UIButton!
-  @IBOutlet private weak var undoButton: UIButton!
-  @IBOutlet private weak var shareButton: UIButton!
+  @IBOutlet fileprivate weak var swipeView: ZLSwipeableView!
+  @IBOutlet fileprivate weak var downvoteButton: UIButton!
+  @IBOutlet fileprivate weak var upvoteButton: UIButton!
+  @IBOutlet fileprivate weak var undoButton: UIButton!
+  @IBOutlet fileprivate weak var shareButton: UIButton!
 
   // MARK: - ViewModel
   var viewModel: LinkSwipeViewModel!
 
   // MARK: Properties
-  private var cardIndex: Int = 0
-  private lazy var shareHelper: ShareHelper = ShareHelper(viewController: self)
-  private lazy var alertHelper: AlertHelper = AlertHelper(viewController: self)
+  fileprivate var cardIndex: Int = 0
+  fileprivate lazy var shareHelper: ShareHelper = ShareHelper(viewController: self)
+  fileprivate lazy var alertHelper: AlertHelper = AlertHelper(viewController: self)
 }
 
 // MARK: - Lifecycle
@@ -47,13 +47,13 @@ extension LinkSwipeViewController {
 // MARK: - Setup
 extension LinkSwipeViewController {
 
-  private func setup() {
+  fileprivate func setup() {
     setupCloseButton()
     setupSwipeView()
     bindViewModel()
   }
 
-  private func setupSwipeView() {
+  fileprivate func setupSwipeView() {
     swipeView.animateView = ZLSwipeableView.tinderAnimateViewHandler()
     swipeView.numberOfHistoryItem = 10
     swipeView.didTap = { [weak self] (view, location) in
@@ -80,9 +80,9 @@ extension LinkSwipeViewController {
     updateUndoButton()
   }
 
-  private func bindViewModel() {
+  fileprivate func bindViewModel() {
     viewModel.title
-      .bindTo(rx_title)
+      .bindTo(rx.title)
       .addDisposableTo(rx_disposeBag)
     viewModel.requestLinks()
     viewModel.viewModels
@@ -91,25 +91,25 @@ extension LinkSwipeViewController {
       }.addDisposableTo(rx_disposeBag)
   }
 
-  private func updateUndoButton() {
-    undoButton.enabled = swipeView.history.count != 0
+  fileprivate func updateUndoButton() {
+    undoButton.isEnabled = swipeView.history.count != 0
   }
 }
 
 // MARK: IBActions
 extension LinkSwipeViewController {
 
-  @IBAction private func upvoteClick() {
+  @IBAction fileprivate func upvoteClick() {
     currentCardView?.animateOverlayPercentage(1)
     swipeView.swipeTopView(inDirection: .Right)
   }
 
-  @IBAction private func downvoteClick() {
+  @IBAction fileprivate func downvoteClick() {
     currentCardView?.animateOverlayPercentage(-1)
     swipeView.swipeTopView(inDirection: .Left)
   }
 
-  @IBAction private func undoClick() {
+  @IBAction fileprivate func undoClick() {
     guard swipeView.history.count > 0 else { return }
     currentCardView?.didDisappear()
     swipeView.rewind()
@@ -119,7 +119,7 @@ extension LinkSwipeViewController {
     currentCardView?.didAppear()
   }
 
-  @IBAction private func shareClick() {
+  @IBAction fileprivate func shareClick() {
     guard let viewModel = currentViewModel else { return }
     shareHelper.share(viewModel.title, URL: viewModel.url, image: nil, fromView: shareButton)
   }
@@ -128,7 +128,7 @@ extension LinkSwipeViewController {
 // MARK: ZLSwipeableViewDelegate
 extension LinkSwipeViewController {
 
-  private func swipeViewNextView() -> UIView? {
+  fileprivate func swipeViewNextView() -> UIView? {
     guard let viewModel = self.viewModel.viewModelForIndex(cardIndex) else {
       self.viewModel.requestLinks()
       return nil
@@ -151,7 +151,7 @@ extension LinkSwipeViewController {
     return view
   }
 
-  private func swipeViewSwiped(view: LinkCardView, inDirection: Direction,
+  fileprivate func swipeViewSwiped(_ view: LinkCardView, inDirection: Direction,
                                directionVector: CGVector) {
     updateUndoButton()
     currentCardView?.didAppear()
@@ -176,15 +176,15 @@ extension LinkSwipeViewController {
     }
   }
 
-  private func swipeViewTapped(view: LinkCardView, location: CGPoint) {
+  fileprivate func swipeViewTapped(_ view: LinkCardView, location: CGPoint) {
 
   }
 
-  private func swipeViewDisappeared(view: LinkCardView) {
+  fileprivate func swipeViewDisappeared(_ view: LinkCardView) {
     view.didDisappear()
   }
 
-  private func swipeViewSwiping(view: LinkCardView, atLocation: CGPoint, translation: CGPoint) {
+  fileprivate func swipeViewSwiping(_ view: LinkCardView, atLocation: CGPoint, translation: CGPoint) {
     let offset = translation.x
     let direction: CGFloat = offset >= 0 ? 1 : -1
     let min: CGFloat = 20
@@ -193,15 +193,15 @@ extension LinkSwipeViewController {
     view.animateOverlayPercentage(percentage)
   }
 
-  private func swipeViewDidCancelSwiping(view: LinkCardView) {
+  fileprivate func swipeViewDidCancelSwiping(_ view: LinkCardView) {
     view.animateOverlayPercentage(0)
   }
 
-  private func swipeViewDidClickMore(view: LinkCardView) {
+  fileprivate func swipeViewDidClickMore(_ view: LinkCardView) {
     guard let viewModel = view.viewModel else { return }
     viewModel.save.take(1)
       .subscribeNext { [weak self] save in
-        let options = [save, tr(.LinkReport), tr(.LinkOpenInSafari)]
+        let options = [save, L10n.Link.report, L10n.Link.openInSafari]
         self?.alertHelper.presentActionSheet(options: options) { index in
           guard let index = index else { return }
           switch index {
@@ -222,14 +222,14 @@ extension LinkSwipeViewController {
 // MARK: - Helpers
 extension LinkSwipeViewController {
 
-  private func openInSafari(viewModel: LinkItemViewModel) {
-    UIApplication.sharedApplication().openURL(viewModel.url)
+  fileprivate func openInSafari(_ viewModel: LinkItemViewModel) {
+    UIApplication.shared.openURL(viewModel.url as URL)
   }
 
-  private func report(viewModel: LinkItemViewModel) {
-    let reasons: [String] = [tr(.LinkReportSpam), tr(.LinkReportVoteManipulation),
-                             tr(.LinkReportPersonalInfo), tr(.LinkReportSexualizingMinors),
-                             tr(.LinkReportBreakingReddit), tr(.LinkReportOther)]
+  fileprivate func report(_ viewModel: LinkItemViewModel) {
+    let reasons: [String] = [L10n.Link.Report.spam, L10n.Link.Report.voteManipulation,
+                             L10n.Link.Report.personalInfo, L10n.Link.Report.sexualizingMinors,
+                             L10n.Link.Report.breakingReddit, L10n.Link.Report.other]
     alertHelper.presentActionSheet(options: reasons) { [weak self] index in
       guard let index = index else { return }
       guard index != 5 else {
@@ -240,38 +240,38 @@ extension LinkSwipeViewController {
     }
   }
 
-  private func reportOtherReason(viewModel: LinkItemViewModel) {
-    let textfield = AlertTextField(text: nil, placeholder: tr(.LinkReportOtherHint))
-    presentAlert(tr(.LinkReport), message: tr(.LinkReportOtherReason),
-                 textField: textfield, buttonTitle: tr(.LinkReport),
-                 cancelButtonTitle: tr(.AlertButtonCancel)) { [weak self] alertClicked in
+  fileprivate func reportOtherReason(_ viewModel: LinkItemViewModel) {
+    let textfield = AlertTextField(text: nil, placeholder: L10n.Link.Report.Other.hint)
+    presentAlert(L10n.Link.report, message: L10n.Link.Report.Other.reason,
+                 textField: textfield, buttonTitle: L10n.Link.report,
+                 cancelButtonTitle: L10n.Alert.Button.cancel) { [weak self] alertClicked in
                   switch alertClicked {
-                  case let .ButtonWithText(reason):
+                  case let .buttonWithText(reason):
                     self?.reportWithReason(reason, viewModel: viewModel)
                   default: return
                   }
     }
   }
 
-  private func reportWithReason(reason: String?, viewModel: LinkItemViewModel) {
+  fileprivate func reportWithReason(_ reason: String?, viewModel: LinkItemViewModel) {
     guard let reason = reason else { return }
     viewModel.sendReport(reason) { error in
     }
   }
 
-  private func voteCompletion(error: ErrorType?, view: UIView) {
-    guard let _ = error where swipeView.history.last == view else {
+  fileprivate func voteCompletion(_ error: Error?, view: UIView) {
+    guard let _ = error, swipeView.history.last == view else {
       return
     }
     currentCardView?.didDisappear()
     swipeView.rewind()
   }
 
-  private var currentViewModel: LinkItemViewModel? {
+  fileprivate var currentViewModel: LinkItemViewModel? {
     return (swipeView.topView() as? LinkCardView)?.viewModel
   }
 
-  private var currentCardView: LinkCardView? {
+  fileprivate var currentCardView: LinkCardView? {
     return swipeView.topView() as? LinkCardView
   }
 }

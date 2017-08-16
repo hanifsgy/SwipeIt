@@ -11,130 +11,134 @@ import Moya
 
 enum RedditAPI {
 
-  case AccessToken(code: String, redirectURL: String, clientId: String)
-  case RefreshToken(refreshToken: String, clientId: String)
-  case SubredditListing(token: String, after: String?)
-  case DefaultSubredditListing(after: String?)
-  case MultiredditListing(token: String)
-  case LinkDetails(token: String, permalink: String)
-  case LinkListing(token: String, path: String, listingPath: String, listingTypeRange: String?,
+  case accessToken(code: String, redirectURL: String, clientId: String)
+  case refreshToken(refreshToken: String, clientId: String)
+  case subredditListing(token: String, after: String?)
+  case defaultSubredditListing(after: String?)
+  case multiredditListing(token: String)
+  case linkDetails(token: String, permalink: String)
+  case linkListing(token: String, path: String, listingPath: String, listingTypeRange: String?,
     after: String?)
-  case UserDetails(token: String, username: String)
-  case UserMeDetails(token: String)
-  case Vote(token: String, identifier: String, direction: Int)
-  case Save(token: String, identifier: String)
-  case Unsave(token: String, identifier: String)
-  case Report(token: String, identifier: String, reason: String)
+  case userDetails(token: String, username: String)
+  case userMeDetails(token: String)
+  case vote(token: String, identifier: String, direction: Int)
+  case save(token: String, identifier: String)
+  case unsave(token: String, identifier: String)
+  case report(token: String, identifier: String, reason: String)
 
 }
 
 extension RedditAPI: TargetType {
 
-  var baseURL: NSURL {
-    guard let _ = token else {
-      return NSURL(string: "https://www.reddit.com")!
+  var task: Task {
+    return .request
+  }
+
+  var baseURL: URL {
+    guard token != nil else {
+      return URL(string: "https://www.reddit.com")!
     }
-    return NSURL(string: "https://oauth.reddit.com")!
+    return URL(string: "https://oauth.reddit.com")!
   }
 
   var path: String {
     switch self {
-    case .AccessToken, RefreshToken:
+    case .accessToken, .refreshToken:
       return "/api/v1/access_token"
-    case .MultiredditListing:
+    case .multiredditListing:
       return "/api/multi/mine"
-    case .SubredditListing:
+    case .subredditListing:
       return "/subreddits/mine"
-    case .DefaultSubredditListing:
+    case .defaultSubredditListing:
       return "/subreddits/default"
-    case .LinkListing(_, let path, let listingPath, _, _):
+    case .linkListing(_, let path, let listingPath, _, _):
       return "\(path)\(listingPath)"
-    case .LinkDetails(_, let permalink):
+    case .linkDetails(_, let permalink):
       return permalink
-    case .UserMeDetails(_):
+    case .userMeDetails(_):
       return "/api/v1/me"
-    case .UserDetails(_, let username):
+    case .userDetails(_, let username):
       return "/user/\(username)/about"
-    case .Vote:
+    case .vote:
       return "/api/vote"
-    case .Save:
+    case .save:
       return "/api/save"
-    case .Unsave:
+    case .unsave:
       return "/api/unsave"
-    case .Report:
+    case .report:
       return "/api/report"
     }
   }
 
   var method: Moya.Method {
     switch self {
-    case .AccessToken, .RefreshToken, .Vote, .Save, .Unsave, .Report:
-      return .POST
+    case .accessToken, .refreshToken, .vote, .save, .unsave, .report:
+      return .post
     default:
-      return .GET
+      return .get
     }
   }
 
-  var parameters: [String: AnyObject]? {
+  var parameters: [String: Any]? {
     switch self {
-    case .AccessToken(let code, let redirectURL, _):
+    case .accessToken(let code, let redirectURL, _):
       return [
-        "grant_type": "authorization_code",
-        "code": code,
-        "redirect_uri": redirectURL]
-    case .RefreshToken(let refreshToken, _):
+        "grant_type": "authorization_code" as AnyObject,
+        "code": code as AnyObject,
+        "redirect_uri": redirectURL as AnyObject]
+    case .refreshToken(let refreshToken, _):
       return [
-        "grant_type": "refresh_token",
-        "refresh_token": refreshToken
+        "grant_type": "refresh_token" as AnyObject,
+        "refresh_token": refreshToken as AnyObject
       ]
-    case .SubredditListing(_, let after):
+    case .subredditListing(_, let after):
       guard let after = after else {
         return nil
       }
-      return ["after": after]
-    case .DefaultSubredditListing(let after):
+      return ["after": after as AnyObject]
+    case .defaultSubredditListing(let after):
       guard let after = after else {
         return nil
       }
-      return ["after": after]
-    case .LinkListing(_, _, _, let listingTypeRange, let after):
+      return ["after": after as AnyObject]
+    case .linkListing(_, _, _, let listingTypeRange, let after):
       guard let after = after else {
         return nil
       }
       return JSONHelper.flatJSON(["after": after, "t": listingTypeRange])
-    case .Vote(_, let identifier, let direction):
-      return ["id": identifier, "dir": direction]
-    case .Save(_, let identifier):
-      return ["id": identifier]
-    case .Unsave(_, let identifier):
-      return ["id": identifier]
-    case .Report(_, let identifier, let reason):
-      return ["thing_id": identifier, "reason": reason]
+    case .vote(_, let identifier, let direction):
+      return ["id": identifier as AnyObject, "dir": direction as AnyObject]
+    case .save(_, let identifier):
+      return ["id": identifier as AnyObject]
+    case .unsave(_, let identifier):
+      return ["id": identifier as AnyObject]
+    case .report(_, let identifier, let reason):
+      return ["thing_id": identifier as AnyObject, "reason": reason as AnyObject]
     default:
       return nil
     }
   }
 
-  var sampleData: NSData {
+  var sampleData: Data {
     switch self {
-    case .AccessToken, .RefreshToken:
+    case .accessToken, .refreshToken:
       return JSONReader.readJSONData("AccessToken")
-    case .SubredditListing:
+    case .subredditListing:
       return JSONReader.readJSONData("SubredditListing")
-    case .DefaultSubredditListing:
+    case .defaultSubredditListing:
       return JSONReader.readJSONData("SubredditListing")
-    case .LinkListing:
+    case .linkListing:
       return JSONReader.readJSONData("LinkListing")
-    case .MultiredditListing:
+    case .multiredditListing:
       return JSONReader.readJSONData("MultiredditListing")
-    case .LinkDetails:
+    case .linkDetails:
       return JSONReader.readJSONData("LinkDetails")
-    case .UserDetails, .UserMeDetails:
+    case .userDetails, .userMeDetails:
       return JSONReader.readJSONData("UserDetails")
-    case .Vote:
+    case .vote:
       return JSONReader.readJSONData("Upvoted")
     default:
-      return NSData()
+      return Data()
     }
   }
 
@@ -147,36 +151,36 @@ extension RedditAPI: TargetType {
 
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .AccessToken, .RefreshToken:
-      return .URL
-    case .Vote, . Save, .Unsave, .Report:
-      return .URLEncodedInURL
+    case .accessToken, .refreshToken:
+      return URLEncoding.default
+    case .vote, . save, .unsave, .report:
+      return URLEncoding.default //TODO really?
     default:
-      return method == .GET ? .URL : .JSON
+      return method == .get ? URLEncoding.default : JSONEncoding.default
     }
   }
 
   var token: String? {
     switch self {
-    case .SubredditListing(let token, _):
+    case .subredditListing(let token, _):
       return token
-    case .LinkListing(let token, _, _, _, _):
+    case .linkListing(let token, _, _, _, _):
       return token
-    case .MultiredditListing(let token):
+    case .multiredditListing(let token):
       return token
-    case .LinkDetails(let token, _):
+    case .linkDetails(let token, _):
       return token
-    case .UserDetails(let token, _):
+    case .userDetails(let token, _):
       return token
-    case .UserMeDetails(let token):
+    case .userMeDetails(let token):
       return token
-    case .Vote(let token, _, _):
+    case .vote(let token, _, _):
       return token
-    case .Save(let token, _):
+    case .save(let token, _):
       return token
-    case .Unsave(let token, _):
+    case .unsave(let token, _):
       return token
-    case .Report(let token, _, _):
+    case .report(let token, _, _):
       return token
     default:
       return nil
@@ -191,12 +195,12 @@ extension RedditAPI: TargetType {
     return nil
   }
 
-  var credentials: NSURLCredential? {
+  var credentials: URLCredential? {
     switch self {
-    case .AccessToken(_, _, let clientId):
-      return NSURLCredential(user: clientId, password: "", persistence: .None)
-    case .RefreshToken(_, let clientId):
-      return NSURLCredential(user: clientId, password: "", persistence: .None)
+    case .accessToken(_, _, let clientId):
+      return URLCredential(user: clientId, password: "", persistence: .none)
+    case .refreshToken(_, let clientId):
+      return URLCredential(user: clientId, password: "", persistence: .none)
     default:
       return nil
     }

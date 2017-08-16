@@ -12,18 +12,16 @@ import Kingfisher
 
 class LinkImageCardView: LinkCardView {
 
-  private static let fadeAnimationDuration: NSTimeInterval = 0.15
+  fileprivate static let fadeAnimationDuration: TimeInterval = 0.15
 
   override var viewModel: LinkItemViewModel? {
     didSet {
       guard let imageViewModel = viewModel as? LinkItemImageViewModel else { return }
       let options: [KingfisherOptionsInfoItem] =
-        [.Transition(.Fade(LinkImageCardView.fadeAnimationDuration))]
-      imageView
-        .kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: options) {
-          [weak self] (image, _, _, imageURL) in
-          guard let image = image, backgroundImageView = self?.backgroundImageView
-            where imageURL == imageViewModel.imageURL else {
+        [.transition(.fade(LinkImageCardView.fadeAnimationDuration))]
+      imageView.kf.setImage(with: imageViewModel.imageURL, options: options) { [weak self] image, _, _, imageURL in
+          guard let image = image, let backgroundImageView = self?.backgroundImageView,
+            imageURL == imageViewModel.imageURL else {
               self?.backgroundImageView.image = nil
               return
           }
@@ -33,9 +31,9 @@ class LinkImageCardView: LinkCardView {
   }
 
   // MARK: - Views
-  private lazy var imageContentView: UIView = self.createImageContentView()
-  private lazy var imageView: UIImageViewTopAligned = self.createImageView()
-  private lazy var backgroundImageView: UIImageView = self.createBackgroundImageView()
+  fileprivate lazy var imageContentView: UIView = self.createImageContentView()
+  fileprivate lazy var imageView: UIImageViewTopAligned = self.createImageView()
+  fileprivate lazy var backgroundImageView: UIImageView = self.createBackgroundImageView()
 
   // MARK - Initializers
   override init() {
@@ -53,12 +51,12 @@ class LinkImageCardView: LinkCardView {
     commonInit()
   }
 
-  private func commonInit() {
+  fileprivate func commonInit() {
     contentView = imageContentView
     setupConstraints()
   }
 
-  private func setupConstraints() {
+  fileprivate func setupConstraints() {
     imageView.snp_makeConstraints { make in
       make.edges.equalTo(imageContentView)
     }
@@ -89,44 +87,44 @@ extension LinkImageCardView {
    - parameter image:     The image to be blurred.
    - parameter imageView: The imageView in which to set the blurred image.
    */
-  private static func blurImage(image: UIImage, into imageView: UIImageView) {
+  fileprivate static func blurImage(_ image: UIImage, into imageView: UIImageView) {
     Async.background {
       let scaledImage = resizeImage(image, imageView: imageView)
       let blurredImage = scaledImage.applyExtraLightEffect()
       Async.main {
-        UIView.transitionWithView(imageView, duration: fadeAnimationDuration,
-          options: .TransitionCrossDissolve, animations: {
+        UIView.transition(with: imageView, duration: fadeAnimationDuration,
+          options: .transitionCrossDissolve, animations: {
             imageView.image = blurredImage
           }, completion: nil)
       }
     }
   }
 
-  private static func resizeImage(image: UIImage, imageView: UIImageView) -> UIImage {
-    let screenWidth = UIScreen.mainScreen().bounds.width
+  fileprivate static func resizeImage(_ image: UIImage, imageView: UIImageView) -> UIImage {
+    let screenWidth = UIScreen.main.bounds.width
     let size = imageView.bounds.size != .zero ? imageView.bounds.size :
       CGSize(width: screenWidth, height: screenWidth)
     return image.scaleToSizeWithAspectFill(size)
   }
 
-  private func createImageContentView() -> UIView {
+  fileprivate func createImageContentView() -> UIView {
     let view = UIView()
-    view.backgroundColor = .clearColor()
+    view.backgroundColor = .clear
     //view.clipsToBounds = true
     view.addSubview(self.backgroundImageView)
     view.addSubview(self.imageView)
     return view
   }
 
-  private func createImageView() -> UIImageViewTopAligned {
+  fileprivate func createImageView() -> UIImageViewTopAligned {
     let imageView = UIImageViewTopAligned(frame: .zero)
-    imageView.contentMode = .ScaleAspectFit
+    imageView.contentMode = .scaleAspectFit
     return imageView
   }
 
-  private func createBackgroundImageView() -> UIImageView {
+  fileprivate func createBackgroundImageView() -> UIImageView {
     let imageView = UIImageView()
-    imageView.contentMode = .ScaleAspectFill
+    imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
     return imageView
   }

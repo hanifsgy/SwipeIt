@@ -14,13 +14,13 @@ struct AccessToken: Mappable {
   // MARK: AccessToken
   var token: String!
   var tokenType: String!
-  var expirationDate: NSDate?
+  var expirationDate: Date?
   var scope: String!
   var refreshToken: String?
-  var created: NSDate! {
+  var created: Date! {
     didSet {
       if created == nil {
-        created = NSDate()
+        created = Date()
       }
     }
   }
@@ -41,12 +41,12 @@ struct AccessToken: Mappable {
     guard let expirationDate = expirationDate else {
       return false
     }
-    return expirationDate.compare(NSDate()) == .OrderedDescending
+    return expirationDate.compare(Date()) == .orderedDescending
   }
 
   // MARK: JSON
-  init?(_ map: Map) {
-    guard let _ = map.JSONDictionary["access_token"] else {
+  init?(map: Map) {
+    guard let _ = map.JSON["access_token"] else {
       return nil
     }
   }

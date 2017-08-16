@@ -14,11 +14,11 @@ class SubscriptionsViewController: UIViewController, HideableHairlineViewControl
 TitledViewModelViewController {
 
   // MARK: IBOutlets
-  @IBOutlet private weak var segmentedControl: UISegmentedControl!
-  @IBOutlet private weak var toolbar: UIToolbar!
+  @IBOutlet fileprivate weak var segmentedControl: UISegmentedControl!
+  @IBOutlet fileprivate weak var toolbar: UIToolbar!
 
   // MARK: Private Properties
-  private var pageViewController: PageViewController! {
+  fileprivate var pageViewController: PageViewController! {
     didSet {
       pageViewController.pageViewControllerDelegate = self
     }
@@ -37,14 +37,14 @@ extension SubscriptionsViewController {
     setup()
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     // Remove the line in the UINavigationBar so the UIToolbar and UINavigation bar appear as merged
     hideHairline()
   }
 
-  override func viewDidDisappear(animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
 
     // show the line in the UINavigationBar whenever the view controller pushes content
@@ -56,23 +56,23 @@ extension SubscriptionsViewController {
 // MARK: Setup
 extension SubscriptionsViewController {
 
-  private func setup() {
+  fileprivate func setup() {
     bindTitle(viewModel)
     bindPageViewController()
     bindSegmentedControl()
   }
 
   // Binding any change of the PageViewController's selectedIndex to the segmentedControl
-  private func bindPageViewController() {
+  fileprivate func bindPageViewController() {
     pageViewController.rx_selectedIndex
       .asObservable()
-      .bindTo(segmentedControl.rx_value)
+      .bindTo(segmentedControl.rx.value)
       .addDisposableTo(rx_disposeBag)
   }
 
   // Binding any change of the segmentedControl's value to the PageViewController's selectedIndex
-  private func bindSegmentedControl() {
-    segmentedControl.rx_value
+  fileprivate func bindSegmentedControl() {
+    segmentedControl.rx.value
       .asObservable()
       .bindTo(pageViewController.rx_selectedIndex)
       .addDisposableTo(rx_disposeBag)
@@ -83,25 +83,23 @@ extension SubscriptionsViewController {
 // MARK: PageViewControllerDelegate
 extension SubscriptionsViewController: PageViewControllerDelegate {
 
-  func pageViewController(pageViewController: PageViewController, didTransitionToIndex: Int) { }
+  func pageViewController(_ pageViewController: PageViewController, didTransitionToIndex: Int) { }
 
-  func pageViewController(pageViewController: PageViewController,
+  func pageViewController(_ pageViewController: PageViewController,
                           prepareForSegue segue: UIStoryboardSegue, sender: AnyObject?) {
 
     guard let segueEnum = StoryboardSegue.Main(optionalRawValue: segue.identifier) else { return }
 
     // Set the subredditListViewController viewModel and topScrollInset (to offset the toolbar)
     if let subredditListViewController
-      = segue.destinationViewController as? SubredditListViewController
-      where segueEnum == .PageSubredditList {
+      = segue.destination as? SubredditListViewController, segueEnum == .pageSubredditList {
       subredditListViewController.viewModel = viewModel.subredditListViewModel
       subredditListViewController.topScrollInset = toolbar.frame.maxY
     }
 
     // Set the multiredditListViewController viewModel and topScrollInset (to offset the toolbar)
     if let multiredditListViewController
-      = segue.destinationViewController as? MultiredditListViewController
-      where segueEnum == .PageMultiredditList {
+      = segue.destination as? MultiredditListViewController, segueEnum == .pageMultiredditList {
       multiredditListViewController.viewModel = viewModel.multiredditListViewModel
       multiredditListViewController.topScrollInset = toolbar.frame.maxY
     }
@@ -113,19 +111,18 @@ extension SubscriptionsViewController: PageViewControllerDelegate {
 extension SubscriptionsViewController: UIToolbarDelegate {
 
   // This will attach the UIToolbar to the navigation bar
-  func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-    return .TopAttached
+  func position(for bar: UIBarPositioning) -> UIBarPosition {
+    return .topAttached
   }
 }
 
 // MARK: Segues
 extension SubscriptionsViewController {
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let segueEnum = StoryboardSegue.Main(optionalRawValue: segue.identifier) else { return }
 
-    if let pageViewController = segue.destinationViewController as? PageViewController
-      where segueEnum == .Page {
+    if let pageViewController = segue.destination as? PageViewController, segueEnum == .page {
       self.pageViewController = pageViewController
     }
   }

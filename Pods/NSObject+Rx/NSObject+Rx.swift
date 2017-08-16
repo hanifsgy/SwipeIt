@@ -3,11 +3,11 @@ import RxSwift
 import ObjectiveC
 
 public extension NSObject {
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var DisposeBag = "rx_disposeBag"
     }
 
-    private func doLocked(closure: () -> Void) {
+    fileprivate func doLocked(_ closure: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         closure()
     }
@@ -33,5 +33,12 @@ public extension NSObject {
                 objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
+    }
+}
+
+public extension Reactive where Base: NSObject {
+    var disposeBag: DisposeBag {
+        get { return base.rx_disposeBag }
+        set { base.rx_disposeBag = newValue }
     }
 }

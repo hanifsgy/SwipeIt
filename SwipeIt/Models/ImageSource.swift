@@ -12,7 +12,7 @@ import ObjectMapper
 struct ImageSource: Mappable {
 
   // MARK: Image
-  var url: NSURL!
+  var url: URL!
   var width: Int!
   var height: Int!
 
@@ -21,7 +21,7 @@ struct ImageSource: Mappable {
   }
 
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(map: Map) { }
 
   mutating func mapping(map: Map) {
     url <- (map["url"], EmptyURLTransform())

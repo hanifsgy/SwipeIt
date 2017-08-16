@@ -11,15 +11,15 @@ import ObjectMapper
 
 class EditedTransform: TransformType {
   typealias Object = Edited
-  typealias JSON = AnyObject
+  typealias JSON = Any
 
   init() {}
 
-  func transformFromJSON(value: AnyObject?) -> Object? {
+  func transformFromJSON(_ value: Any?) -> Object? {
     return Edited.fromValue(value)
   }
 
-  func transformToJSON(value: Object?) -> JSON? {
-    return value?.value ?? false
+  func transformToJSON(_ value: Object?) -> JSON? {
+    return value?.value ?? false as EditedTransform.JSON
   }
 }

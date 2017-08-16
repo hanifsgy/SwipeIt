@@ -1,4 +1,4 @@
-app_identifier "ios.ivanbruel.SwipeIt"
-username ENV["SWIPEIT_APPLE_ID"]
+app_identifier ENV["APP_ID"]
+username ENV["APPLE_ID"]
 copyright "#{Time.now.year} Ivan Bruel"
-automatic_release false
+force true

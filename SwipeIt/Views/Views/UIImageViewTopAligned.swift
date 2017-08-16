@@ -10,9 +10,9 @@ import UIKit
 import Kingfisher
 
 @IBDesignable
-public class UIImageViewTopAligned: UIImageView {
+open class UIImageViewTopAligned: UIImageView {
 
-  public override var image: UIImage? {
+  open override var image: UIImage? {
     set {
       realImageView.image = newValue
       setNeedsLayout()
@@ -22,13 +22,13 @@ public class UIImageViewTopAligned: UIImageView {
     }
   }
 
-  public override var highlighted: Bool {
+  open override var isHighlighted: Bool {
     set {
-      super.highlighted = newValue
+      super.isHighlighted = newValue
       layer.contents = nil
     }
     get {
-      return super.highlighted
+      return super.isHighlighted
     }
   }
 
@@ -38,7 +38,7 @@ public class UIImageViewTopAligned: UIImageView {
    It should be used only when necessary.
    Available to keep compatibility with original `UIImageViewAligned`.
    */
-  private let realImageView: AnimatedImageView = AnimatedImageView(frame: .zero)
+  fileprivate let realImageView: AnimatedImageView = AnimatedImageView(frame: .zero)
 
   // MARK: - Initializers
   public override init(frame: CGRect) {
@@ -61,12 +61,12 @@ public class UIImageViewTopAligned: UIImageView {
     commonInit()
   }
 
-  private func commonInit() {
+  fileprivate func commonInit() {
     realImageView.autoPlayAnimatedImage = false
-    kf_showIndicatorWhenLoading = true
+    //kf.showIndicatorWhenLoading = true
     // Better performance while scrolling
     realImageView.framePreloadCount = 1
-    realImageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    realImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     realImageView.contentMode = contentMode
     realImageView.frame = bounds
     addSubview(realImageView)
@@ -76,23 +76,23 @@ public class UIImageViewTopAligned: UIImageView {
     }
   }
 
-  public override func layoutSubviews() {
+  open override func layoutSubviews() {
     super.layoutSubviews()
     updateLayout()
   }
 
-  public override func startAnimating() {
+  open override func startAnimating() {
     super.startAnimating()
     realImageView.startAnimating()
   }
 
-  public override func stopAnimating() {
+  open override func stopAnimating() {
     super.stopAnimating()
     realImageView.stopAnimating()
   }
 
   // MARK: - Private methods
-  private func updateLayout() {
+  fileprivate func updateLayout() {
     guard let _ = image else {
       realImageView.frame = bounds
       return
@@ -115,7 +115,7 @@ public class UIImageViewTopAligned: UIImageView {
     layer.contents = nil
   }
 
-  private func realContentSize() -> CGSize {
+  fileprivate func realContentSize() -> CGSize {
     let size = bounds.size
 
     guard let image = realImageView.image else {
@@ -138,12 +138,12 @@ public class UIImageViewTopAligned: UIImageView {
   }
 
   // MARK: - UIImageView overloads
-  public override func didMoveToSuperview() {
+  open override func didMoveToSuperview() {
     super.didMoveToSuperview()
     layer.contents = nil
   }
 
-  public override func didMoveToWindow() {
+  open override func didMoveToWindow() {
     super.didMoveToWindow()
     layer.contents = nil
   }

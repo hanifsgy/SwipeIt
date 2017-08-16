@@ -10,9 +10,9 @@ import Foundation
 
 enum PostHint: String {
 
-  case Video = "rich:video"
-  case Link = "link"
-  case Image = "image"
-  case SelfPost = "self"
+  case video = "rich:video"
+  case link = "link"
+  case image = "image"
+  case selfPost = "self"
 
 }

@@ -11,8 +11,8 @@ import TextStyle
 
 class VoteOverlayView: UIView {
 
-  private lazy var blurView: UIVisualEffectView = self.createBlurView()
-  private lazy var label: UILabel = self.createLabel()
+  fileprivate lazy var blurView: UIVisualEffectView = self.createBlurView()
+  fileprivate lazy var label: UILabel = self.createLabel()
 
   override var tintColor: UIColor! {
     didSet {
@@ -66,20 +66,20 @@ class VoteOverlayView: UIView {
 
 extension VoteOverlayView {
 
-  private func createBlurView() -> UIVisualEffectView {
-    let view = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
+  fileprivate func createBlurView() -> UIVisualEffectView {
+    let view = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     view.addSubview(label)
     return view
   }
 
-  private func createLabel() -> UILabel {
+  fileprivate func createLabel() -> UILabel {
     let label = UILabel()
-    label.textAlignment = .Center
+    label.textAlignment = .center
     label.textColor = tintColor
-    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Horizontal)
-    TextStyle.Headline.rx_font
-      .bindTo(label.rx_font)
+    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
+    TextStyle.headline.rx_font
+      .bindTo(label.rx.font)
       .addDisposableTo(rx_disposeBag)
     return label
   }

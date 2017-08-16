@@ -8,23 +8,23 @@
 
 class JSONHelper {
 
-  class func flatJSON(json: [String: AnyObject?]?) -> [String: AnyObject]? {
+  class func flatJSON(_ json: [String: Any?]?) -> [String: Any]? {
     guard let json = json else {
       return nil
     }
-    return json.flatMap({ (pair) -> (String, AnyObject)? in
+    return json.flatMap({ (pair) -> (String, Any)? in
       guard let value = pair.1 else {
         return nil
       }
       return (pair.0, value)
-    }).reduce([:], combine: { (dict, pair) -> [String: AnyObject] in
+    }).reduce([:], { (dict, pair) -> [String: Any] in
       var dict = dict
       dict[pair.0] = pair.1
       return dict
     })
   }
 
-  class func containsKeys(json: [String: AnyObject]?, keys: [String]) -> Bool {
+  class func containsKeys(_ json: [String: Any]?, keys: [String]) -> Bool {
     guard keys.count > 0 else {
       return true
     }

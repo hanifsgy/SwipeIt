@@ -9,24 +9,24 @@
 import Foundation
 import ObjectMapper
 
-public class JSONKeyTransform: TransformType {
+open class JSONKeyTransform: TransformType {
   public typealias Object = [String]
   public typealias JSON = [[String: String]]
 
-  private let key: String
+  fileprivate let key: String
 
   public init(_ key: String) {
     self.key = key
   }
 
-  public func transformFromJSON(value: AnyObject?) -> Object? {
+  open func transformFromJSON(_ value: Any?) -> Object? {
     guard let value = value as? JSON else {
       return nil
     }
     return value.flatMap { $0[self.key] }
   }
 
-  public func transformToJSON(value: Object?) -> JSON? {
+  open func transformToJSON(_ value: Object?) -> JSON? {
     return value?.map { [self.key: $0] }
   }
 }

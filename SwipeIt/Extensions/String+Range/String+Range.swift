@@ -10,12 +10,12 @@ import Foundation
 
 extension String {
 
-  func rangeFromNSRange(nsRange: NSRange) -> Range<String.Index>? {
-    let fromUTF16 = utf16.startIndex.advancedBy(nsRange.location)
-    let toUTF16 = fromUTF16.advancedBy(nsRange.length)
+  func rangeFromNSRange(_ nsRange: NSRange) -> Range<String.Index>? {
+    let fromUTF16 = utf16.index(utf16.startIndex, offsetBy: nsRange.length)
+    let toUTF16 = utf16.index(fromUTF16, offsetBy: nsRange.length)
 
     if let from = String.Index(fromUTF16, within: self),
-      to = String.Index(toUTF16, within: self) {
+      let to = String.Index(toUTF16, within: self) {
       return from..<to
     }
     return nil

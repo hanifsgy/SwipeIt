@@ -18,8 +18,8 @@ struct EmbeddedMedia: Mappable {
   var height: Int!
 
   // MARK: JSON
-  init?(_ map: Map) {
-    guard map.JSONDictionary.count > 0 else {
+  init?(map: Map) {
+    guard map.JSON.count > 0 else {
       return nil
     }
   }

@@ -6,6 +6,8 @@
 
 `TextStyle` provides easier management of dynamic font sizing in iOS.
 
+![Image](http://i.imgur.com/rzB8di9.jpg)
+
 ## Benefits
 
 With `TextStyle` you can support Dynamic Font Sizing in iOS, allowing font size changes through accessibility.
@@ -76,9 +78,13 @@ class ViewController: UIViewController {
 }
 ```
 
+## Reminder
+
+iOS 9.3 (which includes the simulator) has a bug in which it doesn't receive the notification, be sure to use either an update iOS device or the iOS 9.2 simulator.
+
 ## Installation
 
-RxResult is available through [CocoaPods](http://cocoapods.org). To install
+TextStyle is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
@@ -87,4 +93,4 @@ pod "TextStyle"
 
 ## License
 
-RxResult is available under the MIT license. See the LICENSE file for more info.
+TextStyle is available under the MIT license. See the LICENSE file for more info.

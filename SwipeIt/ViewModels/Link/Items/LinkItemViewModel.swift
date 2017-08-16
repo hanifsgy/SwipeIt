@@ -8,18 +8,18 @@
 
 import Foundation
 import RxSwift
-import DateTools
+import DateToolsSwift
 import RxTimer
 import TTTAttributedLabel
 
 class LinkItemViewModel: ViewModel {
 
   // MARK: Private
-  private let user: User
-  private let accessToken: AccessToken
-  private let vote: Variable<Vote>
-  private let saved: Variable<Bool>
-  private let showSubreddit: Bool
+  fileprivate let user: User
+  fileprivate let accessToken: AccessToken
+  fileprivate let vote: Variable<Vote>
+  fileprivate let saved: Variable<Bool>
+  fileprivate let showSubreddit: Bool
 
   // MARK: Protected
   let disposeBag: DisposeBag = DisposeBag()
@@ -30,26 +30,26 @@ class LinkItemViewModel: ViewModel {
     return link.title
   }
 
-  var url: NSURL {
-    return link.url
+  var url: URL {
+    return link.url as URL
   }
 
   // MARK: Private Observables
-  private var timeAgo: Observable<NSAttributedString> {
+  fileprivate var timeAgo: Observable<NSAttributedString> {
     return Observable
-      .combineLatest(Observable.just(link.created), NSTimer.rx_timer) { ($0, $1) }
+      .combineLatest(Observable.just(link.created), Timer.rx_timer) { ($0, $1) }
       .map { (created, _) -> String in
-        created.shortTimeAgoSinceNow()
+        created.shortTimeAgoSinceNow
       }.distinctUntilChanged()
       .map { NSAttributedString(string: $0) }
   }
 
-  private var subredditName: Observable<NSAttributedString?> {
+  fileprivate var subredditName: Observable<NSAttributedString?> {
     return Observable.just(showSubreddit ? NSAttributedString(string: link.subreddit,
       attributes: [NSLinkAttributeName: link.subredditURL]) : nil)
   }
 
-  private var author: Observable<NSAttributedString> {
+  fileprivate var author: Observable<NSAttributedString> {
     return Observable.just(NSAttributedString(string: link.author,
       attributes: [NSLinkAttributeName: link.authorURL]))
   }
@@ -61,12 +61,12 @@ class LinkItemViewModel: ViewModel {
         let result: [NSAttributedString?] = [$0, $1, $2]
         return result.flatMap { $0 }
       }.map { (attributedStrings: [NSAttributedString]) in
-        return attributedStrings.joinWithSeparator(" ● ")
+        return attributedStrings.joined(separator: " ● ")
     }
   }
 
   var comments: Observable<NSAttributedString> {
-    let comments = link.totalComments > 1 ? tr(.LinkComments) : tr(.LinkComment)
+    let comments = link.totalComments > 1 ? L10n.Link.comments : L10n.Link.comments
     return .just(NSAttributedString(string: "\(link.totalComments) \(comments)"))
   }
 
@@ -76,21 +76,21 @@ class LinkItemViewModel: ViewModel {
 
   var save: Observable<String> {
     return saved.asObservable()
-      .map { $0 ? tr(.LinkUnsave) : tr(.LinkSave) }
+      .map { $0 ? L10n.Link.unsave : L10n.Link.save }
   }
 
   var score: Observable<NSAttributedString> {
     return Observable
       .combineLatest(Observable.just(link), vote.asObservable()) { ($0, $1) }
       .map { (link, vote) in
-        let score = link.hideScore == true ? tr(.LinkScoreHidden) : "\(link.scoreWithVote(vote))"
+        let score = link.hideScore == true ? L10n.Link.Score.hidden : "\(link.scoreWithVote(vote))"
         switch vote {
-        case .Downvote:
+        case .downvote:
           return NSAttributedString(string: score,
-            attributes: [NSForegroundColorAttributeName: UIColor(named: .Purple)])
-        case .Upvote:
+            attributes: [NSForegroundColorAttributeName: UIColor(named: .purple)])
+        case .upvote:
           return NSAttributedString(string: score,
-            attributes: [NSForegroundColorAttributeName: UIColor(named: .Orange)])
+            attributes: [NSForegroundColorAttributeName: UIColor(named: .orange)])
         default:
           return NSAttributedString(string: score)
         }
@@ -101,11 +101,11 @@ class LinkItemViewModel: ViewModel {
     return  vote.asObservable()
       .map { vote in
         switch vote {
-        case .Downvote:
+        case .downvote:
           return UIImage(asset: .DownvotedGlyph)
-        case .Upvote:
+        case .upvote:
           return UIImage(asset: .UpvotedGlyph)
-        case .None:
+        case .none:
           return UIImage(asset: .NotVotedGlyph)
         }
     }
@@ -126,23 +126,23 @@ class LinkItemViewModel: ViewModel {
     // Nothing to preload in here
   }
 
-  func upvote(completion: (ErrorType?) -> Void) {
-    vote(.Upvote, completion: completion)
+  func upvote(_ completion: @escaping (Error?) -> Void) {
+    voteLink(vote: .upvote, completion: completion)
   }
 
-  func downvote(completion: (ErrorType?) -> Void) {
-    vote(.Downvote, completion: completion)
+  func downvote(_ completion: @escaping (Error?) -> Void) {
+    voteLink(vote: .downvote, completion: completion)
   }
 
   func unvote() {
-    vote(.None)
+    voteLink(vote: .none)
   }
 
-  func toggleSave(completion: (ErrorType?) -> Void) {
-    save(completion)
+  func toggleSave(_ completion: @escaping (Error?) -> Void) {
+    saveLink(completion: completion)
   }
 
-  func sendReport(reason: String, completion: (ErrorType?) -> Void) {
+  func sendReport(_ reason: String, completion: @escaping (Error?) -> Void) {
     report(reason, completion: completion)
   }
 }
@@ -150,49 +150,49 @@ class LinkItemViewModel: ViewModel {
 // MARK: Network
 extension LinkItemViewModel {
 
-  private func report(reason: String, completion: ((ErrorType?) -> Void)? = nil) {
-    Network.request(.Report(token: accessToken.token, identifier: link.name,
+  fileprivate func report(_ reason: String, completion: ((Error?) -> Void)? = nil) {
+    Network.request(.report(token: accessToken.token, identifier: link.name,
       reason: reason))
       .subscribe { event in
         switch event {
-        case .Error(let error):
+        case .error(let error):
           completion?(error)
-        case .Next:
+        case .next:
           completion?(nil)
         default: break
         }
       }.addDisposableTo(disposeBag)
   }
 
-  private func save(completion: ((ErrorType?) -> Void)? = nil) {
+  fileprivate func saveLink(completion: ((Error?) -> Void)? = nil) {
     let oldSaved = self.saved.value
     self.saved.value = !oldSaved
-    let request = oldSaved ? RedditAPI.Unsave(token: accessToken.token, identifier: link.name) :
-      RedditAPI.Save(token: accessToken.token, identifier: link.name)
+    let request = oldSaved ? RedditAPI.unsave(token: accessToken.token, identifier: link.name) :
+      RedditAPI.save(token: accessToken.token, identifier: link.name)
     Network.request(request)
       .subscribe { [weak self] event in
         switch event {
-        case .Error(let error):
+        case .error(let error):
           self?.saved.value = oldSaved
           completion?(error)
-        case .Next:
+        case .next:
           completion?(nil)
         default: break
         }
       }.addDisposableTo(disposeBag)
   }
 
-  private func vote(vote: Vote, completion: ((ErrorType?) -> Void)? = nil) {
+  fileprivate func voteLink(vote: Vote, completion: ((Error?) -> Void)? = nil) {
     let oldVote = self.vote.value
     self.vote.value = vote
-    Network.request(.Vote(token: accessToken.token, identifier: link.name,
+    Network.request(.vote(token: accessToken.token, identifier: link.name,
       direction: vote.rawValue))
       .subscribe { [weak self] event in
         switch event {
-        case .Error(let error):
+        case .error(let error):
           self?.vote.value = oldVote
           completion?(error)
-        case .Next:
+        case .next:
           completion?(nil)
         default: break
         }
@@ -203,19 +203,19 @@ extension LinkItemViewModel {
 // MARK: Helpers
 extension LinkItemViewModel {
 
-  static func viewModelFromLink(link: Link, user: User, accessToken: AccessToken,
+  static func viewModelFromLink(_ link: Link, user: User, accessToken: AccessToken,
                                 subredditOnly: Bool) -> LinkItemViewModel {
     switch link.type {
-    case .Video:
+    case .video:
       return LinkItemVideoViewModel(user: user, accessToken: accessToken, link: link,
                                     showSubreddit: !subredditOnly)
-    case .Image, .GIF, .Album:
+    case .image, .gif, .album:
       return LinkItemImageViewModel(user: user, accessToken: accessToken, link: link,
                                     showSubreddit: !subredditOnly)
-    case .SelfPost:
+    case .selfPost:
       return LinkItemSelfPostViewModel(user: user, accessToken: accessToken, link: link,
                                        showSubreddit: !subredditOnly)
-    case .LinkPost:
+    case .linkPost:
       return LinkItemLinkViewModel(user: user, accessToken: accessToken, link: link,
                                    showSubreddit: !subredditOnly)
     }

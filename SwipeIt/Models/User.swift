@@ -17,7 +17,7 @@ struct User: Mappable, Created {
   var kind: String!
 
   // MARK: Created
-  var created: NSDate!
+  var created: Date!
 
   // MARK: User
   var username: String!
@@ -32,8 +32,8 @@ struct User: Mappable, Created {
   var over18: Bool!
 
   // MARK: JSON
-  init?(_ map: Map) {
-    guard let _ = map.JSONDictionary["data"] else {
+  init?(map: Map) {
+    guard let _ = map.JSON["data"] else {
       return nil
     }
   }
@@ -43,7 +43,7 @@ struct User: Mappable, Created {
     mappingUser(map)
   }
 
-  private mutating func mappingUser(map: Map) {
+  fileprivate mutating func mappingUser(_ map: Map) {
     username <- map["data.name"]
     commentKarma <- map["data.comment_karma"]
     linkKarma <- map["data.link_karma"]

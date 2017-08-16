@@ -10,24 +10,24 @@ import UIKit
 
 class ShareHelper {
 
-  private weak var viewController: UIViewController?
+  fileprivate weak var viewController: UIViewController?
 
   init(viewController: UIViewController) {
     self.viewController = viewController
   }
 
 
-  func share(text: String? = nil, URL: NSURL? = nil, image: UIImage? = nil,
+  func share(_ text: String? = nil, URL: Foundation.URL? = nil, image: UIImage? = nil,
              fromView: UIView? = nil) {
-    let shareables: [AnyObject?] = [text, URL, image]
+    let shareables: [AnyObject?] = [text as AnyObject, URL as AnyObject, image]
 
     let activityViewController = UIActivityViewController(activityItems: shareables.flatMap { $0 },
                                                           applicationActivities: nil)
 
-    activityViewController.excludedActivityTypes = [UIActivityTypeAirDrop,
-                                                    UIActivityTypeOpenInIBooks]
+    activityViewController.excludedActivityTypes = [UIActivityType.airDrop,
+                                                    UIActivityType.openInIBooks]
 
     activityViewController.popoverPresentationController?.sourceView = fromView
-    viewController?.presentViewController(activityViewController, animated: true, completion: nil)
+    viewController?.present(activityViewController, animated: true, completion: nil)
   }
 }

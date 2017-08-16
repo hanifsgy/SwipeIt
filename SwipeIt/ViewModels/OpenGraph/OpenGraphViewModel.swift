@@ -14,13 +14,13 @@ import RxAlamofire
 
 class OpenGraphViewModel: ViewModel {
 
-  private static let facebookBotUserAgent = "Facebot"
+  fileprivate static let facebookBotUserAgent = "Facebot"
 
-  private let openGraph: Variable<OpenGraph?> = Variable(nil)
-  private let url: NSURL
-  private let disposeBag = DisposeBag()
+  fileprivate let openGraph: Variable<OpenGraph?> = Variable(nil)
+  fileprivate let url: URL
+  fileprivate let disposeBag = DisposeBag()
 
-  var imageURL: Observable<NSURL?> {
+  var imageURL: Observable<URL?> {
     return openGraph.asObservable().map { $0?.imageURL }
   }
 
@@ -32,11 +32,11 @@ class OpenGraphViewModel: ViewModel {
     return openGraph.asObservable().map { $0?.description }
   }
 
-  var appLink: Observable<NSURL?> {
+  var appLink: Observable<URL?> {
     return openGraph.asObservable().map { $0?.appLink?.url }
   }
 
-  init(url: NSURL) {
+  init(url: URL) {
     self.url = url
   }
 }
@@ -46,7 +46,7 @@ extension OpenGraphViewModel {
 
   func requestOpenGraph() {
     let headers = ["User-Agent": OpenGraphViewModel.facebookBotUserAgent]
-    requestString(Method.GET, url.absoluteString, headers: headers)
+    requestString(.get, url.absoluteString, headers: headers)
       .observeOn(MainScheduler.instance)
       .bindNext { [weak self] (_, html) in
         self?.openGraph.value = OpenGraph(html: html)

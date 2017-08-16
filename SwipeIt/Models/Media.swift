@@ -14,8 +14,8 @@ struct Media: Mappable {
   // MARK: Media
   var type: String!
   var authorName: String!
-  var authorURL: NSURL!
-  var providerURL: NSURL!
+  var authorURL: URL!
+  var providerURL: URL!
   var providerName: String!
   var providerDescription: String!
   var providerTitle: String!
@@ -23,12 +23,12 @@ struct Media: Mappable {
   var height: Int!
   var thumbnailWidth: Int!
   var thumbnailHeight: Int!
-  var thumbnailURL: NSURL!
+  var thumbnailURL: URL!
   var html: String!
 
   // MARK: JSON
-  init?(_ map: Map) {
-    guard map.JSONDictionary.count > 0 else {
+  init?(map: Map) {
+    guard map.JSON.count > 0 else {
       return nil
     }
   }

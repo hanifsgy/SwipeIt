@@ -20,7 +20,7 @@ struct CommentsListing: Mappable, Listing {
   var moreComments: MoreComments?
 
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(map: Map) { }
 
   mutating func mapping(map: Map) {
     mappingListing(map)

@@ -9,40 +9,40 @@
 import UIKit
 
 enum Theme: String {
-  case Light
-  case Dark
+  case light
+  case dark
 
   var textColor: UIColor {
     switch self {
-    case .Light:
-      return .darkTextColor()
-    case .Dark:
-      return .lightTextColor()
+    case .light:
+      return .darkText
+    case .dark:
+      return .lightText
     }
   }
 
   var secondaryTextColor: UIColor {
     switch self {
-    case .Light:
-      return UIColor(named: .DarkGray)
-    case .Dark:
-      return UIColor(named: .LightGray)
+    case .light:
+      return UIColor(named: .darkGray)
+    case .dark:
+      return UIColor(named: .lightGray)
     }
   }
 
   var accentColor: UIColor {
     switch self {
     default:
-      return UIColor(named: .IOSBlue)
+      return UIColor(named: .iosBlue)
     }
   }
 
   var backgroundColor: UIColor {
     switch self {
-    case .Light:
-      return .whiteColor()
-    case .Dark:
-      return .darkGrayColor()
+    case .light:
+      return .white
+    case .dark:
+      return .darkGray
     }
   }
 }

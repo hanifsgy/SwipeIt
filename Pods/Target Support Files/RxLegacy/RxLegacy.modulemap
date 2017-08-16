@@ -1,0 +1,6 @@
+framework module RxLegacy {
+  umbrella header "RxLegacy-umbrella.h"
+
+  export *
+  module * { export * }
+}

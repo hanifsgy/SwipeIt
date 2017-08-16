@@ -12,12 +12,12 @@ import ObjectMapper
 // https://github.com/reddit/reddit/wiki/JSON
 struct Link: Votable, Mappable {
 
-  private static let imageExtensionRegex = "(.jpe?g|.png|.gif)"
-  private static let imageURLRegexes = ["^https?://.*imgur.com/", "^https?://.*reddituploads.com/",
+  fileprivate static let imageExtensionRegex = "(.jpe?g|.png|.gif)"
+  fileprivate static let imageURLRegexes = ["^https?://.*imgur.com/", "^https?://.*reddituploads.com/",
                                         "^https?://(?: www.)?gfycat.com/",
                                         "^https?://.*.media.tumblr.com/", imageExtensionRegex]
-  private static let redditShortURL = NSURL(string: "http://redd.it/")!
-  private static let redditURL = NSURL(string: Constants.redditURL)!
+  fileprivate static let redditShortURL = URL(string: "http://redd.it/")!
+  fileprivate static let redditURL = URL(string: Constants.redditURL)!
 
   // MARK: Thing
   var identifier: String!
@@ -31,7 +31,7 @@ struct Link: Votable, Mappable {
   var score: Int!
 
   // MARK: Created
-  var created: NSDate!
+  var created: Date!
 
   // MARK: Link
   var author: String!
@@ -58,9 +58,9 @@ struct Link: Votable, Mappable {
   var selfTextHTML: String?
   var subreddit: String!
   var subredditId: String!
-  var thumbnailURL: NSURL?
+  var thumbnailURL: URL?
   var title: String!
-  var url: NSURL!
+  var url: URL!
   var edited: Edited!
   var distinguished: Distinguished?
   var stickied: Bool!
@@ -85,43 +85,43 @@ struct Link: Votable, Mappable {
   var totalReports: Int!
 
   // MARK: Accessors
-  var subredditURL: NSURL {
-    return NSURL(string: "\(Constants.redditURL)/r/\(subreddit)")!
+  var subredditURL: URL {
+    return URL(string: "\(Constants.redditURL)/r/\(subreddit)")!
   }
 
-  var authorURL: NSURL {
-    return NSURL(string: "\(Constants.redditURL)/u/\(author)")!
+  var authorURL: URL {
+    return URL(string: "\(Constants.redditURL)/u/\(author)")!
   }
 
-  private var previewImage: PreviewImage? {
+  fileprivate var previewImage: PreviewImage? {
     return previewImages?.first
   }
 
-  var imageURL: NSURL? {
+  var imageURL: URL? {
     if let imageURL = ImgurImageProvider.imageURLFromLink(self) {
       return imageURL
     }
 
-    guard postHint == .Image else {
+    guard postHint == .image else {
       return nil
     }
 
     if let imageURL = previewImage?.gifSource?.url {
-      return imageURL
+      return imageURL as URL
     }
 
     if let imageURL = previewImage?.nsfwSource?.url {
-      return imageURL
+      return imageURL as URL
     }
 
     if let imageURL = previewImage?.source.url {
-      return imageURL
+      return imageURL as URL
     }
     return url.absoluteString.matchesWithRegex(Link.imageExtensionRegex) ? url : nil
   }
 
   var isSpoiler: Bool {
-    return title.lowercaseString.containsString("spoiler")
+    return title.lowercased().contains("spoiler")
   }
 
   var type: LinkType {
@@ -133,38 +133,38 @@ struct Link: Votable, Mappable {
       ?? previewImage?.source.size
   }
 
-  var shortURL: NSURL {
-    return Link.redditShortURL.URLByAppendingPathComponent(identifier)
+  var shortURL: URL {
+    return Link.redditShortURL.appendingPathComponent(identifier)
   }
 
-  var permalinkURL: NSURL {
-    return Link.redditURL.URLByAppendingPathComponent(permalink)
+  var permalinkURL: URL {
+    return Link.redditURL.appendingPathComponent(permalink)
   }
 
   var scoreWithoutVote: Int {
-    if vote == .Upvote {
+    if vote == .upvote {
       return score - 1
-    } else if vote == .Downvote {
+    } else if vote == .downvote {
       return score + 1
     }
     return score
   }
 
-  func scoreWithVote(voted: Vote) -> Int {
+  func scoreWithVote(_ voted: Vote) -> Int {
     switch voted {
-    case .Upvote:
+    case .upvote:
       return scoreWithoutVote + 1
-    case .Downvote:
+    case .downvote:
       return scoreWithoutVote - 1
-    case .None:
+    case .none:
       return scoreWithoutVote
     }
   }
 
   // MARK: JSON
-  init?(_ map: Map) {
+  init?(map: Map) {
     // Fail if no data is found
-    guard let _ = map.JSONDictionary["data"] else { return nil }
+    guard let _ = map.JSON["data"] else { return nil }
   }
 
   mutating func mapping(map: Map) {
@@ -173,7 +173,7 @@ struct Link: Votable, Mappable {
     mappingMisc(map)
   }
 
-  private mutating func mappingLink(map: Map) {
+  fileprivate mutating func mappingLink(_ map: Map) {
     author <- map["data.author"]
     upvoteRatio <- map["data.upvote_ratio"]
     authorFlairClass <- map["data.author_flair_css_class"]
@@ -210,7 +210,7 @@ struct Link: Votable, Mappable {
     postHint <- map["data.post_hint"]
   }
 
-  private mutating func mappingMisc(map: Map) {
+  fileprivate mutating func mappingMisc(_ map: Map) {
     approvedBy <- map["data.approved_by"]
     bannedBy <- map["data.banned_by"]
     suggestedSort <- map["data.suggested_sort"]

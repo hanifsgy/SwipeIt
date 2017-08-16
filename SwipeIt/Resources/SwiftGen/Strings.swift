@@ -1,211 +1,168 @@
-// Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 import Foundation
 
 // swiftlint:disable file_length
-// swiftlint:disable type_body_length
+
+// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum L10n {
-  /// Close
-  case CloseableButtonClose
-  /// Login
-  case WalkthroughButtonLogin
-  /// Cancel
-  case AlertButtonCancel
-  /// OK
-  case AlertButtonOK
-  /// Login
-  case LoginTitle
-  /// Login error
-  case LoginErrorTitle
-  /// Could not log in. Please try again later
-  case LoginErrorUnknown
-  /// Login was cancelled
-  case LoginErrorUserCancelled
-  /// Subscriptions
-  case SubscriptionsTitle
-  /// hidden
-  case LinkScoreHidden
-  /// GIF
-  case LinkIndicatorGIF
-  /// NSFW
-  case LinkIndicatorNSFW
-  /// Spoiler
-  case LinkIndicatorSpoiler
-  /// Album
-  case LinkIndicatorAlbum
-  /// Stickied
-  case LinkContextStickied
-  /// Locked
-  case LinkContextLocked
-  /// Read more
-  case LinkContentSelfPostReadMore
-  /// Upvote
-  case LinkUpvote
-  /// Downvote
-  case LinkDownvote
-  /// comment
-  case LinkComment
-  /// comments
-  case LinkComments
-  /// Report
-  case LinkReport
-  /// Save
-  case LinkSave
-  /// Unsave
-  case LinkUnsave
-  /// Open in Safari
-  case LinkOpenInSafari
-  /// Spam
-  case LinkReportSpam
-  /// Vote manipulation
-  case LinkReportVoteManipulation
-  /// Personal information
-  case LinkReportPersonalInfo
-  /// Sexualizing minors
-  case LinkReportSexualizingMinors
-  /// Breaking reddit
-  case LinkReportBreakingReddit
-  /// Other
-  case LinkReportOther
-  /// What other rule does it break?
-  case LinkReportOtherReason
-  /// Other reason (max 100 characters)
-  case LinkReportOtherHint
-  /// Hot
-  case ListingTypeHot
-  /// New
-  case ListingTypeNew
-  /// Rising
-  case ListingTypeRising
-  /// Controversial
-  case ListingTypeControversial
-  /// Top
-  case ListingTypeTop
-  /// Gilded
-  case ListingTypeGilded
-  /// Past hour
-  case ListingTypeRangeHour
-  /// Past 24 hours
-  case ListingTypeRangeDay
-  /// Past week
-  case ListingTypeRangeWeek
-  /// Past month
-  case ListingTypeRangeMonth
-  /// Past year
-  case ListingTypeRangeYear
-  /// All-time
-  case ListingTypeRangeAllTime
   /// Retry
-  case Retry
-}
-// swiftlint:enable type_body_length
+  static let retry = L10n.tr("Localizable", "Retry")
 
-extension L10n: CustomStringConvertible {
-  var description: String { return self.string }
+  enum Alert {
 
-  var string: String {
-    switch self {
-      case .CloseableButtonClose:
-        return L10n.tr("Closeable.Button.Close")
-      case .WalkthroughButtonLogin:
-        return L10n.tr("Walkthrough.Button.Login")
-      case .AlertButtonCancel:
-        return L10n.tr("Alert.Button.Cancel")
-      case .AlertButtonOK:
-        return L10n.tr("Alert.Button.OK")
-      case .LoginTitle:
-        return L10n.tr("Login.Title")
-      case .LoginErrorTitle:
-        return L10n.tr("Login.Error.Title")
-      case .LoginErrorUnknown:
-        return L10n.tr("Login.Error.Unknown")
-      case .LoginErrorUserCancelled:
-        return L10n.tr("Login.Error.UserCancelled")
-      case .SubscriptionsTitle:
-        return L10n.tr("Subscriptions.Title")
-      case .LinkScoreHidden:
-        return L10n.tr("Link.Score.Hidden")
-      case .LinkIndicatorGIF:
-        return L10n.tr("Link.Indicator.GIF")
-      case .LinkIndicatorNSFW:
-        return L10n.tr("Link.Indicator.NSFW")
-      case .LinkIndicatorSpoiler:
-        return L10n.tr("Link.Indicator.Spoiler")
-      case .LinkIndicatorAlbum:
-        return L10n.tr("Link.Indicator.Album")
-      case .LinkContextStickied:
-        return L10n.tr("Link.Context.Stickied")
-      case .LinkContextLocked:
-        return L10n.tr("Link.Context.Locked")
-      case .LinkContentSelfPostReadMore:
-        return L10n.tr("Link.Content.SelfPost.ReadMore")
-      case .LinkUpvote:
-        return L10n.tr("Link.Upvote")
-      case .LinkDownvote:
-        return L10n.tr("Link.Downvote")
-      case .LinkComment:
-        return L10n.tr("Link.Comment")
-      case .LinkComments:
-        return L10n.tr("Link.Comments")
-      case .LinkReport:
-        return L10n.tr("Link.Report")
-      case .LinkSave:
-        return L10n.tr("Link.Save")
-      case .LinkUnsave:
-        return L10n.tr("Link.Unsave")
-      case .LinkOpenInSafari:
-        return L10n.tr("Link.OpenInSafari")
-      case .LinkReportSpam:
-        return L10n.tr("Link.Report.Spam")
-      case .LinkReportVoteManipulation:
-        return L10n.tr("Link.Report.VoteManipulation")
-      case .LinkReportPersonalInfo:
-        return L10n.tr("Link.Report.PersonalInfo")
-      case .LinkReportSexualizingMinors:
-        return L10n.tr("Link.Report.SexualizingMinors")
-      case .LinkReportBreakingReddit:
-        return L10n.tr("Link.Report.BreakingReddit")
-      case .LinkReportOther:
-        return L10n.tr("Link.Report.Other")
-      case .LinkReportOtherReason:
-        return L10n.tr("Link.Report.Other.Reason")
-      case .LinkReportOtherHint:
-        return L10n.tr("Link.Report.Other.Hint")
-      case .ListingTypeHot:
-        return L10n.tr("ListingType.Hot")
-      case .ListingTypeNew:
-        return L10n.tr("ListingType.New")
-      case .ListingTypeRising:
-        return L10n.tr("ListingType.Rising")
-      case .ListingTypeControversial:
-        return L10n.tr("ListingType.Controversial")
-      case .ListingTypeTop:
-        return L10n.tr("ListingType.Top")
-      case .ListingTypeGilded:
-        return L10n.tr("ListingType.Gilded")
-      case .ListingTypeRangeHour:
-        return L10n.tr("ListingType.Range.Hour")
-      case .ListingTypeRangeDay:
-        return L10n.tr("ListingType.Range.Day")
-      case .ListingTypeRangeWeek:
-        return L10n.tr("ListingType.Range.Week")
-      case .ListingTypeRangeMonth:
-        return L10n.tr("ListingType.Range.Month")
-      case .ListingTypeRangeYear:
-        return L10n.tr("ListingType.Range.Year")
-      case .ListingTypeRangeAllTime:
-        return L10n.tr("ListingType.Range.AllTime")
-      case .Retry:
-        return L10n.tr("Retry")
+    enum Button {
+      /// Cancel
+      static let cancel = L10n.tr("Localizable", "Alert.Button.Cancel")
+      /// OK
+      static let ok = L10n.tr("Localizable", "Alert.Button.OK")
     }
   }
 
-  private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, comment: "")
-    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
+  enum Closeable {
+
+    enum Button {
+      /// Close
+      static let close = L10n.tr("Localizable", "Closeable.Button.Close")
+    }
+  }
+
+  enum Link {
+    /// comment
+    static let comment = L10n.tr("Localizable", "Link.Comment")
+    /// comments
+    static let comments = L10n.tr("Localizable", "Link.Comments")
+    /// Downvote
+    static let downvote = L10n.tr("Localizable", "Link.Downvote")
+    /// Open in Safari
+    static let openInSafari = L10n.tr("Localizable", "Link.OpenInSafari")
+    /// Report
+    static let report = L10n.tr("Localizable", "Link.Report")
+    /// Save
+    static let save = L10n.tr("Localizable", "Link.Save")
+    /// Unsave
+    static let unsave = L10n.tr("Localizable", "Link.Unsave")
+    /// Upvote
+    static let upvote = L10n.tr("Localizable", "Link.Upvote")
+
+    enum Content {
+
+      enum Selfpost {
+        /// Read more
+        static let readMore = L10n.tr("Localizable", "Link.Content.SelfPost.ReadMore")
+      }
+    }
+
+    enum Context {
+      /// Locked
+      static let locked = L10n.tr("Localizable", "Link.Context.Locked")
+      /// Stickied
+      static let stickied = L10n.tr("Localizable", "Link.Context.Stickied")
+    }
+
+    enum Indicator {
+      /// Album
+      static let album = L10n.tr("Localizable", "Link.Indicator.Album")
+      /// GIF
+      static let gif = L10n.tr("Localizable", "Link.Indicator.GIF")
+      /// NSFW
+      static let nsfw = L10n.tr("Localizable", "Link.Indicator.NSFW")
+      /// Spoiler
+      static let spoiler = L10n.tr("Localizable", "Link.Indicator.Spoiler")
+    }
+
+    enum Report {
+      /// Breaking reddit
+      static let breakingReddit = L10n.tr("Localizable", "Link.Report.BreakingReddit")
+      /// Other
+      static let other = L10n.tr("Localizable", "Link.Report.Other")
+      /// Personal information
+      static let personalInfo = L10n.tr("Localizable", "Link.Report.PersonalInfo")
+      /// Sexualizing minors
+      static let sexualizingMinors = L10n.tr("Localizable", "Link.Report.SexualizingMinors")
+      /// Spam
+      static let spam = L10n.tr("Localizable", "Link.Report.Spam")
+      /// Vote manipulation
+      static let voteManipulation = L10n.tr("Localizable", "Link.Report.VoteManipulation")
+
+      enum Other {
+        /// Other reason (max 100 characters)
+        static let hint = L10n.tr("Localizable", "Link.Report.Other.Hint")
+        /// What other rule does it break?
+        static let reason = L10n.tr("Localizable", "Link.Report.Other.Reason")
+      }
+    }
+
+    enum Score {
+      /// hidden
+      static let hidden = L10n.tr("Localizable", "Link.Score.Hidden")
+    }
+  }
+
+  enum Listingtype {
+    /// Controversial
+    static let controversial = L10n.tr("Localizable", "ListingType.Controversial")
+    /// Gilded
+    static let gilded = L10n.tr("Localizable", "ListingType.Gilded")
+    /// Hot
+    static let hot = L10n.tr("Localizable", "ListingType.Hot")
+    /// New
+    static let new = L10n.tr("Localizable", "ListingType.New")
+    /// Rising
+    static let rising = L10n.tr("Localizable", "ListingType.Rising")
+    /// Top
+    static let top = L10n.tr("Localizable", "ListingType.Top")
+
+    enum Range {
+      /// All-time
+      static let allTime = L10n.tr("Localizable", "ListingType.Range.AllTime")
+      /// Past 24 hours
+      static let day = L10n.tr("Localizable", "ListingType.Range.Day")
+      /// Past hour
+      static let hour = L10n.tr("Localizable", "ListingType.Range.Hour")
+      /// Past month
+      static let month = L10n.tr("Localizable", "ListingType.Range.Month")
+      /// Past week
+      static let week = L10n.tr("Localizable", "ListingType.Range.Week")
+      /// Past year
+      static let year = L10n.tr("Localizable", "ListingType.Range.Year")
+    }
+  }
+
+  enum Login {
+    /// Login
+    static let title = L10n.tr("Localizable", "Login.Title")
+
+    enum Error {
+      /// Login error
+      static let title = L10n.tr("Localizable", "Login.Error.Title")
+      /// Could not log in. Please try again later
+      static let unknown = L10n.tr("Localizable", "Login.Error.Unknown")
+      /// Login was cancelled
+      static let userCancelled = L10n.tr("Localizable", "Login.Error.UserCancelled")
+    }
+  }
+
+  enum Subscriptions {
+    /// Subscriptions
+    static let title = L10n.tr("Localizable", "Subscriptions.Title")
+  }
+
+  enum Walkthrough {
+
+    enum Button {
+      /// Login
+      static let login = L10n.tr("Localizable", "Walkthrough.Button.Login")
+    }
+  }
+}
+// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
+
+extension L10n {
+  fileprivate static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    return String(format: format, locale: Locale.current, arguments: args)
   }
 }
 
-func tr(key: L10n) -> String {
-  return key.string
-}
+private final class BundleToken {}

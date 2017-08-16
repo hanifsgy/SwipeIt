@@ -10,7 +10,7 @@ import Foundation
 
 enum Duration: String {
 
-  case Permanent = "permanent"
-  case Temporary = "temporary"
+  case permanent = "permanent"
+  case temporary = "temporary"
 
 }

@@ -27,13 +27,13 @@ TitledViewModelViewController {
 // MARK: Setup
 extension LoginViewController {
 
-  private func setup() {
+  fileprivate func setup() {
     setupWebView()
     setupCloseButton()
     bindTitle(viewModel)
   }
 
-  private func setupWebView() {
+  fileprivate func setupWebView() {
     loadURL(viewModel.oauthURLString)
   }
 
@@ -42,18 +42,18 @@ extension LoginViewController {
 // MARK: WKNavigationDelegate
 extension LoginViewController {
 
-  func webView(webView: WKWebView,
+  func webView(_ webView: WKWebView,
                decidePolicyForNavigationAction navigationAction: WKNavigationAction,
-                                               decisionHandler: WKNavigationActionPolicy -> Void) {
-    let URLString = navigationAction.request.URLString
+                                               decisionHandler: (WKNavigationActionPolicy) -> Void) {
+    guard let URLString = navigationAction.request.url?.absoluteString else { return }
     if viewModel.isRedirectURL(URLString) {
-      decisionHandler(WKNavigationActionPolicy.Cancel)
-      dismissViewControllerAnimated(true) {
+      decisionHandler(WKNavigationActionPolicy.cancel)
+      dismiss(animated: true) {
         self.viewModel.loginWithRedirectURL(URLString)
       }
       return
     }
-    decisionHandler(WKNavigationActionPolicy.Allow)
+    decisionHandler(WKNavigationActionPolicy.allow)
   }
 
 }
